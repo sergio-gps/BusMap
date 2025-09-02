@@ -21,7 +21,7 @@ Table vehiculos_info {
   vehiculo_id int [ref: > vehiculos.vehiculo_id]
   matricula varchar [not null]
   marca_modelo varchar [null]
-  capacidad int [null]
+  capacidad int [null] // número de viajeros que pueden ir
   activo bool [not null]
 }
 
