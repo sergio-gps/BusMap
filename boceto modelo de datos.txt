@@ -1,0 +1,79 @@
+https://dbdiagram.io/d
+
+Table tipos_vehiculo {
+  tipo_id int [pk, increment]
+  nombre varchar [not null, unique] // ejemplo: 'autobus', 'taxi'
+}
+
+Table vehiculos {
+  vehiculo_id int [pk, increment]
+  tipo_id int [ref: > tipos_vehiculo.tipo_id]
+}
+
+Table lineas {
+  linea_id int [pk, increment]
+  nombre varchar [not null] // ejemplo: 'Línea 27'
+  origen varchar [null]
+  destino varchar [null]
+}
+
+Table vehiculos_info {
+  vehiculo_id int [ref: > vehiculos.vehiculo_id]
+  matricula varchar [not null]
+  marca_modelo varchar [null]
+  capacidad int [null]
+  activo bool [not null]
+}
+
+Table buses_linea {
+  vehiculo_id int [ref: > vehiculos.vehiculo_id]
+  linea_id int [ref: > lineas.linea_id]
+}
+
+Table localizacion {
+  id int [pk, increment]
+  vehiculo_id int [ref: > vehiculos.vehiculo_id]
+  coordenadas point(x,y) [not null]
+  updated_at datetime [not null]
+}
+
+Table historico_rutas {
+  id int [pk, increment]
+  vehiculo_id int [ref: > vehiculos.vehiculo_id]
+  punto_origen point (x,y) [not null]
+  destino_buscado varchar [not null]
+  fecha_ruta datetime [not null]
+}
+
+Table usuarios {
+  usuario_id int [pk, increment]
+  username varchar [not null, unique]
+  
+}
+
+Table seguridad {
+  id int [ref: > usuarios.usuario_id]
+  password varchar [not null]
+}
+
+Table roles {
+  rol_id int [pk, increment]
+  rol_name varchar [not null, unique]
+}
+
+Table permisos {
+  permiso_id int [pk, increment]
+  permiso_name varchar [not null, unique]
+}
+
+Table usuarios_roles {
+  usuario_id int [ref: > usuarios.usuario_id]
+  rol_id int [ref: > roles.rol_id]
+  primary key (usuario_id, rol_id)
+}
+
+Table roles_permisos {
+  rol_id int [ref: > roles.rol_id]
+  permiso_id int [ref: > permisos.permiso_id]
+  primary key (rol_id, permiso_id)
+}
