@@ -1,0 +1,66 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: bus-map-postgres
+    environment:
+      POSTGRES_DB: bus_map_db
+      POSTGRES_USER: busmap_user
+      POSTGRES_PASSWORD: busmap_password
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker_volume:/docker-entrypoint-initdb.d
+    networks:
+      - bus-map-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U busmap_user -d bus_map_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot API
+  bus-map-api:
+    build:
+      context: ./bus-map-api
+      dockerfile: Dockerfile
+    container_name: bus-map-api
+    ports:
+      - "8080:8080"
+    environment:
+      # Database configuration
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bus_map_db
+      SPRING_DATASOURCE_USERNAME: busmap_user
+      SPRING_DATASOURCE_PASSWORD: busmap_password
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      
+      # JPA/Hibernate configuration
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: true
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: true
+      
+      # Application configuration
+      SPRING_APPLICATION_NAME: bus-map-api
+      SERVER_PORT: 8080
+      
+      # Optional: JVM settings
+      JAVA_OPTS: "-Xmx512m -Xms256m"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - bus-map-network
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  bus-map-network:
+    driver: bridge

@@ -1,0 +1,17 @@
+# Global ignore for compose build contexts
+.git
+.gitignore
+**/.git
+**/.idea
+**/.vscode
+**/node_modules
+**/target
+**/build
+**/.mvn
+**/.gradle
+**/*.iml
+
+# Maven wrapper & local env files are not needed in image context
+mvnw
+mvnw.cmd
+.env

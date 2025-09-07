@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "baf4a410-bc64-4145-a466-383f480612bd",
+		"name": "BusMap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15638021"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "olympia.jpramez.dev:8080/api/health/status",
+					"host": [
+						"olympia",
+						"jpramez",
+						"dev"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"health",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
