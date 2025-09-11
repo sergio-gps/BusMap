@@ -1,4 +1,5 @@
 MiMapa2/secrets.properties
+MiMapa2/local.properties
 *.iml
 .gradle
 /local.properties
@@ -13,4 +14,3 @@ MiMapa2/secrets.properties
 /captures
 .externalNativeBuild
 .cxx
-local.properties

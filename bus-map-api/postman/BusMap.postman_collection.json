@@ -1,0 +1,1014 @@
+{
+	"info": {
+		"_postman_id": "a8cc2173-145b-49a6-b4b1-1006edacaa24",
+		"name": "BusMap API",
+		"description": "Postman collection for Bus Map API (uses {{API_HOST}}:{{API_PORT}}/{{API_URL}} from BusMap-Local environment).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15638021"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "GET /api/health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/health",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/health/status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/health/status",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"health",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/health/ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/health/ping",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"health",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TiposVehiculo",
+			"item": [
+				{
+					"name": "GET /api/tipos-vehiculo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/tipos-vehiculo",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"tipos-vehiculo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/tipos-vehiculo/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/tipos-vehiculo/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"tipos-vehiculo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/tipos-vehiculo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"autobus\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/tipos-vehiculo",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"tipos-vehiculo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehiculos",
+			"item": [
+				{
+					"name": "GET /api/vehiculos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/vehiculos",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"vehiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/vehiculos/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/vehiculos/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"vehiculos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/vehiculos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": { \"tipoId\": 1 }\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/vehiculos",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"vehiculos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lineas",
+			"item": [
+				{
+					"name": "GET /api/lineas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/lineas",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"lineas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/lineas/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/lineas/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"lineas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/lineas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Línea 27\",\n  \"origen\": \"Atocha\",\n  \"destino\": \"Moncloa\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/lineas",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"lineas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VehiculosInfo",
+			"item": [
+				{
+					"name": "GET /api/vehiculos-info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/vehiculos-info",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"vehiculos-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/vehiculos-info/{vehiculoId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/vehiculos-info/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"vehiculos-info",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/vehiculos-info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehiculo\": { \"vehiculoId\": 1 },\n  \"matricula\": \"1234-ABC\",\n  \"marcaModelo\": \"Mercedes Citaro\",\n  \"capacidad\": 80,\n  \"activo\": true\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/vehiculos-info",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"vehiculos-info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Localizacion",
+			"item": [
+				{
+					"name": "GET /api/localizacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/localizacion",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"localizacion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/localizacion/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/localizacion/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"localizacion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/localizacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehiculo\": { \"vehiculoId\": 1 },\n  \"coordenadas\": { \"x\": -3.7038, \"y\": 40.4168 },\n  \"updatedAt\": \"2025-09-11T09:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/localizacion",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"localizacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HistoricoRutas",
+			"item": [
+				{
+					"name": "GET /api/historico-rutas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/historico-rutas",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"historico-rutas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/historico-rutas/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/historico-rutas/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"historico-rutas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/historico-rutas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehiculo\": { \"vehiculoId\": 1 },\n  \"puntoOrigen\": { \"x\": -3.70, \"y\": 40.41 },\n  \"destinoBuscado\": \"Moncloa\",\n  \"fechaRuta\": \"2025-09-10T10:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/historico-rutas",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"historico-rutas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "GET /api/usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/usuarios",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/usuarios/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/usuarios/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/usuarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/usuarios",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seguridad",
+			"item": [
+				{
+					"name": "GET /api/seguridad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/seguridad",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"seguridad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/seguridad/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/seguridad/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"seguridad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/seguridad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"usuario\": { \"usuarioId\": 1 },\n  \"password\": \"Admin123!\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/seguridad",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"seguridad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "GET /api/roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/roles",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/roles/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/roles/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/roles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rolName\": \"ADMIN\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/roles",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permisos",
+			"item": [
+				{
+					"name": "GET /api/permisos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/permisos",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"permisos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/permisos/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/permisos/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"permisos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/permisos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"permisoName\": \"VIEW_VEHICLES\"\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/permisos",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"permisos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BusesLinea",
+			"item": [
+				{
+					"name": "GET /api/buses-linea",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/buses-linea",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"buses-linea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/buses-linea/{vehiculoId}/{lineaId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/buses-linea/1/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"buses-linea",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/buses-linea",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": { \"vehiculoId\": 1, \"lineaId\": 1 }\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/buses-linea",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"buses-linea"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UsuariosRoles",
+			"item": [
+				{
+					"name": "GET /api/usuarios-roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/usuarios-roles",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"usuarios-roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/usuarios-roles/{usuarioId}/{rolId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/usuarios-roles/1/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"usuarios-roles",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/usuarios-roles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": { \"usuarioId\": 1, \"rolId\": 1 }\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/usuarios-roles",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"usuarios-roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RolesPermisos",
+			"item": [
+				{
+					"name": "GET /api/roles-permisos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/roles-permisos",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"roles-permisos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/roles-permisos/{rolId}/{permisoId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/roles-permisos/1/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"roles-permisos",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/roles-permisos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": { \"rolId\": 1, \"permisoId\": 1 }\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/roles-permisos",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"roles-permisos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
