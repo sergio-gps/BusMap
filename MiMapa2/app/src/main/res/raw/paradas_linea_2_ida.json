@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "lineaId": 2,
+    "paradaId": 478,
+    "siguienteParada": 420
+  },
+  {
+    "id": 2,
+    "lineaId": 2,
+    "paradaId": 420,
+    "siguienteParada": 400
+  },
+  {
+    "id": 3,
+    "lineaId": 2,
+    "paradaId": 400,
+    "siguienteParada": 292
+  },
+  {
+    "id": 4,
+    "lineaId": 2,
+    "paradaId": 292,
+    "siguienteParada": 401
+  },
+  {
+    "id": 5,
+    "lineaId": 2,
+    "paradaId": 401,
+    "siguienteParada": 9
+  },
+  {
+    "id": 6,
+    "lineaId": 2,
+    "paradaId": 9,
+    "siguienteParada": 10
+  },
+  {
+    "id": 7,
+    "lineaId": 2,
+    "paradaId": 10,
+    "siguienteParada": 11
+  },
+  {
+    "id": 8,
+    "lineaId": 2,
+    "paradaId": 11,
+    "siguienteParada": 12
+  },
+  {
+    "id": 9,
+    "lineaId": 2,
+    "paradaId": 12,
+    "siguienteParada": 13
+  },
+  {
+    "id": 10,
+    "lineaId": 2,
+    "paradaId": 13,
+    "siguienteParada": 391
+  },
+  {
+    "id": 11,
+    "lineaId": 2,
+    "paradaId": 391,
+    "siguienteParada": 393
+  },
+  {
+    "id": 12,
+    "lineaId": 2,
+    "paradaId": 393,
+    "siguienteParada": 61
+  },
+  {
+    "id": 13,
+    "lineaId": 2,
+    "paradaId": 61,
+    "siguienteParada": 396
+  },
+  {
+    "id": 14,
+    "lineaId": 2,
+    "paradaId": 396,
+    "siguienteParada": 402
+  },
+  {
+    "id": 15,
+    "lineaId": 2,
+    "paradaId": 402,
+    "siguienteParada": 423
+  },
+  {
+    "id": 16,
+    "lineaId": 2,
+    "paradaId": 423,
+    "siguienteParada": 19
+  },
+  {
+    "id": 17,
+    "lineaId": 2,
+    "paradaId": 19,
+    "siguienteParada": 20
+  },
+  {
+    "id": 18,
+    "lineaId": 2,
+    "paradaId": 20,
+    "siguienteParada": 21
+  },
+  {
+    "id": 19,
+    "lineaId": 2,
+    "paradaId": 21,
+    "siguienteParada": 22
+  },
+  {
+    "id": 20,
+    "lineaId": 2,
+    "paradaId": 22,
+    "siguienteParada": 9999
+  }
+]

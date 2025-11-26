@@ -1,0 +1,107 @@
+[
+  {
+    "linea_id": "1",
+    "nombre": "Línea 1",
+    "origen": 479,
+    "destino": 480,
+    "color": "#00A9E0"
+  },
+  {
+    "linea_id": "2",
+    "nombre": "Línea 2",
+    "origen": 478,
+    "destino": 22,
+    "color": "#E3001B"
+  },
+  {
+    "linea_id": "3",
+    "nombre": "Línea 3",
+    "origen": 150,
+    "destino": 22,
+    "color": "#009849"
+  },
+  {
+    "linea_id": "4",
+    "nombre": "Línea 4",
+    "origen": 22,
+    "destino": 144,
+    "color": "#FFD200"
+  },
+  {
+    "linea_id": "5",
+    "nombre": "Línea 5",
+    "origen": 50,
+    "destino": 484,
+    "color": "#003893"
+  },
+  {
+    "linea_id": "6",
+    "nombre": "Línea 6",
+    "origen": 441,
+    "destino": 75,
+    "color": "#E0007C"
+  },
+  {
+    "linea_id": "7",
+    "nombre": "Línea 7",
+    "origen": 107,
+    "destino": 367,
+    "color": "#9A9A9B"
+  },
+  {
+    "linea_id": "8",
+    "nombre": "Línea 8",
+    "origen": 50,
+    "destino": 484,
+    "color": "#6F4E2B"
+  },
+  {
+    "linea_id": "11",
+    "nombre": "Línea 11",
+    "origen": 478,
+    "destino": 144,
+    "color": "#5CBFE4"
+  },
+  {
+    "linea_id": "12",
+    "nombre": "Línea 12",
+    "origen": 80,
+    "destino": 144,
+    "color": "#9F2D8B"
+  },
+  {
+    "linea_id": "18",
+    "nombre": "Línea 18",
+    "origen": 22,
+    "destino": 169,
+    "color": "#F47B00"
+  },
+  {
+    "linea_id": "19",
+    "nombre": "Línea 19",
+    "origen": 33,
+    "destino": 482,
+    "color": "#00B48C"
+  },
+  {
+    "linea_id": "20",
+    "nombre": "Línea 20",
+    "origen": 33,
+    "destino": 332,
+    "color": "#8CC63E"
+  },
+  {
+    "linea_id": "30",
+    "nombre": "Línea 30",
+    "origen": 33,
+    "destino": 377,
+    "color": "#58585B"
+  },
+  {
+    "linea_id": "31",
+    "nombre": "Línea 31",
+    "origen": 33,
+    "destino": 378,
+    "color": "#58585B"
+  }
+]

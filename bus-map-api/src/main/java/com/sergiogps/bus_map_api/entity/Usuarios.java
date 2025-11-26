@@ -21,6 +21,9 @@ public class Usuarios {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    @Column(name = "email", unique = true)
+    private String email;
+
     @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
     private Seguridad seguridad;
 
@@ -28,6 +31,8 @@ public class Usuarios {
     public void setUsuarioId(Integer usuarioId) { this.usuarioId = usuarioId; }
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
     public Seguridad getSeguridad() { return seguridad; }
     public void setSeguridad(Seguridad seguridad) { this.seguridad = seguridad; }
 }

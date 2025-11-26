@@ -1,0 +1,92 @@
+[
+  {
+    "id": 21,
+    "lineaId": 2,
+    "paradaId": 22,
+    "siguienteParada": 426
+  },
+  {
+    "id": 22,
+    "lineaId": 2,
+    "paradaId": 426,
+    "siguienteParada": 23
+  },
+  {
+    "id": 23,
+    "lineaId": 2,
+    "paradaId": 23,
+    "siguienteParada": 307
+  },
+  {
+    "id": 24,
+    "lineaId": 2,
+    "paradaId": 307,
+    "siguienteParada": 403
+  },
+  {
+    "id": 25,
+    "lineaId": 2,
+    "paradaId": 403,
+    "siguienteParada": 67
+  },
+  {
+    "id": 26,
+    "lineaId": 2,
+    "paradaId": 67,
+    "siguienteParada": 394
+  },
+  {
+    "id": 27,
+    "lineaId": 2,
+    "paradaId": 394,
+    "siguienteParada": 392
+  },
+  {
+    "id": 28,
+    "lineaId": 2,
+    "paradaId": 392,
+    "siguienteParada": 27
+  },
+  {
+    "id": 29,
+    "lineaId": 2,
+    "paradaId": 27,
+    "siguienteParada": 28
+  },
+  {
+    "id": 30,
+    "lineaId": 2,
+    "paradaId": 28,
+    "siguienteParada": 29
+  },
+  {
+    "id": 31,
+    "lineaId": 2,
+    "paradaId": 29,
+    "siguienteParada": 30
+  },
+  {
+    "id": 32,
+    "lineaId": 2,
+    "paradaId": 30,
+    "siguienteParada": 31
+  },
+  {
+    "id": 33,
+    "lineaId": 2,
+    "paradaId": 31,
+    "siguienteParada": 32
+  },
+  {
+    "id": 34,
+    "lineaId": 2,
+    "paradaId": 32,
+    "siguienteParada": 478
+  },
+  {
+    "id": 35,
+    "lineaId": 2,
+    "paradaId": 478,
+    "siguienteParada": 9999
+  }
+]

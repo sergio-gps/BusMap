@@ -1,0 +1,3504 @@
+[
+  {
+    "numero": 1,
+    "nombre": "Plaza del Quemadero",
+    "latitude": 36.8462014232588,
+    "longitude": -2.46708068814807,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 2,
+    "nombre": "Avenida. Pablo Iglesias",
+    "latitude": 36.8463132600496,
+    "longitude": -2.46473617050965,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 3,
+    "nombre": "Rambla Alfareros",
+    "latitude": 36.8431862152274,
+    "longitude": -2.46423861324673,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 7,
+    "nombre": "Stella Maris",
+    "latitude": 36.8370748907335,
+    "longitude": -2.46088098869098,
+    "lineas": [
+      "1",
+      "6",
+      "7",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 8,
+    "nombre": "Avenida de la Estación",
+    "latitude": 36.8367816465867,
+    "longitude": -2.45707443839835,
+    "lineas": [
+      "19",
+      "20",
+      "30",
+      "31"
+    ]
+  },
+  {
+    "numero": 9,
+    "nombre": "Ronda - Sanidad",
+    "latitude": 36.8390741560668,
+    "longitude": -2.45471238882752,
+    "lineas": [
+      "2",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 10,
+    "nombre": "Ronda - Blas Infante",
+    "latitude": 36.8414259109113,
+    "longitude": -2.45339065792903,
+    "lineas": [
+      "2",
+      "20"
+    ]
+  },
+  {
+    "numero": 11,
+    "nombre": "Cruz Roja",
+    "latitude": 36.8436824429405,
+    "longitude": -2.45243892073629,
+    "lineas": [
+      "2",
+      "20"
+    ]
+  },
+  {
+    "numero": 12,
+    "nombre": "Bola Azul",
+    "latitude": 36.8482238455009,
+    "longitude": -2.45279565453527,
+    "lineas": [
+      "2"
+    ]
+  },
+  {
+    "numero": 13,
+    "nombre": "La Magnesita",
+    "latitude": 36.8508739899171,
+    "longitude": -2.45225830965522,
+    "lineas": [
+      "2",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 14,
+    "nombre": "Fábrica de Azufre",
+    "latitude": 36.8544670980101,
+    "longitude": -2.4499927349562,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 15,
+    "nombre": "Acceso Piedras Redondas",
+    "latitude": 36.8567299212822,
+    "longitude": -2.44862311019967,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 16,
+    "nombre": "Rambla Iniesta",
+    "latitude": 36.8606210123938,
+    "longitude": -2.44764791979364,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 17,
+    "nombre": "Cementerio",
+    "latitude": 36.8621742380308,
+    "longitude": -2.44861927056548,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 18,
+    "nombre": "Ikea",
+    "latitude": 36.8520027829799,
+    "longitude": -2.46763032945892,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 19,
+    "nombre": "Carretera de Huércal 24",
+    "latitude": 36.8608601431599,
+    "longitude": -2.44520337105385,
+    "lineas": [
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  {
+    "numero": 20,
+    "nombre": "Carretera de Huércal 56",
+    "latitude": 36.8622525880037,
+    "longitude": -2.44455885185599,
+    "lineas": [
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  {
+    "numero": 21,
+    "nombre": "Materno Infantil",
+    "latitude": 36.861939243516,
+    "longitude": -2.44156410383002,
+    "lineas": [
+      "2",
+      "3",
+      "4",
+      "18"
+    ]
+  },
+  {
+    "numero": 22,
+    "nombre": "Hospital Universitario Torrecárdenas",
+    "latitude": 36.8632881413344,
+    "longitude": -2.44081704361648,
+    "lineas": [
+      "2",
+      "3",
+      "4",
+      "18"
+    ]
+  },
+  {
+    "numero": 23,
+    "nombre": "Estadio Municipal Juan Rojas",
+    "latitude": 36.8620873977698,
+    "longitude": -2.4447223957026,
+    "lineas": [
+      "2",
+      "3",
+      "4",
+      "18"
+    ]
+  },
+  {
+    "numero": 24,
+    "nombre": "Asociación de Vecinos la Torre",
+    "latitude": 36.8603694806613,
+    "longitude": -2.44571815958773,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 25,
+    "nombre": "Acceso Piedras Redondas",
+    "latitude": 36.8565151094847,
+    "longitude": -2.44920577051833,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 26,
+    "nombre": "Fábrica de Azufre",
+    "latitude": 36.8535717898882,
+    "longitude": -2.45132053184363,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 27,
+    "nombre": "Ronda - la Magnesita",
+    "latitude": 36.8503627126888,
+    "longitude": -2.4526217493743,
+    "lineas": [
+      "2",
+      "11"
+    ]
+  },
+  {
+    "numero": 28,
+    "nombre": "Ronda - Bola Azul",
+    "latitude": 36.8482406264626,
+    "longitude": -2.45293426819573,
+    "lineas": [
+      "2",
+      "11"
+    ]
+  },
+  {
+    "numero": 29,
+    "nombre": "Ronda - Cruz Roja",
+    "latitude": 36.8436035525925,
+    "longitude": -2.45260320809113,
+    "lineas": [
+      "2",
+      "11",
+      "20"
+    ]
+  },
+  {
+    "numero": 30,
+    "nombre": "Ronda - Juzgados",
+    "latitude": 36.8407739162068,
+    "longitude": -2.45384683352773,
+    "lineas": [
+      "2",
+      "11",
+      "20"
+    ]
+  },
+  {
+    "numero": 31,
+    "nombre": "Sanidad",
+    "latitude": 36.8390706254456,
+    "longitude": -2.45492666684718,
+    "lineas": [
+      "2",
+      "5",
+      "6",
+      "8",
+      "11",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 32,
+    "nombre": "Gregorio Marañón 45",
+    "latitude": 36.8376872602453,
+    "longitude": -2.45609893424973,
+    "lineas": [
+      "2",
+      "5",
+      "6",
+      "8",
+      "11",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 33,
+    "nombre": "Gregorio Marañón - la Salle",
+    "latitude": 36.8390048257721,
+    "longitude": -2.45925043928774,
+    "lineas": [
+      "19",
+      "20",
+      "30",
+      "31"
+    ]
+  },
+  {
+    "numero": 37,
+    "nombre": "Estadio de la Juventud",
+    "latitude": 36.8306139808315,
+    "longitude": -2.44979572987681,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 39,
+    "nombre": "Calle Fernández Bueso",
+    "latitude": 36.8333632958348,
+    "longitude": -2.45172430804514,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 40,
+    "nombre": "Calle América",
+    "latitude": 36.8331769878009,
+    "longitude": -2.45435727703822,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 41,
+    "nombre": "Cabo de Gata - Villa García",
+    "latitude": 36.8302314266658,
+    "longitude": -2.45284637588244,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 42,
+    "nombre": "Cabo de Gata - San Miguel",
+    "latitude": 36.8313722418277,
+    "longitude": -2.45589967183402,
+    "lineas": [
+      "7",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 43,
+    "nombre": "Cabo de Gata - Club Náutico",
+    "latitude": 36.8327591187718,
+    "longitude": -2.4595568879835,
+    "lineas": [
+      "7",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 44,
+    "nombre": "Oliveros",
+    "latitude": 36.8347901757282,
+    "longitude": -2.46235140430975,
+    "lineas": [
+      "6",
+      "7",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 47,
+    "nombre": "Club Náutico",
+    "latitude": 36.8325426728698,
+    "longitude": -2.45953373916212,
+    "lineas": [
+      "7",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 48,
+    "nombre": "San Miguel",
+    "latitude": 36.8312913647595,
+    "longitude": -2.45595519371843,
+    "lineas": [
+      "7",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 49,
+    "nombre": "Villa García",
+    "latitude": 36.8301706500447,
+    "longitude": -2.45325179534169,
+    "lineas": [
+      "7",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 50,
+    "nombre": "La Salle",
+    "latitude": 36.839445886755,
+    "longitude": -2.45912627775005,
+    "lineas": [
+      "5",
+      "6",
+      "8"
+    ]
+  },
+  {
+    "numero": 51,
+    "nombre": "Obelisco",
+    "latitude": 36.8421427009888,
+    "longitude": -2.45747654635567,
+    "lineas": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 52,
+    "nombre": "Plaza Altamira",
+    "latitude": 36.8420156364136,
+    "longitude": -2.45636805579609,
+    "lineas": [
+      "5",
+      "6",
+      "8"
+    ]
+  },
+  {
+    "numero": 53,
+    "nombre": "Doctor Carracido",
+    "latitude": 36.8411449890793,
+    "longitude": -2.45432243824252,
+    "lineas": [
+      "5",
+      "6",
+      "8"
+    ]
+  },
+  {
+    "numero": 54,
+    "nombre": "Blas Infante",
+    "latitude": 36.8412843385186,
+    "longitude": -2.45115150224462,
+    "lineas": [
+      "5",
+      "6",
+      "8",
+      "30"
+    ]
+  },
+  {
+    "numero": 55,
+    "nombre": "Arcipreste de Hita",
+    "latitude": 36.8410029660082,
+    "longitude": -2.44850467469051,
+    "lineas": [
+      "5",
+      "6",
+      "8",
+      "30"
+    ]
+  },
+  {
+    "numero": 56,
+    "nombre": "Parque Carrefour",
+    "latitude": 36.8413257801222,
+    "longitude": -2.44723130300844,
+    "lineas": [
+      "5",
+      "6",
+      "8",
+      "30"
+    ]
+  },
+  {
+    "numero": 57,
+    "nombre": "Parque del Generalife",
+    "latitude": 36.8430413934753,
+    "longitude": -2.44709568761043,
+    "lineas": [
+      "5",
+      "6",
+      "8",
+      "30"
+    ]
+  },
+  {
+    "numero": 58,
+    "nombre": "Avenida Mediterráneo 298",
+    "latitude": 36.8447901406457,
+    "longitude": -2.44708534002415,
+    "lineas": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "8",
+      "11"
+    ]
+  },
+  {
+    "numero": 59,
+    "nombre": "Avenida Mediterráneo - Carretera de Níjar",
+    "latitude": 36.8464814969582,
+    "longitude": -2.44709120013337,
+    "lineas": [
+      "4",
+      "5",
+      "11"
+    ]
+  },
+  {
+    "numero": 60,
+    "nombre": "Avenida Mediterráneo - San Luis",
+    "latitude": 36.8490255959983,
+    "longitude": -2.44663772201705,
+    "lineas": [
+      "4",
+      "5",
+      "11"
+    ]
+  },
+  {
+    "numero": 61,
+    "nombre": "Avenida Mediterráneo - Centro Comercial",
+    "latitude": 36.8538708826638,
+    "longitude": -2.44603335860117,
+    "lineas": [
+      "2",
+      "4",
+      "5"
+    ]
+  },
+  {
+    "numero": 65,
+    "nombre": "Villa Blanca - Parque",
+    "latitude": 36.8532881348582,
+    "longitude": -2.44150758238419,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 66,
+    "nombre": "Costa de Almería 33",
+    "latitude": 36.8542868304406,
+    "longitude": -2.44333080740654,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 67,
+    "nombre": "Centro Comercial Mediterráneo",
+    "latitude": 36.8527284428635,
+    "longitude": -2.44635290542431,
+    "lineas": [
+      "2",
+      "4",
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 68,
+    "nombre": "Barrio San Luis",
+    "latitude": 36.848554037874,
+    "longitude": -2.44675438058621,
+    "lineas": [
+      "4",
+      "5",
+      "8",
+      "12"
+    ]
+  },
+  {
+    "numero": 69,
+    "nombre": "Jefatura Policía Local",
+    "latitude": 36.8449943710247,
+    "longitude": -2.44739911616327,
+    "lineas": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "12"
+    ]
+  },
+  {
+    "numero": 70,
+    "nombre": "Avenida Mediterráneo 233",
+    "latitude": 36.8429950676618,
+    "longitude": -2.44740077670821,
+    "lineas": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "12",
+      "30"
+    ]
+  },
+  {
+    "numero": 71,
+    "nombre": "Plaza Nueva Andalucía",
+    "latitude": 36.8412969370055,
+    "longitude": -2.44752432558995,
+    "lineas": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "12",
+      "30"
+    ]
+  },
+  {
+    "numero": 72,
+    "nombre": "IES Azcona",
+    "latitude": 36.8396469009647,
+    "longitude": -2.44862415003422,
+    "lineas": [
+      "5",
+      "6",
+      "8",
+      "30"
+    ]
+  },
+  {
+    "numero": 74,
+    "nombre": "Conservatorio de Música",
+    "latitude": 36.8396730706778,
+    "longitude": -2.45194701195937,
+    "lineas": [
+      "5",
+      "6",
+      "8",
+      "30"
+    ]
+  },
+  {
+    "numero": 75,
+    "nombre": "Plaza de Pescadores",
+    "latitude": 36.8392532246677,
+    "longitude": -2.47836444940422,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 76,
+    "nombre": "Calle Valdivia",
+    "latitude": 36.8409346173346,
+    "longitude": -2.4770185659875,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 77,
+    "nombre": "Avenida. del Mar, 106",
+    "latitude": 36.8410150980773,
+    "longitude": -2.47581708454548,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 78,
+    "nombre": "Avenida. del Mar, 50",
+    "latitude": 36.8392852791664,
+    "longitude": -2.47559011532809,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 79,
+    "nombre": "Avenida del Mar 39",
+    "latitude": 36.8376687821531,
+    "longitude": -2.47610639353548,
+    "lineas": [
+      "1",
+      "6"
+    ]
+  },
+  {
+    "numero": 80,
+    "nombre": "Rambla 54",
+    "latitude": 36.8387628204751,
+    "longitude": -2.45957295543877,
+    "lineas": [
+      "7",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 81,
+    "nombre": "Granja Escuela",
+    "latitude": 36.8454640185589,
+    "longitude": -2.44661166317226,
+    "lineas": [
+      "3",
+      "6",
+      "8",
+      "20"
+    ]
+  },
+  {
+    "numero": 82,
+    "nombre": "Los Díaz",
+    "latitude": 36.8460957348022,
+    "longitude": -2.44200328996504,
+    "lineas": [
+      "3",
+      "6",
+      "8",
+      "20"
+    ]
+  },
+  {
+    "numero": 83,
+    "nombre": "Plaza Fátima",
+    "latitude": 36.8451019736479,
+    "longitude": -2.43906314836346,
+    "lineas": [
+      "6",
+      "20"
+    ]
+  },
+  {
+    "numero": 84,
+    "nombre": "Polígono la Mezquita",
+    "latitude": 36.8431525459241,
+    "longitude": -2.43444937636499,
+    "lineas": [
+      "6",
+      "20"
+    ]
+  },
+  {
+    "numero": 94,
+    "nombre": "Terrazas Almadrabillas",
+    "latitude": 36.8318483834862,
+    "longitude": -2.45751560610313,
+    "lineas": [
+      "7",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 96,
+    "nombre": "El Ingenio",
+    "latitude": 36.8435960330669,
+    "longitude": -2.43552285912054,
+    "lineas": [
+      "6",
+      "20"
+    ]
+  },
+  {
+    "numero": 97,
+    "nombre": "Molino Rojo",
+    "latitude": 36.8459369310531,
+    "longitude": -2.43980232034156,
+    "lineas": [
+      "6",
+      "20"
+    ]
+  },
+  {
+    "numero": 98,
+    "nombre": "Carretera de Níjar - los Díaz",
+    "latitude": 36.846144356412,
+    "longitude": -2.44200911277036,
+    "lineas": [
+      "6",
+      "20"
+    ]
+  },
+  {
+    "numero": 99,
+    "nombre": "Carretera de Níjar - Granja Escuela",
+    "latitude": 36.8456369836953,
+    "longitude": -2.44504017173126,
+    "lineas": [
+      "6",
+      "20"
+    ]
+  },
+  {
+    "numero": 101,
+    "nombre": "Fuente de los Peces",
+    "latitude": 36.8359091971677,
+    "longitude": -2.46789844114503,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 102,
+    "nombre": "La Curva, Nicolás Salmerón",
+    "latitude": 36.8375782719294,
+    "longitude": -2.47329479133752,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 104,
+    "nombre": "San Roque",
+    "latitude": 36.8374201483085,
+    "longitude": -2.47854267247255,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 107,
+    "nombre": "Iglesia Piedras Redondas",
+    "latitude": 36.8585024083723,
+    "longitude": -2.45132710374349,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 108,
+    "nombre": "Residencia Alborán",
+    "latitude": 36.8319932219813,
+    "longitude": -2.45765027532841,
+    "lineas": [
+      "7",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 109,
+    "nombre": "Sierra de Gredos",
+    "latitude": 36.8543117773776,
+    "longitude": -2.45597532108119,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 111,
+    "nombre": "Maestría",
+    "latitude": 36.8494984599631,
+    "longitude": -2.455499800026,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 112,
+    "nombre": "Carretera de Granada 213",
+    "latitude": 36.848163570975,
+    "longitude": -2.45693903041545,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 113,
+    "nombre": "Carretera de Granada 145",
+    "latitude": 36.8466994566253,
+    "longitude": -2.45845493559009,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 114,
+    "nombre": "Rambla - Vaguada",
+    "latitude": 36.8446683314379,
+    "longitude": -2.45854257162743,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 115,
+    "nombre": "Rambla - Obelisco",
+    "latitude": 36.8422182469356,
+    "longitude": -2.4582285751189,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 116,
+    "nombre": "Mamí - Cauce",
+    "latitude": 36.8464100859436,
+    "longitude": -2.44073654040916,
+    "lineas": [
+      "3",
+      "8"
+    ]
+  },
+  {
+    "numero": 117,
+    "nombre": "Vaguada",
+    "latitude": 36.8447589691691,
+    "longitude": -2.45793137048162,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 126,
+    "nombre": "Mamí - Iglesia",
+    "latitude": 36.8468352818056,
+    "longitude": -2.43906501179629,
+    "lineas": [
+      "3",
+      "8"
+    ]
+  },
+  {
+    "numero": 127,
+    "nombre": "Mamí 140",
+    "latitude": 36.8475258502508,
+    "longitude": -2.43649088834106,
+    "lineas": [
+      "8"
+    ]
+  },
+  {
+    "numero": 128,
+    "nombre": "Araceli - Parque",
+    "latitude": 36.8561783177183,
+    "longitude": -2.45289863679597,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 130,
+    "nombre": "Cruz de Caravaca",
+    "latitude": 36.850511996612,
+    "longitude": -2.45439000072707,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 131,
+    "nombre": "Araceli",
+    "latitude": 36.8558328323745,
+    "longitude": -2.45336744047726,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 133,
+    "nombre": "California",
+    "latitude": 36.8287820553569,
+    "longitude": -2.45131483048887,
+    "lineas": [
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 134,
+    "nombre": "Cabo de Gata - Zapillo",
+    "latitude": 36.8264192047755,
+    "longitude": -2.44913615392177,
+    "lineas": [
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 135,
+    "nombre": "Paseo Marítimo - el Palmeral",
+    "latitude": 36.8249946035049,
+    "longitude": -2.44712577289457,
+    "lineas": [
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 136,
+    "nombre": "Paseo Marítimo - Auditorio",
+    "latitude": 36.8228840838463,
+    "longitude": -2.44439605024874,
+    "lineas": [
+      "3",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 137,
+    "nombre": "Paseo Marítimo - Residencia de Mayores",
+    "latitude": 36.8197003390613,
+    "longitude": -2.43984405140858,
+    "lineas": [
+      "3",
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 138,
+    "nombre": "Paseo Marítimo - Nueva Almería",
+    "latitude": 36.8176444767573,
+    "longitude": -2.43681094233269,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 140,
+    "nombre": "Paseo Marítimo - Río Andarax",
+    "latitude": 36.8156840147262,
+    "longitude": -2.42647580165824,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 141,
+    "nombre": "Paseo Marítimo - la Cabaña",
+    "latitude": 36.8173528594264,
+    "longitude": -2.41962487037979,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 142,
+    "nombre": "Paseo Marítimo - el Bobar",
+    "latitude": 36.8186289305918,
+    "longitude": -2.41444190753946,
+    "lineas": [
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 143,
+    "nombre": "Paseo Marítimo - Trafariña",
+    "latitude": 36.8216149492713,
+    "longitude": -2.40977869710316,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 144,
+    "nombre": "Universidad",
+    "latitude": 36.8278525195026,
+    "longitude": -2.40402217600542,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 145,
+    "nombre": "Trafariña",
+    "latitude": 36.8216510454095,
+    "longitude": -2.40990527898508,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 146,
+    "nombre": "El Bobar",
+    "latitude": 36.8187104323571,
+    "longitude": -2.41452435438883,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 147,
+    "nombre": "La Cabaña",
+    "latitude": 36.8174182722689,
+    "longitude": -2.41976150149979,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 149,
+    "nombre": "Playa",
+    "latitude": 36.8169246972906,
+    "longitude": -2.43582944781038,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 150,
+    "nombre": "Nueva Almería",
+    "latitude": 36.8185937858309,
+    "longitude": -2.43819726683279,
+    "lineas": [
+      "3",
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 151,
+    "nombre": "Quinto Pino",
+    "latitude": 36.8205254203822,
+    "longitude": -2.44089528731058,
+    "lineas": [
+      "3",
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 152,
+    "nombre": "Auditorio",
+    "latitude": 36.822902378394,
+    "longitude": -2.44413502861695,
+    "lineas": [
+      "3",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 154,
+    "nombre": "Avenida Mediterráneo - Auditorio",
+    "latitude": 36.8253982534149,
+    "longitude": -2.44507420296347,
+    "lineas": [
+      "3",
+      "11"
+    ]
+  },
+  {
+    "numero": 155,
+    "nombre": "Parque de las Familias",
+    "latitude": 36.8301315380702,
+    "longitude": -2.44585863127398,
+    "lineas": [
+      "3",
+      "11"
+    ]
+  },
+  {
+    "numero": 156,
+    "nombre": "Zeus",
+    "latitude": 36.8499330487834,
+    "longitude": -2.43537196027219,
+    "lineas": [
+      "3",
+      "8"
+    ]
+  },
+  {
+    "numero": 157,
+    "nombre": "Avenida Mediterráneo 104",
+    "latitude": 36.8324676557175,
+    "longitude": -2.44631017427795,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 158,
+    "nombre": "Avenida Mediterráneo - Cortijo Grande",
+    "latitude": 36.8342605598715,
+    "longitude": -2.44670805511794,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 161,
+    "nombre": "La Fuente",
+    "latitude": 36.850594158999,
+    "longitude": -2.43714151707135,
+    "lineas": [
+      "3",
+      "8"
+    ]
+  },
+  {
+    "numero": 162,
+    "nombre": "Avenida Mediterráneo 45",
+    "latitude": 36.8301362341963,
+    "longitude": -2.44591693221421,
+    "lineas": [
+      "3",
+      "12"
+    ]
+  },
+  {
+    "numero": 163,
+    "nombre": "Avenida Mediterráneo 23",
+    "latitude": 36.8254236812377,
+    "longitude": -2.44515446350979,
+    "lineas": [
+      "3",
+      "12"
+    ]
+  },
+  {
+    "numero": 164,
+    "nombre": "Cabo de Gata - el Palmeral",
+    "latitude": 36.8250845376985,
+    "longitude": -2.44708027308314,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 165,
+    "nombre": "Plaza del Zapillo",
+    "latitude": 36.8262068600945,
+    "longitude": -2.44889572412968,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 166,
+    "nombre": "Cabo de Gata - California",
+    "latitude": 36.829287901186,
+    "longitude": -2.45153997998736,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 167,
+    "nombre": "El Charco",
+    "latitude": 36.8349206686415,
+    "longitude": -2.38895022529645,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 168,
+    "nombre": "Costacabana - Pistas Deportivas",
+    "latitude": 36.8385179635717,
+    "longitude": -2.38506557623064,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 169,
+    "nombre": "Plaza de Costacabana",
+    "latitude": 36.8394696524665,
+    "longitude": -2.38085341219729,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 171,
+    "nombre": "Rhin",
+    "latitude": 36.8366084553108,
+    "longitude": -2.38534150676159,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 172,
+    "nombre": "Volga",
+    "latitude": 36.835329905442,
+    "longitude": -2.3881988862301,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 173,
+    "nombre": "Rambla el Charco",
+    "latitude": 36.8345626999571,
+    "longitude": -2.38896396943504,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 174,
+    "nombre": "Regiones",
+    "latitude": 36.8454311464511,
+    "longitude": -2.45118804021165,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 175,
+    "nombre": "Los Partidores",
+    "latitude": 36.8409152145513,
+    "longitude": -2.42456140061547,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 176,
+    "nombre": "Los Picos",
+    "latitude": 36.8395550281366,
+    "longitude": -2.41840286040882,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 177,
+    "nombre": "La Cañada 50",
+    "latitude": 36.8407310635468,
+    "longitude": -2.4129652057059,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 179,
+    "nombre": "Plaza de la Cañada",
+    "latitude": 36.8404685602186,
+    "longitude": -2.40733855892451,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 180,
+    "nombre": "Carretera de Níjar 280",
+    "latitude": 36.8406073662845,
+    "longitude": -2.40021227020194,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 181,
+    "nombre": "Kilómetro 5 - la Cañada",
+    "latitude": 36.840472688697,
+    "longitude": -2.40426504550492,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 183,
+    "nombre": "IES Portocarrero",
+    "latitude": 36.8458897013221,
+    "longitude": -2.38816386218282,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 188,
+    "nombre": "Aeropuerto",
+    "latitude": 36.8483048509683,
+    "longitude": -2.37125859728964,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 189,
+    "nombre": "Kilómetro 8",
+    "latitude": 36.850979783244,
+    "longitude": -2.36878573292528,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 190,
+    "nombre": "La Venta",
+    "latitude": 36.8519187971892,
+    "longitude": -2.36327684063398,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 191,
+    "nombre": "El Chalet",
+    "latitude": 36.8523541369538,
+    "longitude": -2.36077124818383,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 192,
+    "nombre": "Kilómetro 9 - Retamar",
+    "latitude": 36.852831330807,
+    "longitude": -2.35751287594056,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 193,
+    "nombre": "El Alquián - Retamar",
+    "latitude": 36.8529066977849,
+    "longitude": -2.35489169115568,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 194,
+    "nombre": "IES el Alquián",
+    "latitude": 36.851984438441,
+    "longitude": -2.35096031087856,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 195,
+    "nombre": "El Alquián - Almería",
+    "latitude": 36.853012781809,
+    "longitude": -2.35474873484717,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 196,
+    "nombre": "Kilómetro 9 - Almería",
+    "latitude": 36.8529131607693,
+    "longitude": -2.35764231069947,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 197,
+    "nombre": "El Chalet",
+    "latitude": 36.8524262758904,
+    "longitude": -2.3609666237181,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 198,
+    "nombre": "La Venta",
+    "latitude": 36.8519977738311,
+    "longitude": -2.3632686145228,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 199,
+    "nombre": "Kilómetro 8",
+    "latitude": 36.8510178004719,
+    "longitude": -2.3689860166236,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 204,
+    "nombre": "Los Ángeles",
+    "latitude": 36.8459543527809,
+    "longitude": -2.38846506308556,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 205,
+    "nombre": "Agua Fresca",
+    "latitude": 36.8425774679834,
+    "longitude": -2.39620714606336,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 206,
+    "nombre": "Kilómetro 5",
+    "latitude": 36.8406441282822,
+    "longitude": -2.40058323206041,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 207,
+    "nombre": "Carretera de Níjar 239",
+    "latitude": 36.8403720250825,
+    "longitude": -2.40517896858266,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 208,
+    "nombre": "Plaza de la Cañada - Iglesia",
+    "latitude": 36.8405331068792,
+    "longitude": -2.4080639728284,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 210,
+    "nombre": "La Cañada 51",
+    "latitude": 36.8407232843753,
+    "longitude": -2.41341662430297,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 211,
+    "nombre": "Los Picos - Casi",
+    "latitude": 36.8397451901454,
+    "longitude": -2.41971810875801,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 212,
+    "nombre": "Los Partidores - Casi",
+    "latitude": 36.8418008013847,
+    "longitude": -2.42566850263051,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 214,
+    "nombre": "Paseo de Castañeda, 94",
+    "latitude": 36.8510134542415,
+    "longitude": -2.30644068752975,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 215,
+    "nombre": "Paseo de Castañeda, Calle Pomelo",
+    "latitude": 36.8474471129588,
+    "longitude": -2.30560904774532,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 216,
+    "nombre": "Camino de la Escuela, 111",
+    "latitude": 36.845029962844,
+    "longitude": -2.30397851115615,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 221,
+    "nombre": "Residencial los Girasoles",
+    "latitude": 36.8349229364287,
+    "longitude": -2.31188949519888,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 222,
+    "nombre": "Guardería",
+    "latitude": 36.8393151560587,
+    "longitude": -2.30557012554234,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 223,
+    "nombre": "Camino de la Escuela 20",
+    "latitude": 36.845236082937,
+    "longitude": -2.30377138913974,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 224,
+    "nombre": "Paseo de Castañeda 122",
+    "latitude": 36.8479655456758,
+    "longitude": -2.30574212101414,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 225,
+    "nombre": "Paseo de Castañeda 92",
+    "latitude": 36.8510081134432,
+    "longitude": -2.30634816666975,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 226,
+    "nombre": "Calle Real Solar",
+    "latitude": 36.8907379873153,
+    "longitude": -2.28186710471453,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 227,
+    "nombre": "Cuevas Centro",
+    "latitude": 36.8922008331339,
+    "longitude": -2.28079723897871,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 228,
+    "nombre": "Camino de los Molinos, 40",
+    "latitude": 36.8934385455459,
+    "longitude": -2.28004955690208,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 229,
+    "nombre": "Camino de las Heras",
+    "latitude": 36.8923394346068,
+    "longitude": -2.27862119559392,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 230,
+    "nombre": "Camino de los Molinos, 15",
+    "latitude": 36.8934752877976,
+    "longitude": -2.28016256502249,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 231,
+    "nombre": "Calle Real",
+    "latitude": 36.8922057453928,
+    "longitude": -2.28088699163447,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 232,
+    "nombre": "Calle Real, 1",
+    "latitude": 36.8906725840402,
+    "longitude": -2.28200857548957,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 238,
+    "nombre": "Colegio San Bernardo",
+    "latitude": 36.8545612993591,
+    "longitude": -2.35879983715515,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 239,
+    "nombre": "Paraje del Cerrillo",
+    "latitude": 36.8546638638358,
+    "longitude": -2.35889732541904,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 240,
+    "nombre": "Carretera Viator - el Alquián 7",
+    "latitude": 36.8557647583362,
+    "longitude": -2.36323616813636,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 242,
+    "nombre": "Carretera Viator - el Alquián 11",
+    "latitude": 36.8557404716664,
+    "longitude": -2.36402689510628,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 244,
+    "nombre": "San Vicente 32",
+    "latitude": 36.8591034870293,
+    "longitude": -2.37064711385862,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 245,
+    "nombre": "San Vicente 126",
+    "latitude": 36.8591483080521,
+    "longitude": -2.37059963019565,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 246,
+    "nombre": "Carretera Viator - el Alquián 153",
+    "latitude": 36.8616992006701,
+    "longitude": -2.3756931575888,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 247,
+    "nombre": "Carretera Viator - el Alquián 142",
+    "latitude": 36.8616971957838,
+    "longitude": -2.37553606861711,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 248,
+    "nombre": "López Campillo - el Alquián",
+    "latitude": 36.8652470539113,
+    "longitude": -2.37840618887693,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 249,
+    "nombre": "López Campillo - la Cañada",
+    "latitude": 36.8653101584978,
+    "longitude": -2.37840679959151,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 252,
+    "nombre": "Venta Gaspar - Parque",
+    "latitude": 36.8677376979703,
+    "longitude": -2.38623585611563,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 253,
+    "nombre": "Venta Gaspar - la Cañada",
+    "latitude": 36.8677652731329,
+    "longitude": -2.38631335326411,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 254,
+    "nombre": "Boticario - el Álamo",
+    "latitude": 36.8604175420008,
+    "longitude": -2.38785885320683,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 255,
+    "nombre": "Boticario - Parque",
+    "latitude": 36.8603999921245,
+    "longitude": -2.38796593306702,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 257,
+    "nombre": "Cruce de los Llanos",
+    "latitude": 36.8564657723485,
+    "longitude": -2.38760132398533,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 258,
+    "nombre": "Carretera de Viator 56",
+    "latitude": 36.8537045795295,
+    "longitude": -2.38701264307107,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 259,
+    "nombre": "Carretera de Viator 47",
+    "latitude": 36.853699199973,
+    "longitude": -2.38708932455569,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 264,
+    "nombre": "Los Castaños",
+    "latitude": 36.8626165187896,
+    "longitude": -2.30853526636858,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 265,
+    "nombre": "Los Castaños",
+    "latitude": 36.862626531161,
+    "longitude": -2.30870682066934,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 266,
+    "nombre": "Acebuche",
+    "latitude": 36.8633732641486,
+    "longitude": -2.30474820791648,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 267,
+    "nombre": "Regiones - Moisés Ruiz",
+    "latitude": 36.8455830939072,
+    "longitude": -2.45090654948752,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 268,
+    "nombre": "Carretera de Níjar 191",
+    "latitude": 36.8520850861714,
+    "longitude": -2.35108997220101,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 273,
+    "nombre": "Carretera de Ronda 31",
+    "latitude": 36.8344137420466,
+    "longitude": -2.45826959611689,
+    "lineas": [
+      "1",
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 274,
+    "nombre": "Calles Darrical, Oviedo",
+    "latitude": 36.8333040993459,
+    "longitude": -2.44867297877969,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 275,
+    "nombre": "Calles Darrical, Vélez Rubio",
+    "latitude": 36.8334219236852,
+    "longitude": -2.44686887804846,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 277,
+    "nombre": "Calles Darrícal, Laroles",
+    "latitude": 36.8334828663457,
+    "longitude": -2.446938539241,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 278,
+    "nombre": "Calles Darrícal, Fiñana",
+    "latitude": 36.8334653054684,
+    "longitude": -2.44844529060324,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 281,
+    "nombre": "Rambla - Humilladero",
+    "latitude": 36.8467570774314,
+    "longitude": -2.45969305987706,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 282,
+    "nombre": "Mercado de los Ángeles",
+    "latitude": 36.8476972480548,
+    "longitude": -2.45981965435404,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 286,
+    "nombre": "Villa María",
+    "latitude": 36.8543543268616,
+    "longitude": -2.45585901416326,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 287,
+    "nombre": "Camino de la Cruz-consultorio",
+    "latitude": 36.8516272019913,
+    "longitude": -2.45560732103716,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 291,
+    "nombre": "Avenida Mediterráneo - Plaza San Luis",
+    "latitude": 36.8469606682414,
+    "longitude": -2.44710068583987,
+    "lineas": [
+      "4",
+      "5",
+      "8",
+      "12"
+    ]
+  },
+  {
+    "numero": 292,
+    "nombre": "Estación Intermodal",
+    "latitude": 36.835051468164,
+    "longitude": -2.4561898555244,
+    "lineas": [
+      "1",
+      "2",
+      "19",
+      "30",
+      "31"
+    ]
+  },
+  {
+    "numero": 293,
+    "nombre": "Artés de Arcos",
+    "latitude": 36.8359799377494,
+    "longitude": -2.45896058937732,
+    "lineas": [
+      "1",
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 294,
+    "nombre": "Las Palomas - Playa",
+    "latitude": 36.8296002313111,
+    "longitude": -2.39770826544561,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 298,
+    "nombre": "Paseo de la Caridad",
+    "latitude": 36.8478782841454,
+    "longitude": -2.46527680200894,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 299,
+    "nombre": "Villa Blanca - Panificadora",
+    "latitude": 36.8534069262895,
+    "longitude": -2.43985019202745,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 302,
+    "nombre": "Juegos de Atenas",
+    "latitude": 36.8417458100385,
+    "longitude": -2.3070156342483,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 303,
+    "nombre": "Juegos de Barcelona - Túnez",
+    "latitude": 36.8408085450388,
+    "longitude": -2.3132710739239,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 304,
+    "nombre": "Juegos de Barcelona - Atenas",
+    "latitude": 36.8387403707774,
+    "longitude": -2.31104654416686,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 306,
+    "nombre": "Colegio Europa",
+    "latitude": 36.8590130195825,
+    "longitude": -2.44349215426348,
+    "lineas": [
+      "3"
+    ]
+  },
+  {
+    "numero": 307,
+    "nombre": "Domingo Artés 20",
+    "latitude": 36.8599970104673,
+    "longitude": -2.44474763820008,
+    "lineas": [
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  {
+    "numero": 308,
+    "nombre": "Madre María Aznar 127",
+    "latitude": 36.8558522984882,
+    "longitude": -2.44089485355081,
+    "lineas": [
+      "3",
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 309,
+    "nombre": "Madre María Aznar 142",
+    "latitude": 36.8562446799166,
+    "longitude": -2.44132664508271,
+    "lineas": [
+      "3",
+      "8"
+    ]
+  },
+  {
+    "numero": 311,
+    "nombre": "Avenida. Madre María Aznar, 151",
+    "latitude": 36.85888777445,
+    "longitude": -2.44348441244463,
+    "lineas": [
+      "3"
+    ]
+  },
+  {
+    "numero": 312,
+    "nombre": "Instituto Alhadra",
+    "latitude": 36.8483353406778,
+    "longitude": -2.44183967843727,
+    "lineas": [
+      "3"
+    ]
+  },
+  {
+    "numero": 313,
+    "nombre": "Cabo de Gata 140",
+    "latitude": 36.8276960217144,
+    "longitude": -2.45038514159945,
+    "lineas": [
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 314,
+    "nombre": "Cabo de Gata 131",
+    "latitude": 36.8277765540486,
+    "longitude": -2.45025560928381,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 316,
+    "nombre": "Camino de los Espejos",
+    "latitude": 36.8421541411431,
+    "longitude": -2.30393616056805,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 317,
+    "nombre": "Residencial Sol",
+    "latitude": 36.8370909987033,
+    "longitude": -2.30873692366825,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 318,
+    "nombre": "Las Palomas",
+    "latitude": 36.8296595950541,
+    "longitude": -2.39774430297928,
+    "lineas": [
+      "15",
+      "18"
+    ]
+  },
+  {
+    "numero": 319,
+    "nombre": "Tanatorio",
+    "latitude": 36.8642924856189,
+    "longitude": -2.44763706813046,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 320,
+    "nombre": "Redonda Estadio Municipal",
+    "latitude": 36.8629589397819,
+    "longitude": -2.44503987798566,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 321,
+    "nombre": "Madre María Aznar 6",
+    "latitude": 36.8520054503621,
+    "longitude": -2.43915828021068,
+    "lineas": [
+      "3",
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 324,
+    "nombre": "Instituto Albaida",
+    "latitude": 36.8471696468356,
+    "longitude": -2.44315709686347,
+    "lineas": [
+      "3"
+    ]
+  },
+  {
+    "numero": 325,
+    "nombre": "Manuel Mendizábal",
+    "latitude": 36.8540435337247,
+    "longitude": -2.44565793403134,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 326,
+    "nombre": "Barranco las Heras, 14",
+    "latitude": 36.893843076027,
+    "longitude": -2.27838381377832,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 327,
+    "nombre": "Barranco las Heras",
+    "latitude": 36.8939831735232,
+    "longitude": -2.27818941575591,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 328,
+    "nombre": "Plaza San Sebastián",
+    "latitude": 36.8419379419191,
+    "longitude": -2.46300816020276,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 329,
+    "nombre": "Santos Zárate",
+    "latitude": 36.8415991436365,
+    "longitude": -2.45909258724621,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 332,
+    "nombre": "Hospital de el Toyo",
+    "latitude": 36.8509466222962,
+    "longitude": -2.31392902640429,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 333,
+    "nombre": "Hospital el Toyo",
+    "latitude": 36.8509928745692,
+    "longitude": -2.31402585609562,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 336,
+    "nombre": "Paseo de la Caridad, 5",
+    "latitude": 36.8465088036823,
+    "longitude": -2.46684826911705,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 337,
+    "nombre": "Calle Largo Caballero, 40",
+    "latitude": 36.8473410115567,
+    "longitude": -2.46825390037976,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 338,
+    "nombre": "Calle Largo Caballero, 84",
+    "latitude": 36.8489072111022,
+    "longitude": -2.47028514637756,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 339,
+    "nombre": "Residencia Ballesol",
+    "latitude": 36.851724930101,
+    "longitude": -2.46943340790514,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 340,
+    "nombre": "CEP",
+    "latitude": 36.851242203602,
+    "longitude": -2.46631060361517,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 341,
+    "nombre": "IES Al Andalus",
+    "latitude": 36.8503218321187,
+    "longitude": -2.46482642094493,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 342,
+    "nombre": "Delegación de Educación",
+    "latitude": 36.8490613972209,
+    "longitude": -2.46246165230196,
+    "lineas": [
+      "7",
+      "18"
+    ]
+  },
+  {
+    "numero": 343,
+    "nombre": "CEP",
+    "latitude": 36.8507114673229,
+    "longitude": -2.46455549804182,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 344,
+    "nombre": "Residencia Ballesol",
+    "latitude": 36.8518331914274,
+    "longitude": -2.46945285052502,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 345,
+    "nombre": "Calle Fernando de Rojas, Colegio",
+    "latitude": 36.8486299068042,
+    "longitude": -2.47076713195234,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 346,
+    "nombre": "Calle Genoveses, 29",
+    "latitude": 36.8472716539032,
+    "longitude": -2.46940136851079,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 347,
+    "nombre": "Rambla Belén, Alfarerías",
+    "latitude": 36.8483827841906,
+    "longitude": -2.46190221917294,
+    "lineas": [
+      "18"
+    ]
+  },
+  {
+    "numero": 349,
+    "nombre": "Loma Cabrera",
+    "latitude": 36.8567145705828,
+    "longitude": -2.38207901816281,
+    "lineas": [
+      "20"
+    ]
+  },
+  {
+    "numero": 350,
+    "nombre": "Juegos de Casablanca - Hoteles",
+    "latitude": 36.8352054712994,
+    "longitude": -2.31660977966486,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 351,
+    "nombre": "Centro de Congresos - Hoteles",
+    "latitude": 36.8381526415217,
+    "longitude": -2.32281791389517,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 352,
+    "nombre": "Juegos del Mediterráneo 11",
+    "latitude": 36.8440057366616,
+    "longitude": -2.32058888579341,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 355,
+    "nombre": "Residencial Sol",
+    "latitude": 36.8372156743676,
+    "longitude": -2.30890311725267,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 356,
+    "nombre": "Los Girasoles",
+    "latitude": 36.8349995734049,
+    "longitude": -2.31207685437407,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 367,
+    "nombre": "Árbol de la Seda",
+    "latitude": 36.8370594723942,
+    "longitude": -2.43442667396016,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 377,
+    "nombre": "Residencial Alborán",
+    "latitude": 36.8342825961005,
+    "longitude": -2.31463667593614,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 378,
+    "nombre": "Residencial Alborán, Parque",
+    "latitude": 36.8345334395753,
+    "longitude": -2.31463764271379,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 384,
+    "nombre": "Manuel Azaña",
+    "latitude": 36.8431422124409,
+    "longitude": -2.44358893785352,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 385,
+    "nombre": "Estadio Mediterráneo",
+    "latitude": 36.8412198762038,
+    "longitude": -2.4335650854701,
+    "lineas": [
+      "19",
+      "30",
+      "31"
+    ]
+  },
+  {
+    "numero": 388,
+    "nombre": "Estadio Mediterráneo - Centro",
+    "latitude": 36.841464649326,
+    "longitude": -2.43385487404045,
+    "lineas": [
+      "3",
+      "4",
+      "11",
+      "19",
+      "30",
+      "31"
+    ]
+  },
+  {
+    "numero": 389,
+    "nombre": "Calle Manuel Azaña, 139",
+    "latitude": 36.8432787380581,
+    "longitude": -2.44386834493533,
+    "lineas": [
+      "3",
+      "4",
+      "11",
+      "30"
+    ]
+  },
+  {
+    "numero": 391,
+    "nombre": "Italia 6",
+    "latitude": 36.8513510675501,
+    "longitude": -2.44989484552659,
+    "lineas": [
+      "2",
+      "12"
+    ]
+  },
+  {
+    "numero": 392,
+    "nombre": "Italia - Parque",
+    "latitude": 36.8514825340564,
+    "longitude": -2.44982230573079,
+    "lineas": [
+      "2",
+      "11"
+    ]
+  },
+  {
+    "numero": 393,
+    "nombre": "Italia - Tito Pedro",
+    "latitude": 36.8515885897355,
+    "longitude": -2.44784295558927,
+    "lineas": [
+      "2",
+      "12"
+    ]
+  },
+  {
+    "numero": 394,
+    "nombre": "Italia 11",
+    "latitude": 36.8516761712355,
+    "longitude": -2.44791388433019,
+    "lineas": [
+      "2",
+      "11"
+    ]
+  },
+  {
+    "numero": 395,
+    "nombre": "Avenida. Madre María Aznar - la Salle Chocillas",
+    "latitude": 36.8520068392809,
+    "longitude": -2.43923816074977,
+    "lineas": [
+      "3",
+      "5"
+    ]
+  },
+  {
+    "numero": 396,
+    "nombre": "Avenida Mediterráneo - Hotel Elba",
+    "latitude": 36.8553334962634,
+    "longitude": -2.44584739208219,
+    "lineas": [
+      "2",
+      "4",
+      "5"
+    ]
+  },
+  {
+    "numero": 397,
+    "nombre": "Fray Juan de Portocarrero - Costa de la Luz",
+    "latitude": 36.856873448641,
+    "longitude": -2.44438932905038,
+    "lineas": [
+      "5"
+    ]
+  },
+  {
+    "numero": 398,
+    "nombre": "Parroquia de San José",
+    "latitude": 36.8450411284164,
+    "longitude": -2.45655206227761,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 399,
+    "nombre": "Santa Isabel 58",
+    "latitude": 36.8478432588455,
+    "longitude": -2.4542878265089,
+    "lineas": [
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 400,
+    "nombre": "Calle Canónigo Molina Alonso",
+    "latitude": 36.8348696844866,
+    "longitude": -2.46206658590388,
+    "lineas": [
+      "2"
+    ]
+  },
+  {
+    "numero": 401,
+    "nombre": "Carretera de Ronda 78",
+    "latitude": 36.8372549889832,
+    "longitude": -2.4558369998712,
+    "lineas": [
+      "2",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 402,
+    "nombre": "Parroquia Jesucristo Redentor",
+    "latitude": 36.8575374171847,
+    "longitude": -2.44534002722683,
+    "lineas": [
+      "2",
+      "4"
+    ]
+  },
+  {
+    "numero": 403,
+    "nombre": "Colegio Almería Norte",
+    "latitude": 36.8568998086876,
+    "longitude": -2.44589826721508,
+    "lineas": [
+      "2",
+      "4"
+    ]
+  },
+  {
+    "numero": 406,
+    "nombre": "Puerta del Mar",
+    "latitude": 36.8356832796657,
+    "longitude": -2.46682205115682,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 407,
+    "nombre": "Paseo San Luis, 7",
+    "latitude": 36.8368490503132,
+    "longitude": -2.46887359900286,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 408,
+    "nombre": "Calle la Reina, 17",
+    "latitude": 36.8391762680193,
+    "longitude": -2.46879179549456,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 409,
+    "nombre": "Alcazaba",
+    "latitude": 36.8399649135547,
+    "longitude": -2.47029299257451,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 410,
+    "nombre": "Calle Reducto, 8",
+    "latitude": 36.8399376688763,
+    "longitude": -2.47280961119265,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 411,
+    "nombre": "Calle Reducto, 92",
+    "latitude": 36.84044906737,
+    "longitude": -2.47482107013011,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 412,
+    "nombre": "La Curva",
+    "latitude": 36.8377825432525,
+    "longitude": -2.47295949900957,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 413,
+    "nombre": "Calle Nicolás Salmerón, 40",
+    "latitude": 36.8369382932738,
+    "longitude": -2.47021826028652,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 414,
+    "nombre": "Calle Nicolás Salmerón, 20",
+    "latitude": 36.8359916714327,
+    "longitude": -2.46713422437748,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 415,
+    "nombre": "Calle Nicolás Salmerón, 8",
+    "latitude": 36.8347374461737,
+    "longitude": -2.46445938922943,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 417,
+    "nombre": "Alcalde Santiago Martínez Cabrejas",
+    "latitude": 36.8372734856425,
+    "longitude": -2.43776946518472,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 419,
+    "nombre": "Rambla 47- Concordia",
+    "latitude": 36.8387211928937,
+    "longitude": -2.46033139538193,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 420,
+    "nombre": "Federico García Lorca, 9",
+    "latitude": 36.836070062064,
+    "longitude": -2.46212530278519,
+    "lineas": [
+      "1",
+      "2",
+      "6",
+      "7",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 421,
+    "nombre": "Avenida. de la Cruz, 24",
+    "latitude": 36.8507360053958,
+    "longitude": -2.46001588361551,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 422,
+    "nombre": "Avenida. de la Cruz, 84",
+    "latitude": 36.8516542221662,
+    "longitude": -2.45775930121325,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 423,
+    "nombre": "Avenida Mediterráneo - Colegio Europa",
+    "latitude": 36.8592561876312,
+    "longitude": -2.44470052105835,
+    "lineas": [
+      "2",
+      "4"
+    ]
+  },
+  {
+    "numero": 424,
+    "nombre": "Antonia Mercé",
+    "latitude": 36.8592988720243,
+    "longitude": -2.45130924421694,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 426,
+    "nombre": "Parking Hospital",
+    "latitude": 36.8633863131398,
+    "longitude": -2.4436435409537,
+    "lineas": [
+      "2",
+      "3",
+      "18"
+    ]
+  },
+  {
+    "numero": 427,
+    "nombre": "Consultorio Avda. de la Cruz",
+    "latitude": 36.8526996579033,
+    "longitude": -2.45639413491316,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 430,
+    "nombre": "Venta Cabrera - Parque",
+    "latitude": 36.8556693731737,
+    "longitude": -2.3873203458557,
+    "lineas": [
+      "15",
+      "20"
+    ]
+  },
+  {
+    "numero": 431,
+    "nombre": "Juegos del Mediterráneo 31",
+    "latitude": 36.8445964348047,
+    "longitude": -2.32044888760606,
+    "lineas": [
+      "15",
+      "30"
+    ]
+  },
+  {
+    "numero": 432,
+    "nombre": "Antonio Muñoz Zamora 28",
+    "latitude": 36.8323970771878,
+    "longitude": -2.43952837097464,
+    "lineas": [
+      "3",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 433,
+    "nombre": "Avenida Vega de Acá",
+    "latitude": 36.8347359821684,
+    "longitude": -2.43837011040983,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 434,
+    "nombre": "Camino de la Goleta",
+    "latitude": 36.8359813162707,
+    "longitude": -2.43521413626316,
+    "lineas": [
+      "7"
+    ]
+  },
+  {
+    "numero": 437,
+    "nombre": "Vega de Acá 133",
+    "latitude": 36.8347223556255,
+    "longitude": -2.43853631159456,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "12"
+    ]
+  },
+  {
+    "numero": 438,
+    "nombre": "Antonio Muñoz Zamora 29",
+    "latitude": 36.8324515829729,
+    "longitude": -2.43953914707575,
+    "lineas": [
+      "3",
+      "7",
+      "12"
+    ]
+  },
+  {
+    "numero": 440,
+    "nombre": "Arquímedes",
+    "latitude": 36.8396932733866,
+    "longitude": -2.47482732557098,
+    "lineas": [
+      "1"
+    ]
+  },
+  {
+    "numero": 441,
+    "nombre": "La Beltraneja",
+    "latitude": 36.8457142457604,
+    "longitude": -2.43465353210643,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 442,
+    "nombre": "Avenida. Tolerancia, Parque",
+    "latitude": 36.8446346193935,
+    "longitude": -2.43320341732996,
+    "lineas": [
+      "6"
+    ]
+  },
+  {
+    "numero": 443,
+    "nombre": "Paseo Marítimo - Parque Andarax",
+    "latitude": 36.8160201849281,
+    "longitude": -2.43188031300073,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 444,
+    "nombre": "Parque Andarax",
+    "latitude": 36.8161107418754,
+    "longitude": -2.4315179777316,
+    "lineas": [
+      "4",
+      "11",
+      "12",
+      "18"
+    ]
+  },
+  {
+    "numero": 447,
+    "nombre": "Vega de Acá - Glorieta Patatas Salcedo",
+    "latitude": 36.8361887482004,
+    "longitude": -2.43867607803497,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "12"
+    ]
+  },
+  {
+    "numero": 448,
+    "nombre": "Avenida Vega de Acá-jardín Legión Española",
+    "latitude": 36.830241468671,
+    "longitude": -2.43816114567042,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 449,
+    "nombre": "Vega de Acá-camino del Bobar",
+    "latitude": 36.8218300221624,
+    "longitude": -2.4413024024337,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 450,
+    "nombre": "Avenida Vega de Acá-pilar Miró",
+    "latitude": 36.8243478950772,
+    "longitude": -2.43991937951405,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 451,
+    "nombre": "Avenida Vega de Acá-la Térmica",
+    "latitude": 36.8218548803613,
+    "longitude": -2.44139068531599,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 452,
+    "nombre": "Vega de Acá-parque Infantil",
+    "latitude": 36.8243186888127,
+    "longitude": -2.43983594541188,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 453,
+    "nombre": "Vega de Acá-jardines 28 de Junio",
+    "latitude": 36.8272856079814,
+    "longitude": -2.43809407075126,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 454,
+    "nombre": "Vega de Acá - Camino de la Goleta",
+    "latitude": 36.8362030056133,
+    "longitude": -2.43850391400082,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 455,
+    "nombre": "Antonio Muñoz Zamora 1",
+    "latitude": 36.8320391909431,
+    "longitude": -2.44331941008565,
+    "lineas": [
+      "3",
+      "7",
+      "12"
+    ]
+  },
+  {
+    "numero": 456,
+    "nombre": "Antonio Muñoz Zamora 4",
+    "latitude": 36.8319987587504,
+    "longitude": -2.44324576736035,
+    "lineas": [
+      "3",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 457,
+    "nombre": "Campo de Futbol - el Alquián",
+    "latitude": 36.852087765822,
+    "longitude": -2.34842665384127,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 458,
+    "nombre": "Complejo Deportivo los Pinos",
+    "latitude": 36.8521337022516,
+    "longitude": -2.34841997753008,
+    "lineas": [
+      "15",
+      "20",
+      "30"
+    ]
+  },
+  {
+    "numero": 459,
+    "nombre": "Avenida Montserrat - Gachas Colorás",
+    "latitude": 36.8398168566142,
+    "longitude": -2.44379583911355,
+    "lineas": [
+      "4",
+      "12",
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 460,
+    "nombre": "Avenida Montserrat - Doctoral",
+    "latitude": 36.8398174722007,
+    "longitude": -2.44403392050961,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 461,
+    "nombre": "Civitas",
+    "latitude": 36.8378161719736,
+    "longitude": -2.44777480328296,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 462,
+    "nombre": "Divina Infantita",
+    "latitude": 36.8378935095538,
+    "longitude": -2.44800061457756,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 463,
+    "nombre": "Juegos de Casablanca, Juegos de Argel",
+    "latitude": 36.8352288733417,
+    "longitude": -2.31643861679825,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 464,
+    "nombre": "Complejo Deportivo 'el Toyo'",
+    "latitude": 36.8381691426171,
+    "longitude": -2.32254972916278,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 465,
+    "nombre": "Villa Mediterránea, Vuelta",
+    "latitude": 36.8445331021944,
+    "longitude": -2.32022707801655,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 466,
+    "nombre": "Avenida de los Juegos Mediterráneos, 2",
+    "latitude": 36.8411549172977,
+    "longitude": -2.32248260117179,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 468,
+    "nombre": "Avenida Montserrat - Estación de Servicio",
+    "latitude": 36.8367011612684,
+    "longitude": -2.45313384116427,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 469,
+    "nombre": "Avenida Montserrat 45",
+    "latitude": 36.8372158283433,
+    "longitude": -2.45241438422392,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 470,
+    "nombre": "Avenida Montserrat - Minerales",
+    "latitude": 36.8423682066193,
+    "longitude": -2.44177448899765,
+    "lineas": [
+      "4",
+      "12",
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 471,
+    "nombre": "Avenida Montserrat - Manuel Azaña",
+    "latitude": 36.8422655442699,
+    "longitude": -2.44218412515025,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 472,
+    "nombre": "Hotel Nh",
+    "latitude": 36.8359939381351,
+    "longitude": -2.45530507648487,
+    "lineas": [
+      "19",
+      "31"
+    ]
+  },
+  {
+    "numero": 473,
+    "nombre": "Rambla Lechuga",
+    "latitude": 36.8505027868058,
+    "longitude": -2.371061927122,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 474,
+    "nombre": "Rambla Lechuga, Vuelta",
+    "latitude": 36.8505552624979,
+    "longitude": -2.37117696674652,
+    "lineas": [
+      "30"
+    ]
+  },
+  {
+    "numero": 475,
+    "nombre": "N-344 Estación de Servicio",
+    "latitude": 36.8520739939149,
+    "longitude": -2.31082090247027,
+    "lineas": [
+      "31"
+    ]
+  },
+  {
+    "numero": 478,
+    "nombre": "Rambla, Celia Viñas",
+    "latitude": 36.8381411158801,
+    "longitude": -2.46074911706942,
+    "lineas": [
+      "1",
+      "2",
+      "6",
+      "11",
+      "18"
+    ]
+  },
+  {
+    "numero": 482,
+    "nombre": "Universidad Norte",
+    "latitude": 36.8315369806518,
+    "longitude": -2.40558358207887,
+    "lineas": [
+      "19"
+    ]
+  },
+  {
+    "numero": 483,
+    "nombre": "Espacio Alma",
+    "latitude": 36.8380753287752,
+    "longitude": -2.43634704083479,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 484,
+    "nombre": "Centro Comercial Torrecárdenas",
+    "latitude": 36.8627524495476,
+    "longitude": -2.43471613637885,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 485,
+    "nombre": "Francisco Perez Company 8",
+    "latitude": 36.8581063079414,
+    "longitude": -2.44204283623156,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 486,
+    "nombre": "Residencial Altamar",
+    "latitude": 36.8597755514148,
+    "longitude": -2.43940950822167,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 487,
+    "nombre": "Francisco Perez Company 15",
+    "latitude": 36.859120358234,
+    "longitude": -2.44072470943578,
+    "lineas": [
+      "5",
+      "8"
+    ]
+  },
+  {
+    "numero": 488,
+    "nombre": "Calle Acebo",
+    "latitude": 36.838036024092,
+    "longitude": -2.43509136366198,
+    "lineas": [
+      "3",
+      "4",
+      "7",
+      "11"
+    ]
+  },
+  {
+    "numero": 494,
+    "nombre": "Calle Instincion 21",
+    "latitude": 36.8450605679297,
+    "longitude": -2.44146773993171,
+    "lineas": [
+      "3"
+    ]
+  },
+  {
+    "numero": 501,
+    "nombre": "Avenida Vega Aca-adolfo Suarez",
+    "latitude": 36.8271707946338,
+    "longitude": -2.43829978253504,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 502,
+    "nombre": "Vega Aca-adolfo Marsillach",
+    "latitude": 36.83076838123,
+    "longitude": -2.43802934876152,
+    "lineas": [
+      "4"
+    ]
+  },
+  {
+    "numero": 510,
+    "nombre": "Avenida Mediterráneo, 29",
+    "latitude": 36.8276485808752,
+    "longitude": -2.44554629773606,
+    "lineas": [
+      "3",
+      "12"
+    ]
+  },
+  {
+    "numero": 511,
+    "nombre": "Avenida Mediterráneo - Adolfo Suárez",
+    "latitude": 36.8277887152021,
+    "longitude": -2.44545291585168,
+    "lineas": [
+      "3",
+      "11"
+    ]
+  },
+  {
+    "numero": 513,
+    "nombre": "Calle Mármoles",
+    "latitude": 36.8415866220297,
+    "longitude": -2.43652671575543,
+    "lineas": [
+      "3",
+      "4",
+      "12"
+    ]
+  },
+  {
+    "numero": 514,
+    "nombre": "Pabellón del Mediterráneo",
+    "latitude": 36.8388110667933,
+    "longitude": -2.43960320949552,
+    "lineas": [
+      "3",
+      "4",
+      "12"
+    ]
+  }
+]

@@ -1,7 +1,6 @@
 package com.sergiogps.bus_map_api.service;
 
 import com.sergiogps.bus_map_api.dto.HealthDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -13,7 +12,6 @@ public class HealthService {
 
     private final DataSource dataSource;
 
-    @Autowired
     public HealthService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
