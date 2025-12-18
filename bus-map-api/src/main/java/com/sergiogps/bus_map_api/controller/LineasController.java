@@ -29,6 +29,7 @@ public class LineasController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<Lineas> create(@RequestBody Lineas body) {
         Lineas created = service.create(body);

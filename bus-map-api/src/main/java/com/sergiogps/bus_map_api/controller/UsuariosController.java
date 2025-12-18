@@ -29,6 +29,7 @@ public class UsuariosController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<Usuarios> create(@RequestBody Usuarios body) {
         Usuarios created = service.create(body);

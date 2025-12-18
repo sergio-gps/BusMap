@@ -29,9 +29,10 @@ public class LocalizacionController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<Localizacion> create(@RequestBody Localizacion body) {
         Localizacion created = service.create(body);
-        return ResponseEntity.created(URI.create("/api/localizacion/" + created.getId())).body(created);
+        return ResponseEntity.created(URI.create("/api/localizacion/" + created.getLocalizacionId())).body(created);
     }
 }

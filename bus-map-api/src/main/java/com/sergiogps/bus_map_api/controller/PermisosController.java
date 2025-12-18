@@ -29,6 +29,7 @@ public class PermisosController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<Permisos> create(@RequestBody Permisos body) {
         Permisos created = service.create(body);

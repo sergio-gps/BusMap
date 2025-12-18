@@ -29,6 +29,7 @@ public class SeguridadController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<Seguridad> create(@RequestBody Seguridad body) {
         Seguridad created = service.create(body);

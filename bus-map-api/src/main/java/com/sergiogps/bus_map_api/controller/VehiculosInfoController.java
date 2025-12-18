@@ -29,6 +29,7 @@ public class VehiculosInfoController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<VehiculosInfo> create(@RequestBody VehiculosInfo body) {
         VehiculosInfo created = service.create(body);
