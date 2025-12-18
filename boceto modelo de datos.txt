@@ -1,58 +1,86 @@
-https://dbdiagram.io/d
-
 Table tipos_vehiculo {
   tipo_id int [pk, increment]
-  nombre varchar [not null, unique] // ejemplo: 'autobus', 'taxi'
+  nombre varchar [not null, unique] 
 }
+
+Table lineas {
+  linea_id int [pk]
+  nombre varchar [not null]
+  origen varchar
+  destino varchar
+  color varchar
+}
+
+Table paradas {
+  parada_id int [pk]
+  nombre_parada varchar [not null]
+  latitud double [not null]
+  longitud double [not null]
+}
+
+// --- VEHÍCULOS Y ASIGNACIONES ---
 
 Table vehiculos {
   vehiculo_id int [pk, increment]
   tipo_id int [ref: > tipos_vehiculo.tipo_id]
 }
 
-Table lineas {
-  linea_id int [pk, increment]
-  nombre varchar [not null] // ejemplo: 'Línea 27'
-  origen varchar [null]
-  destino varchar [null]
+Table vehiculos_info {
+  vehiculo_id int [pk, ref: - vehiculos.vehiculo_id] // Relación 1 a 1
+  matricula varchar [not null]
+  marca_modelo varchar
+  capacidad int
+  activo bool [not null]
 }
 
-Table vehiculos_info {
-  vehiculo_id int [ref: > vehiculos.vehiculo_id]
-  matricula varchar [not null]
-  marca_modelo varchar [null]
-  capacidad int [null] // número de viajeros que pueden ir
-  activo bool [not null]
+// --- Tablas Intermedias ---
+
+Table parada_linea {
+  parada_id int [ref: > paradas.parada_id]
+  linea_id int [ref: > lineas.linea_id]
+
+  indexes {
+    (parada_id, linea_id) [pk]
+  }
 }
 
 Table buses_linea {
   vehiculo_id int [ref: > vehiculos.vehiculo_id]
   linea_id int [ref: > lineas.linea_id]
+  
+  indexes {
+    (vehiculo_id, linea_id) [pk]
+  }
 }
 
-Table localizacion {
-  id int [pk, increment]
+// --- TIEMPO REAL ---
+
+Table localizaciones {
+  localizacion_id int [pk, increment]
   vehiculo_id int [ref: > vehiculos.vehiculo_id]
-  coordenadas point(x,y) [not null]
-  updated_at datetime [not null]
+  latitud double [not null]
+  longitud double [not null]
+  actualizado datetime [not null]
 }
 
 Table historico_rutas {
-  id int [pk, increment]
+  ruta_id int [pk, increment]
   vehiculo_id int [ref: > vehiculos.vehiculo_id]
-  punto_origen point (x,y) [not null]
+  origen_lat double [not null]
+  origen_lon double [not null]
   destino_buscado varchar [not null]
   fecha_ruta datetime [not null]
 }
 
+// --- USUARIOS, ROLES Y SEGURIDAD ---
+
 Table usuarios {
   usuario_id int [pk, increment]
   username varchar [not null, unique]
-  
 }
 
 Table seguridad {
-  id int [ref: > usuarios.usuario_id]
+  usuario_id int [pk, ref: - usuarios.usuario_id] // 1 a 1 con Usuarios
   password varchar [not null]
 }
 
@@ -69,11 +97,17 @@ Table permisos {
 Table usuarios_roles {
   usuario_id int [ref: > usuarios.usuario_id]
   rol_id int [ref: > roles.rol_id]
-  primary key (usuario_id, rol_id)
+
+  indexes {
+    (usuario_id, rol_id) [pk]
+  }
 }
 
 Table roles_permisos {
   rol_id int [ref: > roles.rol_id]
   permiso_id int [ref: > permisos.permiso_id]
-  primary key (rol_id, permiso_id)
+
+  indexes {
+    (rol_id, permiso_id) [pk]
+  }
 }
