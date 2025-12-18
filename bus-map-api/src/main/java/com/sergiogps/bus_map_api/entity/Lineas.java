@@ -2,8 +2,6 @@ package com.sergiogps.bus_map_api.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,7 +9,6 @@ import jakarta.persistence.Table;
 @Table(name = "lineas")
 public class Lineas {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "linea_id")
     private Integer lineaId;
 

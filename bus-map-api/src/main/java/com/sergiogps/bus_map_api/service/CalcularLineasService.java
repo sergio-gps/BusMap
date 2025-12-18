@@ -1,22 +1,88 @@
 package com.sergiogps.bus_map_api.service;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sergiogps.bus_map_api.dto.Parada;
 import com.sergiogps.bus_map_api.dto.ParadaSecuencia;
 import com.sergiogps.bus_map_api.dto.RutaResponse;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class CalcularLineasService {
 
     // Repositorio BBDD ??
     // private final ParadaRepository paradaRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(CalcularLineasService.class);
+    
+    // Aquí guardaremos las paradas en memoria
+    private List<Parada> listaParadas = new ArrayList<>();
+    
+    private final ObjectMapper objectMapper;
+
+    // Spring inyecta automáticamente el ObjectMapper configurado por defecto
+    public CalcularLineasService(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+    /**
+     *
+     */
+    @PostConstruct
+    public void cargarParadas() {
+        try {
+            logger.info("Cargando paradas desde JSON...");
+            
+            // 1. Obtener el fichero del classpath
+            ClassPathResource resource = new ClassPathResource("json/paradas_int.json");
+            InputStream inputStream = resource.getInputStream();
+
+            // 2. Usar Jackson para convertir el JSON a List<Parada>
+            listaParadas = objectMapper.readValue(
+                inputStream, 
+                new TypeReference<List<Parada>>() {}
+            );
+
+            logger.info("¡Éxito! Se han cargado {} paradas en memoria.", listaParadas.size());
+
+        } catch (IOException e) {
+            logger.error("Error fatal al cargar el fichero json/paradas.json", e);
+            // Dependiendo de tu lógica, podrías querer lanzar una RuntimeException para detener la app
+        }
+    }
+
+    // Método getter para que el resto de tu lógica acceda a los datos
+    public List<Parada> obtenerTodasLasParadas() {
+        return listaParadas;
+    }
+
+    /**
+     * Método genérico para cargar cualquier JSON y evitar repetir código try-catch
+     */
+    private <T> List<T> cargarJson(String path, TypeReference<List<T>> typeReference) {
+        try {
+            ClassPathResource resource = new ClassPathResource(path);
+            InputStream inputStream = resource.getInputStream();
+            return objectMapper.readValue(inputStream, typeReference);
+        } catch (IOException e) {
+            logger.error("Error cargando el fichero: " + path, e);
+            return new ArrayList<>();
+        }
+    }
 
     /**
      * Método para calcular la ruta con las coordenadas de origen y destino.
@@ -52,8 +118,8 @@ public class CalcularLineasService {
         for (Integer lineaId : lineasComunes) {
             
             // Cargar secuencias de esa línea
-            List<ParadaSecuencia> secuenciaIda = obtenerSecuenciaLinea(lineaId, "IDA");
-            List<ParadaSecuencia> secuenciaVuelta = obtenerSecuenciaLinea(lineaId, "VUELTA");
+            List<ParadaSecuencia> secuenciaIda = cargarJson("json/paradas_linea_2_ida.json", new TypeReference<List<ParadaSecuencia>>() {});
+            List<ParadaSecuencia> secuenciaVuelta = cargarJson("json/paradas_linea_2_vuelta.json", new TypeReference<List<ParadaSecuencia>>() {});
 
             // Intentar encontrar ruta válida en IDA o VUELTA
             RutaResponse ruta = identificarSentido(
@@ -184,8 +250,4 @@ public class CalcularLineasService {
         double distanceKm = R * c;
         return distanceKm * 1000;
     }
-    
-    // Mocks para que el código compile sin BBDD real
-    private List<Parada> obtenerTodasLasParadas() { return new ArrayList<>(); } 
-    private List<ParadaSecuencia> obtenerSecuenciaLinea(int lineaId, String sentido) { return new ArrayList<>(); }
 }
