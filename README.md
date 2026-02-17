@@ -1,8 +1,8 @@
-# BusMap API
+# BusMap
 
-BusMap API es el motor backend de una plataforma de gestión de transporte urbano. Permite gestionar paradas, líneas de autobús, flota de vehículos en tiempo real y un sistema de seguridad basado en roles (RBAC).
+BusMap API es el motor de una plataforma de gestión de transporte urbano. Permite gestionar paradas, líneas de autobús, flota de vehículos en tiempo real y un sistema de seguridad basado en roles (RBAC).
 
-## Caracteristicas Principales
+## Características Principales
 
 * **Gestión de Red de Transporte:** Modelado completo de paradas y líneas con relaciones Muchos a Muchos (N:M).
 * **Seguridad Avanzada:** Sistema de autenticación y autorización mediante Roles y Permisos (RBAC).
@@ -70,4 +70,4 @@ El diseño de la base de datos se ha estructurado para ser escalable y eficiente
 
 ## Licencia
 
-Ver `LICENSE`[LICENSE](https://github.com/sergio-gps/BusMap/blob/main/LICENSE) para más detalles.
+Ver [LICENSE](https://github.com/sergio-gps/BusMap/blob/main/LICENSE) para más detalles.
