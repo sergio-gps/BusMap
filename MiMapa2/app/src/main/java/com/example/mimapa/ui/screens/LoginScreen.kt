@@ -122,7 +122,23 @@ fun LoginScreen(navController: NavController) {
                             } else if (jwt != null) {
                                 Log.d("LoginScreen", "Botón de login clickeado. Email: ${email.value}")
                                 val sessionManager = SecureSessionManager
+                                
+                                // Decodificar el JWT para obtener el rol
+                                val userRole = JwtHelper.getUserRole(jwt!!)
+                                val isAdmin = JwtHelper.isAdmin(jwt!!)
+
                                 sessionManager.saveAuthToken(context, jwt!!, email.value)
+
+                                // Guardar también el rol si lo necesitas
+                                // sessionManager.saveUserRole(context, userRole)
+
+                                if (isAdmin) {
+                                    Log.d("LoginScreen", "Usuario admin detectado")
+                                    // navController.toAdminHome() // Si tienes pantalla diferente
+                                } else {
+                                    Log.d("LoginScreen", "Usuario normal detectado")
+                                }
+
                                 navController.toHome()
                             } else {
                                 Log.d("LoginScreen", "Login o conexión fallido. Email: ${email.value}")

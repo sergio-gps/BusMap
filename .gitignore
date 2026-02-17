@@ -1,16 +1,40 @@
-MiMapa2/secrets.properties
-MiMapa2/local.properties
+#MiMapa2/secrets.properties
+#MiMapa2/local.properties
+
+# --- IDEs y Editores ---
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+.vscode/
+*.swp
+*.patch
 .DS_Store
-/build
-/captures
+Thumbs.db
+
+# --- Android / Kotlin (MiMapa2) ---
+**/build/
+**/.gradle/
+**/captures/
+**/local.properties
+**/secrets.properties
+**/Generated?Resources.java
+*.ap_
+*.apk
+*.dex
+
+# --- Spring Boot / Java (bus-map-api) ---
+**/target/
+**/*.log
+**/help.md
+.mvn/wrapper/maven-wrapper.jar
+bus-map-api/src/main/resources/
+
+# --- Docker & Entorno ---
+.env
+docker_volume/
+**/.temp/
+
+# --- Otros ---
+bin/
+out/
 .externalNativeBuild
 .cxx

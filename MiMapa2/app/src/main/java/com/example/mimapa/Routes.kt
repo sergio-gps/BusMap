@@ -64,4 +64,24 @@ sealed class Routes(val route: String) {
         }
 
     }
+
+    // Rutas de administrador
+    data object AdminRoute : Routes("adminRoutes") {
+
+        data object AdminDashboard : Routes("${AdminRoute.route}/adminDashboard") {
+            fun NavController.toAdminDashboard() = navigate("${AdminRoute.route}/adminDashboard")
+        }
+
+        data object ManageUsers : Routes("${AdminRoute.route}/manageUsers") {
+            fun NavController.toManageUsers() = navigate("${AdminRoute.route}/manageUsers")
+        }
+
+        data object ManageRoutes : Routes("${AdminRoute.route}/manageRoutes") {
+            fun NavController.toManageRoutes() = navigate("${AdminRoute.route}/manageRoutes")
+        }
+
+        data object Statistics : Routes("${AdminRoute.route}/statistics") {
+            fun NavController.toStatistics() = navigate("${AdminRoute.route}/statistics")
+        }
+    }
 }

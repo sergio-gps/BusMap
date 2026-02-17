@@ -5,12 +5,13 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Parada {
-
+// Usamos @JsonProperty para mapear el campo "numero" del JSON a "id" en Java si quieres
     @JsonProperty("numero") 
     private int id;
     
     private String nombre;
     
+    // Ojo: En tu JSON es "latitude", no "latitud"
     @JsonProperty("latitude")
     private double latitud;
     

@@ -24,7 +24,6 @@ public class DataInitializer {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @SuppressWarnings("null")
     @PostConstruct
     public void seed() {
         try {

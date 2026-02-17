@@ -1,5 +1,6 @@
 package com.sergiogps.bus_map_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sergiogps.bus_map_api.entity.key.LineasParadasId;
 
 import jakarta.persistence.EmbeddedId;
@@ -15,21 +16,33 @@ public class LineasParadas {
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("lineaId")
     @JoinColumn(name = "linea_id")
+    @JsonIgnore
     private Lineas linea;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("paradaId")
     @JoinColumn(name = "parada_id")
+    @JsonIgnore
     private Paradas parada;
 
-    public LineasParadasId getId() { return id; }
+    public LineasParadasId getId() {
+        return id;
+    }
 
-    public Lineas getLinea() { return linea; }
+    public Lineas getLinea() {
+        return linea;
+    }
 
-    public void setLinea(Lineas linea) { this.linea = linea; }
+    public void setLinea(Lineas linea) {
+        this.linea = linea;
+    }
 
-    public Paradas getParada() { return parada; }
+    public Paradas getParada() {
+        return parada;
+    }
 
-    public void setParada(Paradas parada) { this.parada = parada; }
+    public void setParada(Paradas parada) {
+        this.parada = parada;
+    }
 
 }

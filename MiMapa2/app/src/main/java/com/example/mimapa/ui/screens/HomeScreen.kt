@@ -220,8 +220,7 @@ fun AutoAnimatedCyclicalMarkerMap() {
             modifier = Modifier.fillMaxSize(),
             cameraPositionState = rememberCameraPositionState {
                 // Centra la cámara en el primer punto
-                position = com.google.android.gms.maps.model.CameraPosition
-                    .fromLatLngZoom(routePoints.first(), 17f) // Zoom más cercano
+                position = CameraPosition.fromLatLngZoom(routePoints.first(), 17f) // Zoom más cercano
             }
         ) {
             Marker(

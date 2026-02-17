@@ -29,10 +29,9 @@ public class HistoricoRutasController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<HistoricoRutas> create(@RequestBody HistoricoRutas body) {
         HistoricoRutas created = service.create(body);
-        return ResponseEntity.created(URI.create("/api/historico-rutas/" + created.getRutaId())).body(created);
+        return ResponseEntity.created(URI.create("/api/historico-rutas/" + created.getId())).body(created);
     }
 }

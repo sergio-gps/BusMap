@@ -29,7 +29,6 @@ public class RolesController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @SuppressWarnings("null")
     @PostMapping
     public ResponseEntity<Roles> create(@RequestBody Roles body) {
         Roles created = service.create(body);

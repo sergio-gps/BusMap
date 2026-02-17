@@ -53,5 +53,9 @@ fun MainNavigation() {
         composable(route = Routes.MainRoute.SetupSearch.route){
             SetupSearchScreen(navController)
         }
+        composable(Routes.AdminRoute.AdminDashboard.route) {
+            AdminDashboardScreen(navController)
+        }
+
     }
 }
