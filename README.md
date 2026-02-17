@@ -13,7 +13,7 @@ BusMap API es el motor de una plataforma de gestión de transporte urbano. Permi
 
 | Tecnología | Uso |
 | :--- | :--- |
-| Java 21+ | Lenguaje de programación principal. |
+| Java 21 | Lenguaje de programación principal. |
 | Spring Boot 3.5 | Framework para el desarrollo de la API. |
 | Spring Data JPA | Persistencia y gestión de la base de datos. |
 | PostgreSQL | Base de datos relacional. |
@@ -26,11 +26,11 @@ El diseño de la base de datos se ha estructurado para ser escalable y eficiente
 
 * **Entidades:** Paradas, Líneas, Vehículos, Usuarios, Roles y Permisos.
 * **Relaciones:**
-    * Paradas <-> Lineas (Many-to-Many).
-    * Vehiculos <-> VehiculosInfo (One-to-One).
+    * Paradas <-> Lineas (Muchos-a-Muchos).
+    * Vehiculos <-> VehiculosInfo (Uno-a-uno).
     * Usuarios <-> Roles <-> Permisos (RBAC).
 
-> **Nota:** Puedes consultar el boceto completo del modelo de datos en el archivo `boceto modelo de datos.txt` incluido en la raíz del proyecto.
+> **Nota:** Puedes consultar el boceto completo del modelo de datos en el archivo `boceto modelo de datos.txt` incluido en la raíz del proyecto o en [dbdiagram.io](https://dbdiagram.io/d/BusMap-68b75a73777b52b76cc2c39e).
 
 ## Configuracion e Instalacion
 
