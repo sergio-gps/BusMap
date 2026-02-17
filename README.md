@@ -36,7 +36,7 @@ El diseño de la base de datos se ha estructurado para ser escalable y eficiente
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/sergio-gps/BusMap.git](https://github.com/sergio-gps/BusMap.git)
+   git clone https://github.com/sergio-gps/BusMap.git
    cd BusMap/bus-map-api
 
 2. **Configurar la base de datos:**
