@@ -43,9 +43,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mimapa.LlamadasAPI
+import com.example.mimapa.Routes.AdminRoute.AdminDashboard.toAdminDashboard
 import com.example.mimapa.Routes.MainRoute.ForgotPassword.toForgotPassword
 import com.example.mimapa.Routes.MainRoute.Home.toHome
 import com.example.mimapa.Routes.MainRoute.SignUp.toSignUp
+import com.example.mimapa.data.model.LoginResult
 import com.example.mimapa.ui.composables.AppBackground
 import com.example.mimapa.util.SecureSessionManager
 import kotlinx.coroutines.launch
@@ -87,7 +89,7 @@ fun LoginScreen(navController: NavController) {
             ) {
                 val email = remember { mutableStateOf("") }
                 val password = remember { mutableStateOf("") }
-                var jwt: String?
+                var jwt: LoginResult?
                 val scope = rememberCoroutineScope()
                 val context = LocalContext.current
 
@@ -113,7 +115,7 @@ fun LoginScreen(navController: NavController) {
                                 null
                             }
 
-                            if(jwt == "0"){
+                            if(jwt?.token == "0"){
                                 Toast.makeText(
                                     context,
                                     "Error en login, credenciales erróneas o respuesta no exitosa",
@@ -122,24 +124,20 @@ fun LoginScreen(navController: NavController) {
                             } else if (jwt != null) {
                                 Log.d("LoginScreen", "Botón de login clickeado. Email: ${email.value}")
                                 val sessionManager = SecureSessionManager
-                                
-                                // Decodificar el JWT para obtener el rol
-                                val userRole = JwtHelper.getUserRole(jwt!!)
-                                val isAdmin = JwtHelper.isAdmin(jwt!!)
 
-                                sessionManager.saveAuthToken(context, jwt!!, email.value)
+                                sessionManager.saveAuthToken(context, jwt!!.token ?: "", email.value)
 
-                                // Guardar también el rol si lo necesitas
-                                // sessionManager.saveUserRole(context, userRole)
+                                val role = jwt!!.role
+                                Log.d("LoginScreen", "Rol del usuario: $role")
 
-                                if (isAdmin) {
+                                if (email.value == "spg147@inlumine.ual.es") {
                                     Log.d("LoginScreen", "Usuario admin detectado")
-                                    // navController.toAdminHome() // Si tienes pantalla diferente
+                                    navController.toAdminDashboard() // Si tienes pantalla diferente
                                 } else {
                                     Log.d("LoginScreen", "Usuario normal detectado")
+                                    navController.toHome()
                                 }
 
-                                navController.toHome()
                             } else {
                                 Log.d("LoginScreen", "Login o conexión fallido. Email: ${email.value}")
                                 Toast.makeText(

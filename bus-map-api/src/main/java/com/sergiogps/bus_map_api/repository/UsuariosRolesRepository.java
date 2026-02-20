@@ -8,7 +8,5 @@ import com.sergiogps.bus_map_api.entity.UsuariosRoles;
 import com.sergiogps.bus_map_api.entity.key.UsuariosRolesId;
 
 public interface UsuariosRolesRepository extends JpaRepository<UsuariosRoles, UsuariosRolesId> {
-
-	List<UsuariosRoles> findByUsuarioUsuarioId(Integer usuarioId);
-
+    List<UsuariosRoles> findByUsuarioUsuarioId(Integer usuarioId);
 }

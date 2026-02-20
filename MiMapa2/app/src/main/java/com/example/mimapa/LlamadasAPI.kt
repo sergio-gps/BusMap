@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.example.mimapa.BuildConfig.MAPS_API_KEY
 import com.example.mimapa.data.model.Email
+import com.example.mimapa.data.model.LoginResult
 import com.example.mimapa.data.model.Passwords
 import com.example.mimapa.data.model.Token
 import com.example.mimapa.data.model.UserCredentials
@@ -119,21 +120,19 @@ object LlamadasAPI {
         return null
     }
 
-    /**
-     * Inicia sesión de un usuario llamando a la API y devuelve el token JWT.
+/**
+     * Inicia sesión de un usuario llamando a la API y devuelve el token JWT y el rol del usuario.
      *
      * @param email El email del usuario.
      * @param password La contraseña del usuario.
-     * @return El token JWT como String si el login es exitoso, null en caso contrario.
+     * @return Un [LoginResult] con el token JWT y el rol si el login es exitoso, null en caso contrario.
      */
-    suspend fun logIn(email: String, password: String): String? {
+    suspend fun logIn(email: String, password: String): LoginResult? {
         Log.d("LlamadasAPI", "Intentando iniciar sesión con coroutines...")
         Log.d("LlamadasAPI", "Email: $email")
 
         val json = Json.encodeToString(UserCredentials(username = email, password = password))
 
-        //http://olympia.jpramez.dev:8080/login
-        //http://10.0.2.2:8080/login
         val request = Request.Builder()
             .url("http://10.0.2.2:8080/login").header("Content-Type", "application/json")
             .post(json.toRequestBody("application/json".toMediaTypeOrNull()))
@@ -144,7 +143,6 @@ object LlamadasAPI {
             call.enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     Log.e("LlamadasAPI", "Fallo en la llamada de login", e)
-                    // Si la coroutine fue cancelada
                     if (continuation.isCancelled) return
                     continuation.resumeWithException(e)
                 }
@@ -158,15 +156,15 @@ object LlamadasAPI {
                                 "LlamadasAPI",
                                 "Error en login, credenciales erróneas o respuesta no exitosa: $response"
                             )
-                            continuation.resume("0")
-
+                            // Token "0" indica credenciales erróneas
+                            continuation.resume(LoginResult(token = "0", role = null))
                         } else {
                             val responseBody = response.body?.string()
                             if (responseBody != null) {
                                 try {
-                                    val tokenResponse = Json.decodeFromString<Token>(responseBody)
-                                    Log.i("LlamadasAPI", "Login exitoso, token recibido: ${tokenResponse.token}")
-                                    continuation.resume(tokenResponse.token)
+                                    val tokenResponse = Json.decodeFromString<LoginResult>(responseBody)
+                                    Log.i("LlamadasAPI", "Login exitoso, token: ${tokenResponse.token}, rol: ${tokenResponse.role}")
+                                    continuation.resume(tokenResponse)
                                 } catch (e: SerializationException) {
                                     Log.e("LlamadasAPI", "Error al decodificar la respuesta JSON de login: ${e.message}", e)
                                     Log.e("LlamadasAPI", "JSON recibido: $responseBody")
@@ -176,10 +174,7 @@ object LlamadasAPI {
                                     continuation.resume(null)
                                 }
                             } else {
-                                Log.w(
-                                    "LlamadasAPI",
-                                    "Cuerpo de respuesta vacío en login exitoso."
-                                )
+                                Log.w("LlamadasAPI", "Cuerpo de respuesta vacío en login exitoso.")
                                 continuation.resume(null)
                             }
                         }
@@ -187,7 +182,6 @@ object LlamadasAPI {
                 }
             })
 
-            // Cancela la llamada de OkHttp
             continuation.invokeOnCancellation {
                 try {
                     call.cancel()

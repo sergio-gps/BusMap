@@ -6,6 +6,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mimapa.Routes
 
+/**
+ * Navegación principal de la aplicación.
+ */
 @Composable
 fun MainNavigation() {
     val navController = rememberNavController()
@@ -53,9 +56,22 @@ fun MainNavigation() {
         composable(route = Routes.MainRoute.SetupSearch.route){
             SetupSearchScreen(navController)
         }
-        composable(Routes.AdminRoute.AdminDashboard.route) {
+
+        // Rutas de administrador
+        composable(route = Routes.AdminRoute.AdminDashboard.route) {
             AdminDashboardScreen(navController)
         }
-
+        composable(Routes.AdminRoute.ManageUsers.route) {
+            ManageUsersScreen(navController)
+        }
+        composable(Routes.AdminRoute.ManageRoutes.route) {
+            ManageRoutesScreen(navController)
+        }
+        composable(Routes.AdminRoute.Statistics.route) {
+            StatisticsScreen(navController)
+        }
+        composable(route = Routes.AdminRoute.GenerateAlternativeRoute.route) {
+            GenerateAlternativeRouteScreen(navController)
+        }
     }
 }

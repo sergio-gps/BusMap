@@ -1,5 +1,7 @@
 package com.sergiogps.bus_map_api.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,10 +19,12 @@ import com.sergiogps.bus_map_api.dto.ChangePasswordRequestDTO;
 import com.sergiogps.bus_map_api.dto.ForgotPasswordRequestDTO;
 import com.sergiogps.bus_map_api.entity.Seguridad;
 import com.sergiogps.bus_map_api.entity.Usuarios;
-import com.sergiogps.bus_map_api.repository.UsuariosRepository;
+import com.sergiogps.bus_map_api.entity.UsuariosRoles;
 import com.sergiogps.bus_map_api.security.JwtUtil;
 import com.sergiogps.bus_map_api.service.MailService;
 import com.sergiogps.bus_map_api.service.PasswordService;
+import com.sergiogps.bus_map_api.service.UsuariosService;
+import com.sergiogps.bus_map_api.service.UsuariosRolesService;
 
 @RestController
 @RequestMapping
@@ -28,24 +32,25 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
-    private final UsuariosRepository usuariosRepository;
     private final PasswordEncoder passwordEncoder;
     private final PasswordService passwordService;
     private final MailService mailService;
+    private final UsuariosService usuariosService;
+    private final UsuariosRolesService usuariosRolesService;
 
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil,
-            UsuariosRepository usuariosRepository,
             PasswordEncoder passwordEncoder,
             PasswordService passwordService,
-            MailService mailService) {
+            MailService mailService,
+            UsuariosService usuariosService,
+            UsuariosRolesService usuariosRolesService) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
-        this.usuariosRepository = usuariosRepository;
-        // seguridadRepository removed; we will persist Seguridad through Usuarios
-        // cascade
         this.passwordEncoder = passwordEncoder;
         this.passwordService = passwordService;
         this.mailService = mailService;
+        this.usuariosService = usuariosService;
+        this.usuariosRolesService = usuariosRolesService;
     }
 
     @PostMapping("/login")
@@ -53,8 +58,20 @@ public class AuthController {
         try {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword()));
+
+            Usuarios usuario = usuariosService.findByEmail(req.getUsername());
+
+            // Obtener el primer rol del usuario, o "USUARIO" si no tiene ninguno
+            String rol = "USUARIO";
+            if (usuario != null) {
+                List<UsuariosRoles> usuariosRoles = usuariosRolesService.findByUsuarioId(usuario.getUsuarioId());
+                if (!usuariosRoles.isEmpty()) {
+                    rol = usuariosRoles.get(0).getRol().getRolName();
+                }
+            }
+
             String token = jwtUtil.generateToken(req.getUsername());
-            return ResponseEntity.ok(new AuthResponse(token));
+            return ResponseEntity.ok(new AuthResponse(token, rol));
         } catch (AuthenticationException ex) {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
@@ -62,8 +79,9 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody AuthRequest req) {
-        if (usuariosRepository.findByUsername(req.getUsername()).isPresent()) {
-            return ResponseEntity.badRequest().body("Username already exists");
+        // Verificar si el usuario existe usando el service
+        if (usuariosService.findByEmail(req.getUsername()) != null) {
+            return ResponseEntity.badRequest().body("Email already exists");
         }
 
         Usuarios u = new Usuarios();
@@ -75,7 +93,7 @@ public class AuthController {
         s.setUsuario(u);
         u.setSeguridad(s);
         // Persist user (and seguridad via CascadeType.ALL)
-        Usuarios saved = usuariosRepository.save(u);
+        Usuarios saved = usuariosService.save(u);
 
         String token = jwtUtil.generateToken(saved.getUsername());
         return ResponseEntity.ok(new AuthResponse(token));
@@ -99,14 +117,12 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Email is required");
         }
 
-        // Find user by email
-        var usuarioOpt = usuariosRepository.findByUsername(req.getEmail());
-        if (usuarioOpt.isEmpty()) {
+        // Find user by email using service
+        Usuarios usuario = usuariosService.findByEmail(req.getEmail());
+        if (usuario == null) {
             // For security reasons, don't reveal if email exists or not
             return ResponseEntity.ok("If the email exists in our system, a password reset link will be sent");
         }
-
-        Usuarios usuario = usuarioOpt.get();
 
         // Generate a new random password
         String newPassword = passwordService.generateRandomPassword();
@@ -138,7 +154,7 @@ public class AuthController {
 
         // Get the currently authenticated user
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuarios usuario = usuariosRepository.findByUsername(username).orElse(null);
+        Usuarios usuario = usuariosService.findByEmail(username);
         if (usuario == null) {
             return ResponseEntity.status(404).body("User not found");
         }
@@ -150,7 +166,7 @@ public class AuthController {
 
         // Update password
         usuario.getSeguridad().setPassword(passwordEncoder.encode(req.newPassword()));
-        usuariosRepository.save(usuario);
+        usuariosService.save(usuario);
 
         return ResponseEntity.ok("Password changed successfully");
     }

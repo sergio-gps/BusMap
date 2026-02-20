@@ -23,4 +23,13 @@ public class UsuariosRolesService implements CrudService<UsuariosRoles, Usuarios
 
     @Override
     public UsuariosRoles create(UsuariosRoles entity) { return repo.save(entity); }
+
+    /**
+     * Busca los roles de un usuario por su ID
+     * @param usuarioId el ID del usuario
+     * @return lista de UsuariosRoles del usuario
+     */
+    public List<UsuariosRoles> findByUsuarioId(Integer usuarioId) {
+        return repo.findByUsuarioUsuarioId(usuarioId);
+    }
 }

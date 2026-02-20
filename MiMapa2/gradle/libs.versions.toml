@@ -12,7 +12,7 @@ activityCompose = "1.12.4"
 composeBom = "2026.02.00"
 mapsCompose = "8.1.0"
 mapsUtilsKtx = "6.0.0"
-material3 = "1.4.0" # Descomentar si NO se usa el BOM para M3
+#material3 = "1.4.0" # Descomentar si NO se usa el BOM para M3
 okhttp = "5.3.2"
 secretsGradlePlugin = "2.0.1"
 playServicesMaps = "20.0.0"
@@ -42,7 +42,6 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.10.3" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 # --- CORRECCIÓN ---
-# Quitamos la versión explícita de material3 para que sea controlada por el BOM
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core", version.ref = "materialIconsCore" }
 
@@ -68,8 +67,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 # Añadido el plugin de secrets aquí
 secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
