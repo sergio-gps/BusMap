@@ -61,7 +61,7 @@ public class AuthController {
 
             Usuarios usuario = usuariosService.findByEmail(req.getUsername());
 
-            // Obtener el primer rol del usuario, o "USUARIO" si no tiene ninguno
+            // Obtener el rol del usuario, o "USUARIO" si no tiene ninguno
             String rol = "USUARIO";
             if (usuario != null) {
                 List<UsuariosRoles> usuariosRoles = usuariosRolesService.findByUsuarioId(usuario.getUsuarioId());

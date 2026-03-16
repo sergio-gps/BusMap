@@ -5,6 +5,7 @@
 .idea/
 *.iml
 .vscode/
+.github/
 *.swp
 *.patch
 .DS_Store
