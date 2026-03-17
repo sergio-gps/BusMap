@@ -83,6 +83,10 @@ sealed class Routes(val route: String) {
             fun NavController.toManageRoutes() = navigate("${AdminRoute.route}/manageRoutes")
         }
 
+        data object ManageBusStops : Routes("${AdminRoute.route}/manageBusStops") {
+            fun NavController.toManageBusStops() = navigate("${AdminRoute.route}/manageBusStops")
+        }
+
         data object Statistics : Routes("${AdminRoute.route}/statistics") {
             fun NavController.toStatistics() = navigate("${AdminRoute.route}/statistics")
         }

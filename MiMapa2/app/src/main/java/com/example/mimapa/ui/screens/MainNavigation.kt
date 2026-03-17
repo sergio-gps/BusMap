@@ -67,6 +67,9 @@ fun MainNavigation() {
         composable(Routes.AdminRoute.ManageRoutes.route) {
             ManageRoutesScreen(navController)
         }
+        composable(Routes.AdminRoute.ManageBusStops.route) {
+            ManageBusStopsScreen(navController)
+        }
         composable(Routes.AdminRoute.Statistics.route) {
             StatisticsScreen(navController)
         }

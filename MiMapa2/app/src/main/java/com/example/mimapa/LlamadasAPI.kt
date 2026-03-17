@@ -5,6 +5,7 @@ import android.util.Log
 import com.example.mimapa.BuildConfig.MAPS_API_KEY
 import com.example.mimapa.data.model.Email
 import com.example.mimapa.data.model.LoginResult
+import com.example.mimapa.data.model.Parada
 import com.example.mimapa.data.model.Passwords
 import com.example.mimapa.data.model.Token
 import com.example.mimapa.data.model.UserCredentials
@@ -28,6 +29,7 @@ import kotlin.coroutines.resumeWithException
 object LlamadasAPI {
 
     private val client = OkHttpClient()
+    private val json = Json { ignoreUnknownKeys = true }
 
     /**
      * Registro de un usuario e imprime un mensaje en la consola.
@@ -337,6 +339,193 @@ object LlamadasAPI {
                     call.cancel()
                 } catch (ex: Throwable) {
                     // Ignorar si la cancelación falla
+                }
+            }
+        }
+    }
+
+    private fun authorizedRequestBuilder(url: String, context: Context): Request.Builder {
+        val token = SecureSessionManager.getAuthToken(context)
+        return Request.Builder()
+            .url(url)
+            .header("Content-Type", "application/json")
+            .apply {
+                if (!token.isNullOrBlank()) {
+                    header("Authorization", "Bearer $token")
+                }
+            }
+    }
+
+    suspend fun getParadas(context: Context): List<Parada> {
+        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en getParadas", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            Log.w("LlamadasAPI", "Error en getParadas: $it")
+                            continuation.resume(emptyList())
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<List<Parada>>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando listado de paradas", e)
+                            continuation.resume(emptyList())
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    suspend fun createParada(parada: Parada, context: Context): Boolean {
+        val requestBody = Json.encodeToString(parada)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas", context)
+            .post(requestBody)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en createParada", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    suspend fun updateParada(paradaId: Int, parada: Parada, context: Context): Boolean {
+        val requestBody = Json.encodeToString(parada)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas/$paradaId", context)
+            .put(requestBody)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en updateParada", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    suspend fun deleteParada(paradaId: Int, context: Context): Boolean {
+        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas/$paradaId", context)
+            .delete()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en deleteParada", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    suspend fun importParadasJson(rawJson: String, context: Context): Boolean {
+        val requestBody = rawJson.toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas/import", context)
+            .post(requestBody)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en importParadasJson", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
                 }
             }
         }

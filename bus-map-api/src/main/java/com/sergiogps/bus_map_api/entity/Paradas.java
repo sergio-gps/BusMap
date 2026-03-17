@@ -24,7 +24,15 @@ public class Paradas {
     private Double longitud;
     
     // El campo 'lineas' (List<Integer>) requiere otro mapeo
-    
+
+    public Integer getParadaId() {
+        return paradaId;
+    }
+
+    public void setParadaId(Integer paradaId) {
+        this.paradaId = paradaId;
+    }
+
     public Integer getId() {
         return paradaId;
     }
@@ -47,5 +55,13 @@ public class Paradas {
 
     public void setLatitud(Double latitud) {
         this.latitud = latitud;
-    }   
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
 }
