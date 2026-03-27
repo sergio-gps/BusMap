@@ -15,20 +15,24 @@ import jakarta.persistence.Table;
 @Table(name = "seguridad")
 public class Seguridad {
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "usuario_id")
+    private Integer usuarioId;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "usuario_id")
     @JsonIgnore
     private Usuarios usuario;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Integer getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Integer usuarioId) { this.usuarioId = usuarioId; }
+
+    // Compatibilidad temporal para código legacy.
+    public Integer getId() { return usuarioId; }
+    public void setId(Integer id) { this.usuarioId = id; }
     public Usuarios getUsuario() { return usuario; }
     public void setUsuario(Usuarios usuario) { this.usuario = usuario; }
     public String getPassword() { return password; }

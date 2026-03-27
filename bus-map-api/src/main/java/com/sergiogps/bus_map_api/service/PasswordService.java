@@ -39,14 +39,19 @@ public class PasswordService {
     }
 
     /**
-     * Updates the user's password (hashes it before storing)
-     * @param username The username of the user
+     * Updates the user's password (hashes it before storing).
+     *
+     * @param loginIdentifier email o username del usuario
      * @param newPassword The new plain text password
      * @return true if password was updated successfully, false if user not found
      */
     @Transactional
-    public boolean updatePassword(String username, String newPassword) {
-        Optional<Usuarios> usuarioOpt = usuariosRepository.findByUsername(username);
+    public boolean updatePassword(String loginIdentifier, String newPassword) {
+        Optional<Usuarios> usuarioOpt = usuariosRepository.findByEmail(loginIdentifier);
+        if (usuarioOpt.isEmpty()) {
+            usuarioOpt = usuariosRepository.findByUsername(loginIdentifier);
+        }
+
         if (usuarioOpt.isEmpty()) {
             return false;
         }

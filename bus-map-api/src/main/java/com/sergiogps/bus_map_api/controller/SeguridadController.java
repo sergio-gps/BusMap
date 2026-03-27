@@ -2,6 +2,7 @@ package com.sergiogps.bus_map_api.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,7 @@ public class SeguridadController {
     @PostMapping
     public ResponseEntity<Seguridad> create(@RequestBody Seguridad body) {
         Seguridad created = service.create(body);
-        return ResponseEntity.created(URI.create("/api/seguridad/" + created.getId())).body(created);
+        URI location = Objects.requireNonNull(URI.create("/api/seguridad/" + created.getUsuarioId()));
+        return ResponseEntity.created(location).body(created);
     }
 }

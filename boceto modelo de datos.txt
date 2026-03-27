@@ -76,7 +76,8 @@ Table historico_rutas {
 
 Table usuarios {
   usuario_id int [pk, increment]
-  username varchar [not null, unique]
+  email varchar [not null, unique]
+  username varchar [null]
 }
 
 Table seguridad {

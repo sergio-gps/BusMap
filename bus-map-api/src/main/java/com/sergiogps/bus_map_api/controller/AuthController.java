@@ -55,11 +55,15 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest req) {
+        if (req.getEmail() == null || req.getEmail().isBlank() || req.getPassword() == null) {
+            return ResponseEntity.badRequest().body("Email and password are required");
+        }
+
         try {
             authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword()));
+                .authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
 
-            Usuarios usuario = usuariosService.findByEmail(req.getUsername());
+            Usuarios usuario = usuariosService.findByEmailOrUsername(req.getEmail());
 
             // Obtener el rol del usuario, o "USUARIO" si no tiene ninguno
             String rol = "USUARIO";
@@ -70,7 +74,7 @@ public class AuthController {
                 }
             }
 
-            String token = jwtUtil.generateToken(req.getUsername());
+            String token = jwtUtil.generateToken(req.getEmail());
             return ResponseEntity.ok(new AuthResponse(token, rol));
         } catch (AuthenticationException ex) {
             return ResponseEntity.status(401).body("Invalid credentials");
@@ -79,13 +83,18 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody AuthRequest req) {
+        if (req.getEmail() == null || req.getEmail().isBlank() || req.getPassword() == null || req.getPassword().isBlank()) {
+            return ResponseEntity.badRequest().body("Email and password are required");
+        }
+
         // Verificar si el usuario existe usando el service
-        if (usuariosService.findByEmail(req.getUsername()) != null) {
+        if (usuariosService.findByEmail(req.getEmail()) != null) {
             return ResponseEntity.badRequest().body("Email already exists");
         }
 
         Usuarios u = new Usuarios();
-        u.setUsername(req.getUsername());
+        u.setEmail(req.getEmail());
+        u.setUsername(null);
         // create Seguridad and assign to Usuarios so cascade saves both
         Seguridad s = new Seguridad();
         s.setPassword(passwordEncoder.encode(req.getPassword()));
@@ -95,7 +104,7 @@ public class AuthController {
         // Persist user (and seguridad via CascadeType.ALL)
         Usuarios saved = usuariosService.save(u);
 
-        String token = jwtUtil.generateToken(saved.getUsername());
+        String token = jwtUtil.generateToken(saved.getEmail());
         return ResponseEntity.ok(new AuthResponse(token));
     }
 
@@ -128,14 +137,17 @@ public class AuthController {
         String newPassword = passwordService.generateRandomPassword();
 
         // Update the user's password
-        boolean updated = passwordService.updatePassword(usuario.getUsername(), newPassword);
+        boolean updated = passwordService.updatePassword(usuario.getEmail(), newPassword);
         if (!updated) {
             return ResponseEntity.status(500).body("Failed to update password");
         }
 
         // Send email with new password
         try {
-            mailService.sendPasswordResetEmail(req.getEmail(), usuario.getUsername(), newPassword);
+            String recipientName = usuario.getUsername() != null && !usuario.getUsername().isBlank()
+                    ? usuario.getUsername()
+                    : usuario.getEmail();
+            mailService.sendPasswordResetEmail(req.getEmail(), recipientName, newPassword);
         } catch (Exception e) {
             // Log error but don't reveal details to user
             return ResponseEntity.status(500)
@@ -153,8 +165,8 @@ public class AuthController {
         }
 
         // Get the currently authenticated user
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuarios usuario = usuariosService.findByEmail(username);
+        String login = SecurityContextHolder.getContext().getAuthentication().getName();
+        Usuarios usuario = usuariosService.findByEmailOrUsername(login);
         if (usuario == null) {
             return ResponseEntity.status(404).body("User not found");
         }

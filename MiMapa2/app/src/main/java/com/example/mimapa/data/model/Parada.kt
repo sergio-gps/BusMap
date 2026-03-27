@@ -1,7 +1,10 @@
 package com.example.mimapa.data.model
 
+import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -32,8 +35,9 @@ data class Parada(
 )
 
 /**
- * Permite decodificar el campo lineas cuando llega como enteros o como strings numéricos.
+ * Permite decodificar el campo líneas cuando llega como enteros o como strings numéricos.
  */
+@OptIn(InternalSerializationApi::class)
 object LineasIntSerializer : kotlinx.serialization.KSerializer<List<Int>> {
     override val descriptor: SerialDescriptor = buildSerialDescriptor("LineasInt", kotlinx.serialization.descriptors.StructureKind.LIST)
 
@@ -52,9 +56,6 @@ object LineasIntSerializer : kotlinx.serialization.KSerializer<List<Int>> {
     }
 
     override fun serialize(encoder: Encoder, value: List<Int>) {
-        encoder.encodeSerializableValue(
-            kotlinx.serialization.builtins.ListSerializer(kotlinx.serialization.builtins.IntSerializer()),
-            value
-        )
+        encoder.encodeSerializableValue(ListSerializer(Int.serializer()), value)
     }
 }
