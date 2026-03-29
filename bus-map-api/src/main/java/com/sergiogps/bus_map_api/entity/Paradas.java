@@ -1,8 +1,12 @@
 package com.sergiogps.bus_map_api.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,29 +20,19 @@ public class Paradas {
 
     @Column(name = "nombre_parada", nullable = false, length = 100)
     private String nombreParada;
-    
-    @Column(name = "latitud")
     private Double latitud;
-
-    @Column(name = "longitud")
     private Double longitud;
-    
-    // El campo 'lineas' (List<Integer>) requiere otro mapeo
 
+    @ManyToMany(mappedBy = "paradas")
+    private List<Lineas> lineas = new ArrayList<>();
+
+    // Getters y Setters
     public Integer getParadaId() {
         return paradaId;
     }
 
     public void setParadaId(Integer paradaId) {
         this.paradaId = paradaId;
-    }
-
-    public Integer getId() {
-        return paradaId;
-    }
-
-    public void setId(Integer id) {
-        this.paradaId = id;
     }
 
     public String getNombre() {
@@ -63,5 +57,13 @@ public class Paradas {
 
     public void setLongitud(Double longitud) {
         this.longitud = longitud;
+    }
+
+    public List<Lineas> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(List<Lineas> lineas) {
+        this.lineas = lineas;
     }
 }

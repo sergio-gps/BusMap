@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sergiogps.bus_map_api.dto.Parada;
+import com.sergiogps.bus_map_api.entity.Lineas;
 import com.sergiogps.bus_map_api.entity.Paradas;
 import com.sergiogps.bus_map_api.repository.LineasRepository;
 import com.sergiogps.bus_map_api.repository.ParadasRepository;
@@ -77,7 +78,6 @@ public class ParadasService {
             return false;
         }
 
-        _paradasRepository.deleteLineasByParadaId(id);
         _paradasRepository.deleteById(id);
         return true;
     }
@@ -111,8 +111,14 @@ public class ParadasService {
         dto.setLatitud(entidad.getLatitud() != null ? entidad.getLatitud() : 0.0d);
         dto.setLongitud(entidad.getLongitud() != null ? entidad.getLongitud() : 0.0d);
 
-        List<Integer> lineas = _paradasRepository.findLineasByParadaId(entidad.getParadaId());
-        dto.setLineasIntegers(new ArrayList<>(lineas));
+        List<Lineas> lineas = _paradasRepository.findLineasByParadaId(entidad.getParadaId());
+        List<Integer> lineasIds = new ArrayList<>();
+        for (Lineas linea : lineas) {
+            if (linea != null && linea.getLineaId() != null) {
+                lineasIds.add(linea.getLineaId());
+            }
+        }
+        dto.setLineasIntegers(lineasIds);
         return dto;
     }
 
@@ -125,6 +131,7 @@ public class ParadasService {
         return entidad;
     }
 
+    // Elimina todas las asociaciones actuales y luego inserta las nuevas, evitando duplicados y referencias a líneas inexistentes.
     private void syncLineas(Integer paradaId, List<Integer> lineas) {
         _paradasRepository.deleteLineasByParadaId(paradaId);
 

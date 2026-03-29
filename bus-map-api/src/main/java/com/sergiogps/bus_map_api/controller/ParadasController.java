@@ -23,47 +23,47 @@ import com.sergiogps.bus_map_api.service.ParadasService;
 @RequestMapping("/api/paradas")
 public class ParadasController {
 
-    private final ParadasService _service;
+    private final ParadasService service;
 
     public ParadasController(ParadasService service) {
-        this._service = service;
+        this.service = service;
     }
 
     @GetMapping
     public List<Parada> all() {
-        return _service.findAll();
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Parada> byId(@PathVariable Integer id) {
-        return _service.findById(id)
+        return service.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public ResponseEntity<Parada> create(@RequestBody Parada body) {
-        Parada created = _service.create(body);
+        Parada created = service.create(body);
         URI location = Objects.requireNonNull(URI.create("/api/paradas/" + created.getId()));
         return ResponseEntity.created(location).body(created);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Parada> update(@PathVariable Integer id, @RequestBody Parada body) {
-        return _service.update(id, body)
+        return service.update(id, body)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        boolean deleted = _service.deleteById(id);
+        boolean deleted = service.deleteById(id);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
     @PostMapping("/import")
     public ResponseEntity<Map<String, Object>> importJson(@RequestBody List<Parada> paradas) {
-        int procesadas = _service.importParadas(paradas);
+        int procesadas = service.importParadas(paradas);
         Map<String, Object> response = new HashMap<>();
         Map<String, Object> data = new HashMap<>();
         data.put("processed", procesadas);

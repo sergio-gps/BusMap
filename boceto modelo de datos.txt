@@ -35,7 +35,7 @@ Table vehiculos_info {
 
 // --- Tablas Intermedias ---
 
-Table parada_linea {
+Table paradas_linea {
   parada_id int [ref: > paradas.parada_id]
   linea_id int [ref: > lineas.linea_id]
 

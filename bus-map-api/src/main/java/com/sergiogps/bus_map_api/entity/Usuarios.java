@@ -18,11 +18,11 @@ public class Usuarios {
     @Column(name = "usuario_id")
     private Integer usuarioId;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "username")
+    private String username;
 
     @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
     private Seguridad seguridad;

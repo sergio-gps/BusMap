@@ -14,8 +14,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                 description = "OpenAPI 3.0 definition for Bus Map API"
         ),
         servers = {
-                @Server(url = "http://localhost:8080", description = "Local"),
-                @Server(url = "https://olympia.jpramez.dev", description = "Prod")
+                @Server(url = "http://localhost:8080", description = "Local")
         }
 )
 public class OpenApiConfig {
