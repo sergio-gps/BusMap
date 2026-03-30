@@ -12,14 +12,22 @@ import com.sergiogps.bus_map_api.repository.RolesRepository;
 public class RolesService implements CrudService<Roles, Integer> {
     private final RolesRepository repo;
 
-    public RolesService(RolesRepository repo) { this.repo = repo; }
+    public RolesService(RolesRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
-    public List<Roles> findAll() { return repo.findAll(); }
+    public List<Roles> findAll() {
+        return repo.findAll();
+    }
 
     @Override
-    public Optional<Roles> findById(Integer id) { return repo.findById(id); }
+    public Optional<Roles> findById(Integer id) {
+        return repo.findById(id);
+    }
 
     @Override
-    public Roles create(Roles entity) { return repo.save(entity); }
+    public Roles create(Roles entity) {
+        return repo.save(entity);
+    }
 }

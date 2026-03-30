@@ -12,19 +12,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.sergiogps.bus_map_api.entity.Usuarios;
-import com.sergiogps.bus_map_api.entity.UsuariosRoles;
 import com.sergiogps.bus_map_api.repository.UsuariosRepository;
-import com.sergiogps.bus_map_api.repository.UsuariosRolesRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UsuariosRepository usuariosRepository;
-    private final UsuariosRolesRepository usuariosRolesRepository;
 
-    public CustomUserDetailsService(UsuariosRepository usuariosRepository, UsuariosRolesRepository usuariosRolesRepository) {
+    public CustomUserDetailsService(UsuariosRepository usuariosRepository) {
         this.usuariosRepository = usuariosRepository;
-        this.usuariosRolesRepository = usuariosRolesRepository;
     }
 
     @Override
@@ -33,9 +29,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             .or(() -> usuariosRepository.findByUsername(username))
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        List<UsuariosRoles> urs = usuariosRolesRepository.findByUsuarioUsuarioId(u.getUsuarioId());
-        List<GrantedAuthority> authorities = urs.stream()
-                .map(ur -> new SimpleGrantedAuthority("ROLE_" + ur.getRol().getRolName()))
+        List<GrantedAuthority> authorities = u.getRoles().stream()
+                .map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRolName()))
                 .collect(Collectors.toList());
 
         if (authorities.isEmpty()) {

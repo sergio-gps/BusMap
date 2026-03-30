@@ -17,14 +17,13 @@ import com.sergiogps.bus_map_api.dto.AuthRequest;
 import com.sergiogps.bus_map_api.dto.AuthResponse;
 import com.sergiogps.bus_map_api.dto.ChangePasswordRequestDTO;
 import com.sergiogps.bus_map_api.dto.ForgotPasswordRequestDTO;
+import com.sergiogps.bus_map_api.entity.Roles;
 import com.sergiogps.bus_map_api.entity.Seguridad;
 import com.sergiogps.bus_map_api.entity.Usuarios;
-import com.sergiogps.bus_map_api.entity.UsuariosRoles;
 import com.sergiogps.bus_map_api.security.JwtUtil;
 import com.sergiogps.bus_map_api.service.MailService;
 import com.sergiogps.bus_map_api.service.PasswordService;
 import com.sergiogps.bus_map_api.service.UsuariosService;
-import com.sergiogps.bus_map_api.service.UsuariosRolesService;
 
 @RestController
 @RequestMapping
@@ -36,21 +35,18 @@ public class AuthController {
     private final PasswordService passwordService;
     private final MailService mailService;
     private final UsuariosService usuariosService;
-    private final UsuariosRolesService usuariosRolesService;
 
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil,
             PasswordEncoder passwordEncoder,
             PasswordService passwordService,
             MailService mailService,
-            UsuariosService usuariosService,
-            UsuariosRolesService usuariosRolesService) {
+            UsuariosService usuariosService) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.passwordEncoder = passwordEncoder;
         this.passwordService = passwordService;
         this.mailService = mailService;
         this.usuariosService = usuariosService;
-        this.usuariosRolesService = usuariosRolesService;
     }
 
     @PostMapping("/login")
@@ -61,16 +57,16 @@ public class AuthController {
 
         try {
             authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
+                    .authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
 
             Usuarios usuario = usuariosService.findByEmailOrUsername(req.getEmail());
 
             // Obtener el rol del usuario, o "USUARIO" si no tiene ninguno
             String rol = "USUARIO";
             if (usuario != null) {
-                List<UsuariosRoles> usuariosRoles = usuariosRolesService.findByUsuarioId(usuario.getUsuarioId());
-                if (!usuariosRoles.isEmpty()) {
-                    rol = usuariosRoles.get(0).getRol().getRolName();
+                List<Roles> roles = usuario.getRoles();
+                if (!roles.isEmpty()) {
+                    rol = roles.get(0).getRolName();
                 }
             }
 
@@ -83,7 +79,8 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody AuthRequest req) {
-        if (req.getEmail() == null || req.getEmail().isBlank() || req.getPassword() == null || req.getPassword().isBlank()) {
+        if (req.getEmail() == null || req.getEmail().isBlank() || req.getPassword() == null
+                || req.getPassword().isBlank()) {
             return ResponseEntity.badRequest().body("Email and password are required");
         }
 

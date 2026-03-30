@@ -30,6 +30,11 @@ public class Lineas {
             joinColumns = @JoinColumn(name = "linea_id"), inverseJoinColumns = @JoinColumn(name = "parada_id"))
     private List<Paradas> paradas = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "lineas_buses", // Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "linea_id"), inverseJoinColumns = @JoinColumn(name = "vehiculo_id"))
+    private List<Vehiculos> vehiculos = new ArrayList<>();
+
     // Getters y Setters
     public Integer getLineaId() {
         return lineaId;
@@ -76,5 +81,13 @@ public class Lineas {
     }
     public void setParadas(List<Paradas> paradas) {
         this.paradas = paradas;
+    }
+
+    public List<Vehiculos> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(List<Vehiculos> vehiculos) {
+        this.vehiculos = vehiculos;
     }
 }

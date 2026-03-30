@@ -12,14 +12,22 @@ import com.sergiogps.bus_map_api.repository.PermisosRepository;
 public class PermisosService implements CrudService<Permisos, Integer> {
     private final PermisosRepository repo;
 
-    public PermisosService(PermisosRepository repo) { this.repo = repo; }
+    public PermisosService(PermisosRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
-    public List<Permisos> findAll() { return repo.findAll(); }
+    public List<Permisos> findAll() {
+        return repo.findAll();
+    }
 
     @Override
-    public Optional<Permisos> findById(Integer id) { return repo.findById(id); }
+    public Optional<Permisos> findById(Integer id) {
+        return repo.findById(id);
+    }
 
     @Override
-    public Permisos create(Permisos entity) { return repo.save(entity); }
+    public Permisos create(Permisos entity) {
+        return repo.save(entity);
+    }
 }

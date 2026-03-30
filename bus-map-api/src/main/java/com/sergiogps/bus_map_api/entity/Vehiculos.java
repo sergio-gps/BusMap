@@ -1,5 +1,8 @@
 package com.sergiogps.bus_map_api.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -9,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -25,8 +29,31 @@ public class Vehiculos {
     @JsonIgnore
     private TiposVehiculo tipo;
 
-    public Integer getVehiculoId() { return vehiculoId; }
-    public void setVehiculoId(Integer vehiculoId) { this.vehiculoId = vehiculoId; }
-    public TiposVehiculo getTipo() { return tipo; }
-    public void setTipo(TiposVehiculo tipo) { this.tipo = tipo; }
+    @ManyToMany(mappedBy = "vehiculos")
+    private List<Lineas> lineas = new ArrayList<>();
+
+    // Getters y Setters
+    public Integer getVehiculoId() {
+        return vehiculoId;
+    }
+
+    public void setVehiculoId(Integer vehiculoId) {
+        this.vehiculoId = vehiculoId;
+    }
+
+    public TiposVehiculo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TiposVehiculo tipo) {
+        this.tipo = tipo;
+    }
+
+    public List<Lineas> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(List<Lineas> lineas) {
+        this.lineas = lineas;
+    }
 }

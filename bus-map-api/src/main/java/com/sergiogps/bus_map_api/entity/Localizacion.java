@@ -36,22 +36,61 @@ public class Localizacion {
     @Column(name = "actualizado", nullable = false)
     private LocalDateTime actualizado;
 
-    public Integer getLocalizacionId() { return localizacionId; }
-    public void setLocalizacionId(Integer localizacionId) { this.localizacionId = localizacionId; }
+    public Integer getLocalizacionId() {
+        return localizacionId;
+    }
+
+    public void setLocalizacionId(Integer localizacionId) {
+        this.localizacionId = localizacionId;
+    }
 
     // Compatibilidad temporal con código legacy.
-    public Integer getId() { return localizacionId; }
-    public void setId(Integer id) { this.localizacionId = id; }
-    public Vehiculos getVehiculo() { return vehiculo; }
-    public void setVehiculo(Vehiculos vehiculo) { this.vehiculo = vehiculo; }
-    public Double getLatitud() { return latitud; }
-    public void setLatitud(Double latitud) { this.latitud = latitud; }
-    public Double getLongitud() { return longitud; }
-    public void setLongitud(Double longitud) { this.longitud = longitud; }
-    public LocalDateTime getActualizado() { return actualizado; }
-    public void setActualizado(LocalDateTime actualizado) { this.actualizado = actualizado; }
+    public Integer getId() {
+        return localizacionId;
+    }
+
+    public void setId(Integer id) {
+        this.localizacionId = id;
+    }
+
+    public Vehiculos getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculos vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
+
+    public LocalDateTime getActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(LocalDateTime actualizado) {
+        this.actualizado = actualizado;
+    }
 
     // Compatibilidad temporal con código legacy.
-    public LocalDateTime getUpdatedAt() { return actualizado; }
-    public void setUpdatedAt(LocalDateTime updatedAt) { this.actualizado = updatedAt; }
+    public LocalDateTime getUpdatedAt() {
+        return actualizado;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.actualizado = updatedAt;
+    }
 }
