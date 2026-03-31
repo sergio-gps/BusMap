@@ -29,7 +29,7 @@ public class Roles {
             joinColumns = @JoinColumn(name = "rol_id"), inverseJoinColumns = @JoinColumn(name = "permiso_id"))
     private List<Permisos> permisos = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "usuarios")
+    @ManyToMany(mappedBy = "roles")
     private List<Usuarios> usuarios = new ArrayList<>();
 
     // Getters and Setters

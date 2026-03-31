@@ -131,4 +131,20 @@ public class UsuariosService implements CrudService<Usuarios, Integer> {
         }
         return usuario; // El rol no estaba asignado, no se modifica el usuario
     }
+
+    /**
+     * Función para actualizar los datos del usuario logueado.
+     * 
+     * @param email el email del usuario logueado
+     * @param body  el objeto Usuarios con los datos a actualizar
+     * @return el usuario actualizado o null si no se encontró el usuario logueado
+     */
+    public Usuarios updateSessionUser(String email, Usuarios body) {
+        Usuarios sessionUser = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con email: " + email));
+
+        sessionUser.setUsername(body.getUsername());
+
+        return userRepository.save(sessionUser);
+    }
 }

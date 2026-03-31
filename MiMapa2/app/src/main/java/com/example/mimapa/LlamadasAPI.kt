@@ -123,17 +123,17 @@ object LlamadasAPI {
     }
 
 /**
-     * Inicia sesión de un usuario llamando a la API y devuelve el token JWT y el rol del usuario.
+     * Inicia sesión de un usuario llamando a la API y devuelve el token JWT y los roles del usuario.
      *
      * @param email El email del usuario.
      * @param password La contraseña del usuario.
-     * @return Un [LoginResult] con el token JWT y el rol si el login es exitoso, null en caso contrario.
+     * @return Un [LoginResult] con el token JWT y los roles si el login es exitoso, null en caso contrario.
      */
     suspend fun logIn(email: String, password: String): LoginResult? {
         Log.d("LlamadasAPI", "Intentando iniciar sesión con coroutines...")
         Log.d("LlamadasAPI", "Email: $email")
 
-        val json = Json.encodeToString(UserCredentials(username = email, password = password))
+        val json = Json.encodeToString(UserCredentials(email = email, password = password))
 
         val request = Request.Builder()
             .url("http://10.0.2.2:8080/login").header("Content-Type", "application/json")
@@ -165,7 +165,7 @@ object LlamadasAPI {
                             if (responseBody != null) {
                                 try {
                                     val tokenResponse = Json.decodeFromString<LoginResult>(responseBody)
-                                    Log.i("LlamadasAPI", "Login exitoso, token: ${tokenResponse.token}, rol: ${tokenResponse.role}")
+                                    Log.i("LlamadasAPI", "Login exitoso, token: ${tokenResponse.token}, roles: ${tokenResponse.role}")
                                     continuation.resume(tokenResponse)
                                 } catch (e: SerializationException) {
                                     Log.e("LlamadasAPI", "Error al decodificar la respuesta JSON de login: ${e.message}", e)

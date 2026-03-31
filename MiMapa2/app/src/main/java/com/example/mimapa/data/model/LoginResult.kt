@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class LoginResult(
     val token: String? = null,
     @SerialName("rol")
-    val role: String? = null
+    val role: List<String>? = null
 )

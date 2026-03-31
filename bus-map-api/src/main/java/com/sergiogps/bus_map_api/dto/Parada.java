@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sergiogps.bus_map_api.entity.Lineas;
-import com.sergiogps.bus_map_api.entity.Paradas;
 
 public class Parada {
     // Usamos @JsonProperty para mapear el campo "numero" del JSON a "id" en Java
@@ -64,30 +62,8 @@ public class Parada {
         return lineas;
     }
 
+    @JsonProperty("lineas")
     public void setLineasIntegers(List<Integer> lineas) {
         this.lineas = lineas == null ? new ArrayList<>() : new ArrayList<>(lineas);
-    }
-
-    /**
-     * Acepta una lista de entidades Paradas y extrae sus IDs de línea.
-     */
-    @JsonProperty("lineas")
-    public void setLineas(List<Paradas> paradasRaw) {
-        this.lineas = new ArrayList<>();
-        if (paradasRaw == null) {
-            return;
-        }
-
-        for (Paradas parada : paradasRaw) {
-            if (parada == null || parada.getLineas() == null) {
-                continue;
-            }
-
-            for (Lineas linea : parada.getLineas()) {
-                if (linea != null && linea.getLineaId() != null) {
-                    this.lineas.add(linea.getLineaId());
-                }
-            }
-        }
     }
 }

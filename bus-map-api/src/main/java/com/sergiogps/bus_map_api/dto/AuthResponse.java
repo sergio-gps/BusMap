@@ -1,8 +1,10 @@
 package com.sergiogps.bus_map_api.dto;
 
+import java.util.List;
+
 public class AuthResponse {
     private String token;
-    private String rol;
+    private List<String> rol;
     
     public AuthResponse() {}
     
@@ -10,7 +12,7 @@ public class AuthResponse {
         this.token = token; 
     }
     
-    public AuthResponse(String token, String rol) { 
+    public AuthResponse(String token, List<String> rol) { 
         this.token = token;
         this.rol = rol;
     }
@@ -19,15 +21,8 @@ public class AuthResponse {
         return token; 
     }
     
-    public void setToken(String token) { 
-        this.token = token; 
-    }
-    
-    public String getRol() { 
+    public List<String> getRol() { 
         return rol; 
     }
     
-    public void setRol(String rol) { 
-        this.rol = rol; 
-    }
 }

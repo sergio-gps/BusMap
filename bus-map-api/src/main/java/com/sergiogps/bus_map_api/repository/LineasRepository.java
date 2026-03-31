@@ -12,11 +12,11 @@ import com.sergiogps.bus_map_api.entity.Paradas;
 
 public interface LineasRepository extends JpaRepository<Lineas, Integer> {
 
-    Optional<Lineas> findById(String lineasId);
+    Optional<Lineas> findByLineaId(Integer lineasId);
 
-    Optional<Lineas> findByNombreLinea(String nombreLinea);
+    Optional<Lineas> findByNombre(String nombreLinea);
 
-    List<Lineas> findByNombreLineaContainingIgnoreCase(String nombreParcial);
+    List<Lineas> findByNombreContainingIgnoreCase(String nombreParcial);
 
     @Query("SELECT p FROM Lineas l JOIN l.paradas p WHERE l.id = :lineaId")
     List<Paradas> findParadasByLineaId(

@@ -109,15 +109,15 @@ fun ManageUsersScreen(navController: NavController) {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(userList) { user ->
+                /*items(userList) { user ->
                     UserRow(user = user)
-                }
+                }*/
             }
         }
     }
 }
 
-@Composable
+/*@Composable
 fun UserRow(user: User) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -150,4 +150,4 @@ fun UserRow(user: User) {
             )
         }
     }
-}
+}*/

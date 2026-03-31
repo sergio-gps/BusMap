@@ -1011,6 +1011,210 @@
 			]
 		},
 		{
+			"name": "Paradas",
+			"item": [
+				{
+					"name": "GET /api/paradas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/paradas",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/paradas/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/paradas/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"paradas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/paradas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"linea\": \"2\",\n  \"linea_int\": 2,\n  \"sentido\": \"Ida\",\n  \"sentido_int\": 1,\n  \"parada\": 1001,\n  \"nombre\": \"Atocha\",\n  \"latitud\": 40.4066,\n  \"longitud\": -3.6892,\n  \"orden\": 1\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/paradas",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /api/paradas/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"linea\": \"2\",\n  \"linea_int\": 2,\n  \"sentido\": \"Ida\",\n  \"sentido_int\": 1,\n  \"parada\": 1001,\n  \"nombre\": \"Atocha Renfe\",\n  \"latitud\": 40.4066,\n  \"longitud\": -3.6892,\n  \"orden\": 1\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/paradas/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"paradas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /api/paradas/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/paradas/1",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"paradas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/paradas/import",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"linea\": \"2\",\n    \"linea_int\": 2,\n    \"sentido\": \"Ida\",\n    \"sentido_int\": 1,\n    \"parada\": 1001,\n    \"nombre\": \"Atocha\",\n    \"latitud\": 40.4066,\n    \"longitud\": -3.6892,\n    \"orden\": 1\n  },\n  {\n    \"linea\": \"2\",\n    \"linea_int\": 2,\n    \"sentido\": \"Ida\",\n    \"sentido_int\": 1,\n    \"parada\": 1002,\n    \"nombre\": \"Museo del Prado\",\n    \"latitud\": 40.4138,\n    \"longitud\": -3.6921,\n    \"orden\": 2\n  }\n]"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/paradas/import",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"paradas",
+								"import"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CalcularLineas",
+			"item": [
+				{
+					"name": "POST /api/calcular-lineas/ruta-avanzada",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"latOrigen\": 40.4168,\n  \"lonOrigen\": -3.7038,\n  \"latDestino\": 40.4396,\n  \"lonDestino\": -3.6906\n}"
+						},
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/calcular-lineas/ruta-avanzada",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"calcular-lineas",
+								"ruta-avanzada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/calcular-lineas/ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/calcular-lineas/ping",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"port": "{{API_PORT}}",
+							"path": [
+								"{{API_URL}}",
+								"calcular-lineas",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Auth",
 			"item": [
 				{
@@ -1025,7 +1229,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"jdoe\",\n  \"password\": \"secret\"\n}"
+							"raw": "{\n  \"email\": \"jdoe\",\n  \"password\": \"secret\"\n}"
 						},
 						"url": {
 							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/login",
@@ -1076,7 +1280,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"newuser\",\n  \"password\": \"newpass\"\n}"
+							"raw": "{\n  \"email\": \"newuser@example.com\",\n  \"password\": \"newpass\"\n}"
 						},
 						"url": {
 							"raw": "{{API_HOST}}:{{API_PORT}}/{{API_URL}}/register",

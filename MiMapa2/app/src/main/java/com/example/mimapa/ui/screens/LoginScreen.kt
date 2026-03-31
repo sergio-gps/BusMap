@@ -127,10 +127,10 @@ fun LoginScreen(navController: NavController) {
 
                                 sessionManager.saveAuthToken(context, jwt!!.token ?: "", email.value)
 
-                                val role = jwt!!.role
-                                Log.d("LoginScreen", "Rol del usuario: $role")
+                                val roles = jwt!!.role
+                                Log.d("LoginScreen", "Roles del usuario: $roles")
 
-                                if (email.value == "spg147@inlumine.ual.es") {
+                                if (roles?.contains("ADMIN") == true) {
                                     Log.d("LoginScreen", "Usuario admin detectado")
                                     navController.toAdminDashboard() // Si tienes pantalla diferente
                                 } else {
