@@ -1,5 +1,7 @@
 package com.sergiogps.bus_map_api.config;
 
+import java.util.Objects;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -56,7 +58,7 @@ public class DataInitializer {
                 Long max = jdbcTemplate.queryForObject("SELECT COALESCE(MAX(rol_id),0) FROM roles", Long.class);
                 // set sequence to max(rol_id) so next nextval() will be > max
                 String sql = String.format("SELECT setval('%s', %d)", seq, max != null ? max : 0L);
-                jdbcTemplate.execute(sql);
+                jdbcTemplate.execute(Objects.requireNonNull(sql, "sql no puede ser null"));
                 log.info("Synchronized sequence {} to value {}", seq, max);
             } else {
                 log.warn("No sequence found for roles.rol_id; skipping sequence sync");

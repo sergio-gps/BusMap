@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sergiogps.bus_map_api.dto.AddRoleRequestDTO;
+import com.sergiogps.bus_map_api.dto.RoleRequestDTO;
 import com.sergiogps.bus_map_api.entity.Usuarios;
 import com.sergiogps.bus_map_api.service.UsuariosService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -43,8 +43,14 @@ public class UsuariosController {
         return ResponseEntity.created(URI.create("/api/usuarios/" + created.getUsuarioId())).body(created);
     }
 
-    @PostMapping("/roles")
-    public ResponseEntity<?> addRoleToUser(@RequestBody AddRoleRequestDTO request) {
+    /**
+     * Endpoint para agregar un rol a un usuario
+     * 
+     * @param request objeto que contiene el userId y el rol a agregar
+     * @return ResponseEntity con el usuario actualizado o un mensaje de error si no se pudo agregar el rol
+     */
+    @PostMapping("/roles/add")
+    public ResponseEntity<?> addRoleToUser(@RequestBody RoleRequestDTO request) {
         if (request.userId() == null || request.rol() == null || request.rol().isBlank()) {
             return ResponseEntity.badRequest().body("userId y rol son obligatorios");
         }
@@ -57,6 +63,32 @@ public class UsuariosController {
         }
     }
 
+    /**
+     * Endpoint para eliminar un rol de un usuario
+     * 
+     * @param request objeto que contiene el userId y el rol a eliminar
+     * @return ResponseEntity con el usuario actualizado o un mensaje de error si no se pudo eliminar el rol
+     */
+    @PostMapping("/roles/remove")
+    public ResponseEntity<?> removeRoleFromUser(@RequestBody RoleRequestDTO request) {
+        if (request.userId() == null || request.rol() == null || request.rol().isBlank()) {
+            return ResponseEntity.badRequest().body("userId y rol son obligatorios");
+        }
+
+        try {
+            Usuarios updated = service.removeRoleFromUser(request.userId(), request.rol());
+            return ResponseEntity.ok(updated);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
+    /**
+     * Endpoint para actualizar los datos del usuario logueado
+     * 
+     * @param body los datos actualizados del usuario
+     * @return ResponseEntity con el usuario actualizado
+     */
     @PutMapping("/me")
     public ResponseEntity<Usuarios> updateUsuario(@RequestBody Usuarios body) {
         // Obtiene el usuario logueado
@@ -67,6 +99,11 @@ public class UsuariosController {
         return ResponseEntity.ok(service.updateSessionUser(currentPrincipalName, body));
     }
 
+    /**
+     * Endpoint para obtener los datos del usuario logueado
+     * 
+     * @return  ResponseEntity con los datos del usuario logueado
+     */
     @GetMapping("/me")
     public ResponseEntity<Usuarios> getUsuario() {
         // Obtiene el usuario logueado

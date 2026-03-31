@@ -2,7 +2,6 @@ package com.sergiogps.bus_map_api.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

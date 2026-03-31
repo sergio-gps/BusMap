@@ -20,17 +20,34 @@ public class UsuariosService implements CrudService<Usuarios, Integer> {
         this.rolesRepository = rolesRepo;
     }
 
+    /**
+     * Busca todos los usuarios
+     * 
+     * @return la lista de usuarios
+     */
     @Override
     public List<Usuarios> findAll() {
         return userRepository.findAll();
     }
 
+    /**
+     * Busca un usuario por su id
+     * 
+     * @param id el id del usuario
+     * @return el usuario encontrado o null si no existe
+    */
     @Override
     public Optional<Usuarios> findById(Integer id) {
         Integer userId = Objects.requireNonNull(id, "id no puede ser null");
         return userRepository.findById(userId);
     }
 
+    /**
+     * Crea un nuevo usuario
+     * 
+     * @param entity el usuario a crear
+     * @return el usuario creado
+     */
     @Override
     public Usuarios create(Usuarios entity) {
         Usuarios usuario = Objects.requireNonNull(entity, "entity no puede ser null");
@@ -101,7 +118,7 @@ public class UsuariosService implements CrudService<Usuarios, Integer> {
      * @return el usuario actualizado con el nuevo rol
      */
     public Usuarios addRoleToUser(Integer userId, String rol) {
-        Usuarios usuario = userRepository.findById(userId)
+        Usuarios usuario = userRepository.findById(Objects.requireNonNull(userId, "userId no puede ser null"))
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + userId));
         boolean rolExists = usuario.getRoles().stream().anyMatch(role -> role.getRolName().equals(rol));
 
@@ -121,7 +138,7 @@ public class UsuariosService implements CrudService<Usuarios, Integer> {
      * @return el usuario actualizado sin el rol
      */
     public Usuarios removeRoleFromUser(Integer userId, String rol) {
-        Usuarios usuario = userRepository.findById(userId)
+        Usuarios usuario = userRepository.findById(Objects.requireNonNull(userId, "userId no puede ser null"))
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + userId));
         boolean rolExists = usuario.getRoles().stream().anyMatch(role -> role.getRolName().equals(rol));
 
