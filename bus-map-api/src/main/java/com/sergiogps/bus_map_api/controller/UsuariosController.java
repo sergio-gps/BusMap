@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -112,5 +113,37 @@ public class UsuariosController {
         String currentPrincipalName = authentication.getName();
 
         return ResponseEntity.ok(service.findByEmail(currentPrincipalName));
+    }
+
+    /**
+     * Endpoint para actualizar un usuario por su id
+     * 
+     * @param id el id del usuario a actualizar
+     * @param body los datos actualizados del usuario
+     * @return ResponseEntity con el usuario actualizado o 404 si no se encuentra
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuarios> updateUsuarioById(@PathVariable Integer id, @RequestBody Usuarios body) {
+        if (!service.findById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        body.setUsuarioId(id);
+        Usuarios updated = service.update(body);
+        return ResponseEntity.ok(updated);
+    }
+
+    /**
+     * Endpoint para eliminar un usuario por su id
+     * 
+     * @param id el id del usuario a eliminar
+     * @return ResponseEntity con estado 204 No Content si se eliminó correctamente, o 404 si no se encuentra
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUsuario(@PathVariable Integer id) {
+        if (!service.findById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

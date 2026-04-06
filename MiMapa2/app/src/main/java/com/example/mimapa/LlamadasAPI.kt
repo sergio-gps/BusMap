@@ -4,11 +4,16 @@ import android.content.Context
 import android.util.Log
 import com.example.mimapa.BuildConfig.MAPS_API_KEY
 import com.example.mimapa.data.model.Email
+import com.example.mimapa.data.model.Linea
 import com.example.mimapa.data.model.LoginResult
 import com.example.mimapa.data.model.Parada
 import com.example.mimapa.data.model.Passwords
+import com.example.mimapa.data.model.TipoVehiculo
 import com.example.mimapa.data.model.Token
 import com.example.mimapa.data.model.UserCredentials
+import com.example.mimapa.data.model.Usuario
+import com.example.mimapa.data.model.VehiculoAdmin
+import com.example.mimapa.data.model.VehiculoAdminRequest
 import com.example.mimapa.util.GenerateRoute
 import com.example.mimapa.util.SecureSessionManager
 import com.google.android.gms.maps.model.LatLng
@@ -31,6 +36,9 @@ object LlamadasAPI {
     private val client = OkHttpClient()
     private val json = Json { ignoreUnknownKeys = true }
 
+    private const val BASE_URL = "http://10.0.2.2:8080"
+    private const val API_BASE_URL = "$BASE_URL/api"
+
     /**
      * Registro de un usuario e imprime un mensaje en la consola.
      *
@@ -42,7 +50,6 @@ object LlamadasAPI {
     suspend fun signUp(email: String, password: String, password2: String): String? {
         Log.d("LlamadasAPI", "Intentando registrar usuario...")
         Log.d("LlamadasAPI", "Email: $email")
-        //Log.d("LlamadasAPI", "Password: $password")
 
         val contrasenasCoinciden = password == password2
         val passwordRegex = Regex("^(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$")
@@ -54,10 +61,8 @@ object LlamadasAPI {
         if (esPasswordValido && contrasenasCoinciden) {
             val json = Json.encodeToString(UserCredentials(email, password))
 
-            //http://olympia.jpramez.dev:8080/register
-            //http://10.0.2.2:8080/register
             val request = Request.Builder()
-                .url("http://10.0.2.2:8080/register").header("Content-Type", "application/json")
+                .url("$BASE_URL/register").header("Content-Type", "application/json")
                 .post(json.toRequestBody("application/json".toMediaTypeOrNull()))
                 .build()
 
@@ -122,7 +127,7 @@ object LlamadasAPI {
         return null
     }
 
-/**
+    /**
      * Inicia sesión de un usuario llamando a la API y devuelve el token JWT y los roles del usuario.
      *
      * @param email El email del usuario.
@@ -136,7 +141,7 @@ object LlamadasAPI {
         val json = Json.encodeToString(UserCredentials(email = email, password = password))
 
         val request = Request.Builder()
-            .url("http://10.0.2.2:8080/login").header("Content-Type", "application/json")
+            .url("$BASE_URL/login").header("Content-Type", "application/json")
             .post(json.toRequestBody("application/json".toMediaTypeOrNull()))
             .build()
 
@@ -213,10 +218,8 @@ object LlamadasAPI {
             newPassword = newPassword)
         )
 
-        //http://olympia.jpramez.dev:8080/
-        //http://10.0.2.2:8080/
         val request = Request.Builder()
-            .url("http://10.0.2.2:8080/change-password").header("Content-Type", "application/json")
+            .url("$BASE_URL/change-password").header("Content-Type", "application/json")
             .header("Authorization", "Bearer " + SecureSessionManager.getAuthToken(context))
             .post(json.toRequestBody("application/json".toMediaTypeOrNull()))
             .build()
@@ -280,10 +283,8 @@ object LlamadasAPI {
     suspend fun forgotPassword(email: String): String? {
         val json = Json.encodeToString(value = Email(email = email))
 
-        //http://olympia.jpramez.dev:8080/
-        //http://10.0.2.2:8080/
         val request = Request.Builder()
-            .url("http://10.0.2.2:8080/forgot-password").header("Content-Type", "application/json")
+            .url("$BASE_URL/forgot-password").header("Content-Type", "application/json")
             .post(json.toRequestBody("application/json".toMediaTypeOrNull()))
             .build()
 
@@ -344,6 +345,13 @@ object LlamadasAPI {
         }
     }
 
+    /**
+     * Construye un Request.Builder autorizado con el token JWT.
+     *
+     * @param url La URL del endpoint a llamar.
+     * @param context El contexto de la aplicación para obtener el token.
+     * @return Un Request.Builder configurado con headers de autenticación.
+     */
     private fun authorizedRequestBuilder(url: String, context: Context): Request.Builder {
         val token = SecureSessionManager.getAuthToken(context)
         return Request.Builder()
@@ -356,8 +364,14 @@ object LlamadasAPI {
             }
     }
 
+    /**
+     * Obtiene la lista de todas las paradas del sistema.
+     *
+     * @param context El contexto de la aplicación.
+     * @return Una lista de paradas, o lista vacía si hay error.
+     */
     suspend fun getParadas(context: Context): List<Parada> {
-        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas", context)
+        val request = authorizedRequestBuilder("$API_BASE_URL/paradas", context)
             .get()
             .build()
 
@@ -399,13 +413,18 @@ object LlamadasAPI {
         }
     }
 
+    /**
+     * Crea una nueva parada en el sistema.
+     *
+     * @param parada El objeto Parada con los datos de la nueva parada.
+     * @param context El contexto de la aplicación.
+     * @return true si la creación fue exitosa, false en caso contrario.
+     */
     suspend fun createParada(parada: Parada, context: Context): Boolean {
         val requestBody = Json.encodeToString(parada)
             .toRequestBody("application/json".toMediaTypeOrNull())
 
-        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas", context)
-            .post(requestBody)
-            .build()
+        val request = authorizedRequestBuilder("$API_BASE_URL/paradas", context).post(requestBody).build()
 
         return suspendCancellableCoroutine { continuation ->
             val call = client.newCall(request)
@@ -433,11 +452,19 @@ object LlamadasAPI {
         }
     }
 
+    /**
+     * Actualiza los datos de una parada existente.
+     *
+     * @param paradaId El ID de la parada a actualizar.
+     * @param parada El objeto Parada con los datos actualizados.
+     * @param context El contexto de la aplicación.
+     * @return true si la actualización fue exitosa, false en caso contrario.
+     */
     suspend fun updateParada(paradaId: Int, parada: Parada, context: Context): Boolean {
         val requestBody = Json.encodeToString(parada)
             .toRequestBody("application/json".toMediaTypeOrNull())
 
-        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas/$paradaId", context)
+        val request = authorizedRequestBuilder("$API_BASE_URL/paradas/$paradaId", context)
             .put(requestBody)
             .build()
 
@@ -467,8 +494,15 @@ object LlamadasAPI {
         }
     }
 
+    /**
+     * Elimina una parada del sistema.
+     *
+     * @param paradaId El ID de la parada a eliminar.
+     * @param context El contexto de la aplicación.
+     * @return true si la eliminación fue exitosa, false en caso contrario.
+     */
     suspend fun deleteParada(paradaId: Int, context: Context): Boolean {
-        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas/$paradaId", context)
+        val request = authorizedRequestBuilder("$API_BASE_URL/paradas/$paradaId", context)
             .delete()
             .build()
 
@@ -498,10 +532,17 @@ object LlamadasAPI {
         }
     }
 
+    /**
+     * Importa un listado de paradas desde un archivo JSON.
+     *
+     * @param rawJson El contenido JSON con las paradas a importar.
+     * @param context El contexto de la aplicación.
+     * @return true si la importación fue exitosa, false en caso contrario.
+     */
     suspend fun importParadasJson(rawJson: String, context: Context): Boolean {
         val requestBody = rawJson.toRequestBody("application/json".toMediaTypeOrNull())
 
-        val request = authorizedRequestBuilder("http://10.0.2.2:8080/api/paradas/import", context)
+        val request = authorizedRequestBuilder("$API_BASE_URL/paradas/import", context)
             .post(requestBody)
             .build()
 
@@ -594,6 +635,679 @@ object LlamadasAPI {
                     call.cancel()
                 } catch (ex: Throwable) {
                     // Ignorar
+                }
+            }
+        }
+    }
+
+    /**
+     * Obtiene la lista de todas las líneas del sistema.
+     *
+     * @param context El contexto de la aplicación.
+     * @return Una lista de líneas, o lista vacía si hay error.
+     */
+    suspend fun getLineas(context: Context): List<Linea> {
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en getLineas", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            Log.w("LlamadasAPI", "Error en getLineas: $it")
+                            continuation.resume(emptyList())
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<List<Linea>>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando listado de lineas", e)
+                            continuation.resume(emptyList())
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Crea una nueva línea en el sistema.
+     *
+     * @param linea El objeto Linea con los datos de la nueva línea.
+     * @param context El contexto de la aplicación.
+     * @return El objeto Linea creado, o null si hay error.
+     */
+    suspend fun createLinea(linea: Linea, context: Context): Linea? {
+        val requestBody = Json.encodeToString(linea)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas", context)
+            .post(requestBody)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en createLinea", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(null)
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<Linea>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando linea creada", e)
+                            continuation.resume(null)
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Actualiza los datos de una línea existente.
+     *
+     * @param lineaId El ID de la línea a actualizar.
+     * @param linea El objeto Linea con los datos actualizados.
+     * @param context El contexto de la aplicación.
+     * @return El objeto Linea actualizado, o null si hay error.
+     */
+    suspend fun updateLinea(lineaId: Int, linea: Linea, context: Context): Linea? {
+        val requestBody = Json.encodeToString(linea)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas/$lineaId", context)
+            .put(requestBody)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en updateLinea", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(null)
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<Linea>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando linea actualizada", e)
+                            continuation.resume(null)
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Elimina una línea del sistema.
+     *
+     * @param lineaId El ID de la línea a eliminar.
+     * @param context El contexto de la aplicación.
+     * @return true si la eliminación fue exitosa, false en caso contrario.
+     */
+    suspend fun deleteLinea(lineaId: Int, context: Context): Boolean {
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas/$lineaId", context)
+            .delete()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en deleteLinea", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use { continuation.resume(it.isSuccessful) }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Añade una parada a una línea existente.
+     *
+     * @param lineaId El ID de la línea.
+     * @param paradaId El ID de la parada a añadir.
+     * @param context El contexto de la aplicación.
+     * @return true si la operación fue exitosa, false en caso contrario.
+     */
+    suspend fun addParadaToLinea(lineaId: Int, paradaId: Int, context: Context): Boolean {
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas/$lineaId/paradas/$paradaId", context)
+            .post("".toRequestBody("application/json".toMediaTypeOrNull()))
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en addParadaToLinea", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Elimina una parada de una línea existente.
+     *
+     * @param lineaId El ID de la línea.
+     * @param paradaId El ID de la parada a eliminar.
+     * @param context El contexto de la aplicación.
+     * @return true si la operación fue exitosa, false en caso contrario.
+     */
+    suspend fun removeParadaFromLinea(lineaId: Int, paradaId: Int, context: Context): Boolean {
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas/$lineaId/paradas/$paradaId", context)
+            .delete()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en removeParadaFromLinea", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Obtiene la lista de todos los vehículos enriquecidos para gestión admin.
+     */
+    suspend fun getVehiculos(context: Context): List<VehiculoAdmin> {
+        val request = authorizedRequestBuilder("$API_BASE_URL/vehiculos", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en getVehiculos", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(emptyList())
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<List<VehiculoAdmin>>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando listado de vehiculos", e)
+                            continuation.resume(emptyList())
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Busca vehículos por texto libre en backend.
+     */
+    suspend fun searchVehiculos(query: String, context: Context): List<VehiculoAdmin> {
+        val encodedQuery = java.net.URLEncoder.encode(query, Charsets.UTF_8)
+        val request = authorizedRequestBuilder("$API_BASE_URL/vehiculos?query=$encodedQuery", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en searchVehiculos", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(emptyList())
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<List<VehiculoAdmin>>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando busqueda de vehiculos", e)
+                            continuation.resume(emptyList())
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Crea un vehículo con su tipo e info.
+     */
+    suspend fun createVehiculo(requestBody: VehiculoAdminRequest, context: Context): VehiculoAdmin? {
+        val body = Json.encodeToString(requestBody)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("$API_BASE_URL/vehiculos", context)
+            .post(body)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en createVehiculo", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(null)
+                            return
+                        }
+
+                        val bodyResponse = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<VehiculoAdmin>(bodyResponse))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando vehiculo creado", e)
+                            continuation.resume(null)
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Actualiza un vehículo con su tipo e info.
+     */
+    suspend fun updateVehiculo(vehiculoId: Int, requestBody: VehiculoAdminRequest, context: Context): VehiculoAdmin? {
+        val body = Json.encodeToString(requestBody)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("$API_BASE_URL/vehiculos/$vehiculoId", context)
+            .put(body)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en updateVehiculo", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(null)
+                            return
+                        }
+
+                        val bodyResponse = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<VehiculoAdmin>(bodyResponse))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando vehiculo actualizado", e)
+                            continuation.resume(null)
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Elimina un vehículo y su info asociada.
+     */
+    suspend fun deleteVehiculo(vehiculoId: Int, context: Context): Boolean {
+        val request = authorizedRequestBuilder("$API_BASE_URL/vehiculos/$vehiculoId", context)
+            .delete()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en deleteVehiculo", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use { continuation.resume(it.isSuccessful) }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Obtiene los tipos de vehículo disponibles para selección.
+     */
+    suspend fun getTiposVehiculo(context: Context): List<TipoVehiculo> {
+        val request = authorizedRequestBuilder("$API_BASE_URL/tipos-vehiculo", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en getTiposVehiculo", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            continuation.resume(emptyList())
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<List<TipoVehiculo>>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando tipos de vehiculo", e)
+                            continuation.resume(emptyList())
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Obtiene la lista de todos los usuarios del sistema.
+     *
+     * @param context El contexto de la aplicación
+     * @return Una lista de usuarios, o lista vacía si hay error
+     */
+    suspend fun getUsuarios(context: Context): List<Usuario> {
+        val request = authorizedRequestBuilder("$API_BASE_URL/usuarios", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en getUsuarios", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            Log.w("LlamadasAPI", "Error en getUsuarios: $it")
+                            continuation.resume(emptyList())
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            Log.d("LlamadasAPI", "JSON recibido de usuarios: $body")
+                            continuation.resume(json.decodeFromString<List<Usuario>>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando listado de usuarios", e)
+                            Log.e("LlamadasAPI", "JSON recibido: $body", e)
+                            continuation.resume(emptyList())
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Actualiza los datos de un usuario existente.
+     *
+     * @param usuarioId El ID del usuario a actualizar
+     * @param usuario El objeto Usuario con los datos actualizados
+     * @param context El contexto de la aplicación
+     * @return true si la actualización fue exitosa, false en caso contrario
+     */
+    suspend fun updateUsuario(usuarioId: Int, usuario: Usuario, context: Context): Boolean {
+        val requestBody = Json.encodeToString(usuario)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+
+        val request = authorizedRequestBuilder("$API_BASE_URL/usuarios/$usuarioId", context)
+            .put(requestBody)
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en updateUsuario", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (it.isSuccessful) {
+                            Log.i("LlamadasAPI", "Usuario actualizado exitosamente")
+                        } else {
+                            Log.w("LlamadasAPI", "Error al actualizar usuario: $it")
+                        }
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
+    /**
+     * Elimina un usuario del sistema.
+     *
+     * @param usuarioId El ID del usuario a eliminar
+     * @param context El contexto de la aplicación
+     * @return true si la eliminación fue exitosa, false en caso contrario
+     */
+    suspend fun deleteUsuario(usuarioId: Int, context: Context): Boolean {
+        val request = authorizedRequestBuilder("$API_BASE_URL/usuarios/$usuarioId", context)
+            .delete()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en deleteUsuario", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (it.isSuccessful) {
+                            Log.i("LlamadasAPI", "Usuario eliminado exitosamente")
+                        } else {
+                            Log.w("LlamadasAPI", "Error al eliminar usuario: $it")
+                        }
+                        continuation.resume(it.isSuccessful)
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
                 }
             }
         }
