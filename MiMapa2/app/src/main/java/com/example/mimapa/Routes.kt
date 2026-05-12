@@ -94,5 +94,9 @@ sealed class Routes(val route: String) {
         data object GenerateAlternativeRoute : Routes("${AdminRoute.route}/generateAlternativeRoute") {
             fun NavController.toGenerateAlternativeRoute() = navigate("${AdminRoute.route}/generateAlternativeRoute")
         }
+
+        data object ManageVehicles : Routes("${AdminRoute.route}/manageVehicles") {
+            fun NavController.toManageVehicles() = navigate("${AdminRoute.route}/manageVehicles")
+        }
     }
 }

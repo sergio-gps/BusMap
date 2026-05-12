@@ -2,7 +2,6 @@ package com.example.mimapa.util
 
 import android.content.Context
 import android.util.Log
-import com.example.mimapa.R
 import com.example.mimapa.data.model.ParadasLinea
 import kotlinx.serialization.json.Json
 import java.io.InputStream
@@ -13,7 +12,9 @@ object ParadasLineaParser {
     /**
      * Lee el fichero paradas.json y devuelve una lista de objetos Parada.
      * Si ocurre un error, devuelve una lista vacía.
+     *
      * @param context Contexto de la aplicación
+     * @param id Identificador del fichero de datos
      * @return Lista de objetos Parada
      */
     fun parseParadasLinea(context: Context, id: Int): List<ParadasLinea> {

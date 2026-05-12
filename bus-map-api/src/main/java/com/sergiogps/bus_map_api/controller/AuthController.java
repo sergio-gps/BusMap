@@ -25,8 +25,16 @@ import com.sergiogps.bus_map_api.service.MailService;
 import com.sergiogps.bus_map_api.service.PasswordService;
 import com.sergiogps.bus_map_api.service.UsuariosService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping
+@Tag(name = "Autenticación", description = "Endpoints para autenticación, registro y gestión de contraseñas")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -50,6 +58,16 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @Operation(
+            summary = "Iniciar sesión",
+            description = "Autentica un usuario con email y contraseña, retorna un token JWT"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Login exitoso",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Email o contraseña requeridos"),
+            @ApiResponse(responseCode = "401", description = "Credenciales inválidas")
+    })
     public ResponseEntity<?> login(@RequestBody AuthRequest req) {
         if (req.getEmail() == null || req.getEmail().isBlank() || req.getPassword() == null) {
             return ResponseEntity.badRequest().body("Email and password are required");
@@ -78,6 +96,15 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @Operation(
+            summary = "Registrar nuevo usuario",
+            description = "Crea un nuevo usuario con email y contraseña, retorna un token JWT"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Registro exitoso",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Email y contraseña requeridos o email ya existe")
+    })
     public ResponseEntity<?> register(@RequestBody AuthRequest req) {
         if (req.getEmail() == null || req.getEmail().isBlank() || req.getPassword() == null
                 || req.getPassword().isBlank()) {
@@ -106,6 +133,15 @@ public class AuthController {
     }
 
     @PostMapping("/refresh-token")
+    @Operation(
+            summary = "Refrescar token JWT",
+            description = "Valida y genera un nuevo token JWT a partir de uno existente"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Token refrescado exitosamente",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Token inválido")
+    })
     public ResponseEntity<?> refresh(@RequestBody AuthResponse req) {
         String token = req.getToken();
         if (token == null || !jwtUtil.validateToken(token)) {
@@ -117,6 +153,15 @@ public class AuthController {
     }
 
     @PostMapping("/forgot-password")
+    @Operation(
+            summary = "Recuperar contraseña olvidada",
+            description = "Genera una nueva contraseña temporal y la envía al email del usuario"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Proceso de recuperación iniciado"),
+            @ApiResponse(responseCode = "400", description = "Email es requerido"),
+            @ApiResponse(responseCode = "500", description = "Error al procesar recuperación de contraseña")
+    })
     public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordRequestDTO req) {
         // Validate email is provided
         if (req.getEmail() == null || req.getEmail().trim().isEmpty()) {
@@ -155,6 +200,16 @@ public class AuthController {
     }
 
     @PostMapping("change-password")
+    @Operation(
+            summary = "Cambiar contraseña",
+            description = "Cambia la contraseña del usuario actualmente autenticado. Requiere autenticación JWT"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Contraseña cambiada exitosamente"),
+            @ApiResponse(responseCode = "400", description = "Contraseñas antigua y nueva son requeridas"),
+            @ApiResponse(responseCode = "401", description = "Contraseña antigua es incorrecta"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
+    })
     public ResponseEntity<?> changePassword(@RequestBody ChangePasswordRequestDTO req) {
         // Validate request
         if (req.currentPassword() == null || req.newPassword() == null) {

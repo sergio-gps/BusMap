@@ -29,5 +29,17 @@ class GenerateAlternativeRouteViewModel : ViewModel() {
     fun setWaypoint(index: Int, place: Pair<String, LatLng>) {
         waypointDisplayList[index] = place
     }
+
+    // --- ESTADO PARA DepartureTime ---
+    var isDepartureTimeEnabled by mutableStateOf(false)
+    var departureDateMillis by mutableStateOf<Long?>(null)
+    var departureHour by mutableStateOf<Int?>(null)
+    var departureMinute by mutableStateOf<Int?>(null)
+
+    // --- ESTADO PARA ArrivalTime ---
+    var isArrivalTimeEnabled by mutableStateOf(false)
+    var arrivalDateMillis by mutableStateOf<Long?>(null)
+    var arrivalHour by mutableStateOf<Int?>(null)
+    var arrivalMinute by mutableStateOf<Int?>(null)
 }
 

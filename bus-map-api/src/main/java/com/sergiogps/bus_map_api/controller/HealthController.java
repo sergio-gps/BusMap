@@ -9,8 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sergiogps.bus_map_api.dto.HealthDto;
 import com.sergiogps.bus_map_api.service.HealthService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/health")
+@Tag(name = "Salud de la API", description = "Endpoints para monitoreo y verificación de la salud de la API")
 public class HealthController {
 
     private final HealthService healthService;
@@ -24,6 +32,17 @@ public class HealthController {
      * GET /api/health
      */
     @GetMapping
+    @Operation(
+            summary = "Verificación completa de salud",
+            description = "Retorna información detallada sobre el estado de la API y sus dependencias"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "API en funcionamiento normal",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = HealthDto.class))),
+            @ApiResponse(responseCode = "503", description = "API no está disponible o servicio no disponible",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = HealthDto.class))),
+            @ApiResponse(responseCode = "500", description = "Error interno al verificar salud")
+    })
     public ResponseEntity<HealthDto> getHealth() {
         try {
             HealthDto healthDto = healthService.getHealthStatus();
@@ -49,6 +68,15 @@ public class HealthController {
      * GET /api/health/status
      */
     @GetMapping("/status")
+    @Operation(
+            summary = "Estado simple de salud",
+            description = "Retorna un estado simple (UP o DOWN) de la API"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "API en funcionamiento - retorna UP"),
+            @ApiResponse(responseCode = "503", description = "API no disponible - retorna DOWN"),
+            @ApiResponse(responseCode = "500", description = "Error interno")
+    })
     public ResponseEntity<String> getSimpleHealth() {
         try {
             String status = healthService.getSimpleStatus();
@@ -69,6 +97,11 @@ public class HealthController {
      * GET /api/health/ping
      */
     @GetMapping("/ping")
+    @Operation(
+            summary = "Prueba de conectividad básica",
+            description = "Endpoint simple para verificar conectividad básica, retorna 'pong'"
+    )
+    @ApiResponse(responseCode = "200", description = "Conectividad OK - retorna pong")
     public ResponseEntity<String> ping() {
         return ResponseEntity.ok("pong");
     }

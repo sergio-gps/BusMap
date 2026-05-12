@@ -1,7 +1,10 @@
 package com.example.mimapa
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
+import com.example.mimapa.BuildConfig.DEBUG
 import com.example.mimapa.BuildConfig.MAPS_API_KEY
 import com.example.mimapa.data.model.Email
 import com.example.mimapa.data.model.Linea
@@ -118,7 +121,7 @@ object LlamadasAPI {
                 continuation.invokeOnCancellation {
                     try {
                         call.cancel()
-                    } catch (ex: Throwable) {
+                    } catch (_: Throwable) {
                         // Ignorar si la cancelación falla
                     }
                 }
@@ -192,7 +195,7 @@ object LlamadasAPI {
             continuation.invokeOnCancellation {
                 try {
                     call.cancel()
-                } catch (ex: Throwable) {
+                } catch (_: Throwable) {
                     // Ignorar si la cancelación falla
                 }
             }
@@ -267,7 +270,7 @@ object LlamadasAPI {
             continuation.invokeOnCancellation {
                 try {
                     call.cancel()
-                } catch (ex: Throwable) {
+                } catch (_: Throwable) {
                     // Ignorar si la cancelación falla
                 }
             }
@@ -338,7 +341,7 @@ object LlamadasAPI {
             continuation.invokeOnCancellation {
                 try {
                     call.cancel()
-                } catch (ex: Throwable) {
+                } catch (_: Throwable) {
                     // Ignorar si la cancelación falla
                 }
             }
@@ -567,6 +570,7 @@ object LlamadasAPI {
                 try {
                     call.cancel()
                 } catch (_: Throwable) {
+                    // Ignorar si la cancelación falla
                 }
             }
         }
@@ -578,14 +582,31 @@ object LlamadasAPI {
      * @param origin El punto de partida de la ruta.
      * @param destination El punto de destino de la ruta.
      * @param intermediates Una lista de puntos intermedios opcionales.
-     * @param context El contexto de la aplicación.
      * @return Un String con la respuesta JSON de la API de Routes, o null si hay un error.
      */
-    suspend fun computeRoute(origin: LatLng, destination: LatLng, intermediates: List<LatLng> = emptyList(), context: Context): String? {
+    suspend fun computeRoute(
+        origin: LatLng,
+        destination: LatLng,
+        intermediates: List<LatLng> = emptyList(),
+        requestedReferenceRoutes: List<String> = emptyList(),
+        departureTime: String? = null,
+        arrivalTime: String? = null
+    ): String? {
         Log.d("LlamadasAPI", "Calcular ruta")
 
         val routeGenerator = GenerateRoute()
-        val requestBody = routeGenerator.createRoutesRequestBody(origin, destination, intermediates).toString()
+        val requestBody = routeGenerator.createRoutesRequestBody(
+            origin,
+            destination,
+            intermediates,
+            requestedReferenceRoutes = requestedReferenceRoutes,
+            departureTime = departureTime,
+            arrivalTime = arrivalTime
+        ).toString()
+
+        if (DEBUG) {
+            Log.d("LlamadasAPI", "Request body to Google: $requestBody")
+        }
 
         val request = Request.Builder()
             .url("https://routes.googleapis.com/directions/v2:computeRoutes")
@@ -596,7 +617,15 @@ object LlamadasAPI {
             .header("X-Android-Package", "com.example.mimapa")
             .header("X-Android-Cert", "80F9BBB30DCA36EB0D3395A241F0F0E79B62F83F")
             //
-            .header("X-Goog-FieldMask", "routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline") //máscara para la respuesta de la api
+            .header(
+                "X-Goog-FieldMask",
+                "routes.duration," +
+                    "routes.distanceMeters," +
+                    "routes.polyline.encodedPolyline," +
+                    "routes.travelAdvisory.fuelConsumptionMicroliters," +
+                    "routes.travelAdvisory.speedReadingIntervals," +
+                    "routes.legs.travelAdvisory.speedReadingIntervals"
+            ) //máscara para la respuesta de la api
             .post(requestBody.toRequestBody("application/json".toMediaTypeOrNull()))
             .build()
 
@@ -614,6 +643,16 @@ object LlamadasAPI {
 
                     response.use {
                         val responseBodyString = it.body?.string()
+                        if (DEBUG && responseBodyString != null) {
+                            val maxLogChars = 1500
+                            val sample = responseBodyString.take(maxLogChars)
+                            val hasFuelField = responseBodyString.contains("fuelConsumptionMicroliters")
+                            Log.d(
+                                "LlamadasAPI",
+                                "computeRoute raw JSON (${responseBodyString.length} chars, fuelField=$hasFuelField): $sample"
+                            )
+                        }
+
                         if (!it.isSuccessful) {
                             Log.e("LlamadasAPI", "Error en computeRoute: $responseBodyString")
                             continuation.resume(null)
@@ -633,7 +672,7 @@ object LlamadasAPI {
             continuation.invokeOnCancellation {
                 try {
                     call.cancel()
-                } catch (ex: Throwable) {
+                } catch (_: Throwable) {
                     // Ignorar
                 }
             }
@@ -669,7 +708,7 @@ object LlamadasAPI {
                             return
                         }
 
-                        val body = it.body?.string().orEmpty()
+                        val body = it.body.string()
                         try {
                             continuation.resume(json.decodeFromString<List<Linea>>(body))
                         } catch (e: Exception) {
@@ -688,6 +727,57 @@ object LlamadasAPI {
             }
         }
     }
+
+    /**
+     * Obtiene una linea por su id.
+     *
+     * @param lineaId El id de la linea.
+     * @param context El contexto de la aplicación.
+     * @return La linea solicitada, o null si no existe.
+     */
+    suspend fun getLinea(lineaId: Int, context: Context): Linea? {
+        val request = authorizedRequestBuilder("$API_BASE_URL/lineas/$lineaId", context)
+            .get()
+            .build()
+
+        return suspendCancellableCoroutine { continuation ->
+            val call = client.newCall(request)
+            call.enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.e("LlamadasAPI", "Fallo en getLinea", e)
+                    if (continuation.isCancelled) return
+                    continuation.resumeWithException(e)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (continuation.isCancelled) return
+                    response.use {
+                        if (!it.isSuccessful) {
+                            Log.w("LlamadasAPI", "Error en getLinea: $it")
+                            continuation.resume(null)
+                            return
+                        }
+
+                        val body = it.body?.string().orEmpty()
+                        try {
+                            continuation.resume(json.decodeFromString<Linea>(body))
+                        } catch (e: Exception) {
+                            Log.e("LlamadasAPI", "Error parseando la linea", e)
+                            continuation.resume(null)
+                        }
+                    }
+                }
+            })
+
+            continuation.invokeOnCancellation {
+                try {
+                    call.cancel()
+                } catch (_: Throwable) {
+                }
+            }
+        }
+    }
+
 
     /**
      * Crea una nueva línea en el sistema.
@@ -956,6 +1046,7 @@ object LlamadasAPI {
     /**
      * Busca vehículos por texto libre en backend.
      */
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     suspend fun searchVehiculos(query: String, context: Context): List<VehiculoAdmin> {
         val encodedQuery = java.net.URLEncoder.encode(query, Charsets.UTF_8)
         val request = authorizedRequestBuilder("$API_BASE_URL/vehiculos?query=$encodedQuery", context)

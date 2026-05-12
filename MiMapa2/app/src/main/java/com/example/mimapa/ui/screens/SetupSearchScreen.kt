@@ -38,6 +38,7 @@ import com.example.mimapa.Routes.MainRoute.FindLocation.toFindLocation
 import com.example.mimapa.data.model.Waypoint
 import com.example.mimapa.repository.LocationRepository
 import com.example.mimapa.util.RouteParser
+import com.example.mimapa.util.TrafficProcessor
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.PolyUtil
 import kotlinx.coroutines.flow.first
@@ -208,13 +209,14 @@ fun SetupSearchScreen(navController: NavController) {
                 onClick = {
                     scope.launch {
                         val googleMapResponse = try {
-                            LlamadasAPI.computeRoute(origin = origin!!.second, destination = destination!!.second, intermediates = waypointList.toLatLngList1(), context = context)
+                            LlamadasAPI.computeRoute(origin = origin!!.second, destination = destination!!.second, intermediates = waypointList.toLatLngList1())
                         }catch (e: Exception){
                             Log.e("SetupSearchScreen", "Error al buscar la ruta: ${e.message}", e)
                             null
                         }
                         if (googleMapResponse != null) {
                             val parsedResponse = RouteParser.parseRouteResponse(googleMapResponse)
+                            val processedRoute = TrafficProcessor.extractRouteInfo(parsedResponse)
                             val encodedPolyline = parsedResponse?.routes?.firstOrNull()?.polyline?.encodedPolyline
                             if (encodedPolyline != null) {
                                 val rutaDecodificada = PolyUtil.decode(encodedPolyline)
@@ -224,6 +226,10 @@ fun SetupSearchScreen(navController: NavController) {
                                     set("origin", origin!!.second)
                                     set("destination", destination!!.second)
                                     set("route", rutaDecodificada)
+                                    set("trafficSegments", processedRoute.trafficSegments)
+                                    set("fuelConsumption", processedRoute.fuelConsumptionMicroliters)
+                                    set("distanceMeters", processedRoute.distanceMeters)
+                                    set("duration", processedRoute.duration)
                                 }
                                 navController.toDrawRoute()
                             } else {

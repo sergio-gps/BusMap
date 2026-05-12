@@ -26,6 +26,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -153,18 +154,16 @@ fun ManageRoutesScreen(navController: NavController) {
 				modifier = Modifier.fillMaxWidth(),
 				horizontalArrangement = Arrangement.spacedBy(8.dp)
 			) {
-				OutlinedTextField(
+				ManageRoutesTextField(
 					value = lineaIdInput,
+					label = "ID",
 					onValueChange = { lineaIdInput = it },
-					label = { Text("ID") },
-					singleLine = true,
 					modifier = Modifier.weight(1f)
 				)
-				OutlinedTextField(
+				ManageRoutesTextField(
 					value = nombreInput,
+					label = "Nombre",
 					onValueChange = { nombreInput = it },
-					label = { Text("Nombre") },
-					singleLine = true,
 					modifier = Modifier.weight(2f)
 				)
 			}
@@ -173,27 +172,24 @@ fun ManageRoutesScreen(navController: NavController) {
 				modifier = Modifier.fillMaxWidth(),
 				horizontalArrangement = Arrangement.spacedBy(8.dp)
 			) {
-				OutlinedTextField(
+				ManageRoutesTextField(
 					value = origenInput,
+					label = "Origen",
 					onValueChange = { origenInput = it },
-					label = { Text("Origen") },
-					singleLine = true,
 					modifier = Modifier.weight(1f)
 				)
-				OutlinedTextField(
+				ManageRoutesTextField(
 					value = destinoInput,
+					label = "Destino",
 					onValueChange = { destinoInput = it },
-					label = { Text("Destino") },
-					singleLine = true,
 					modifier = Modifier.weight(1f)
 				)
 			}
 
-			OutlinedTextField(
+			ManageRoutesTextField(
 				value = colorInput,
+				label = "Color",
 				onValueChange = { colorInput = it },
-				label = { Text("Color") },
-				singleLine = true,
 				modifier = Modifier.fillMaxWidth()
 			)
 
@@ -277,11 +273,10 @@ fun ManageRoutesScreen(navController: NavController) {
 				}
 			}
 
-			OutlinedTextField(
+			ManageRoutesTextField(
 				value = viewModel.searchQuery,
+				label = "Buscar línea por nombre o ID",
 				onValueChange = { viewModel.updateSearchQuery(it) },
-				label = { Text("Buscar línea por nombre o ID") },
-				singleLine = true,
 				modifier = Modifier.fillMaxWidth()
 			)
 
@@ -390,18 +385,17 @@ fun ManageRoutesScreen(navController: NavController) {
 					expanded = paradaDropdownExpanded,
 					onExpandedChange = { paradaDropdownExpanded = it }
 				) {
-					OutlinedTextField(
+					ManageRoutesTextField(
 						value = paradaSearchQuery,
+						label = "Buscar parada para añadir",
 						onValueChange = {
 							paradaSearchQuery = it
 							paradaDropdownExpanded = true
 						},
-						label = { Text("Buscar parada para añadir") },
-						singleLine = true,
-						trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = paradaDropdownExpanded) },
 						modifier = Modifier
 							.menuAnchor()
-							.fillMaxWidth()
+							.fillMaxWidth(),
+						trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = paradaDropdownExpanded) }
 					)
 
 					ExposedDropdownMenu(
@@ -475,3 +469,27 @@ fun ManageRoutesScreen(navController: NavController) {
 	}
 
 }
+
+@Composable
+fun ManageRoutesTextField(
+	value: String,
+	label: String,
+	onValueChange: (String) -> Unit,
+	modifier: Modifier = Modifier,
+	singleLine: Boolean = true,
+	trailingIcon: @Composable (() -> Unit)? = null
+) {
+	OutlinedTextField(
+		value = value,
+		onValueChange = onValueChange,
+		label = { Text(label) },
+		singleLine = singleLine,
+		modifier = modifier,
+		trailingIcon = trailingIcon,
+		colors = OutlinedTextFieldDefaults.colors(
+			focusedContainerColor = MaterialTheme.colorScheme.surface,
+			unfocusedContainerColor = MaterialTheme.colorScheme.surface
+		)
+	)
+}
+

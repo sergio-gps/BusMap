@@ -82,7 +82,7 @@ fun ManageUsersScreen(navController: NavController) {
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    Text("Gestión de Usuarios")
+                    Text("Gestión de usuarios")
                 },
                 actions = {
                     IconButton(onClick = {
