@@ -27,7 +27,6 @@ import com.example.mimapa.data.model.TrafficSegment
 fun TrafficLegend(modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier
-            .padding(16.dp)
             .background(
                 color = Color.White.copy(alpha = 0.95f),
                 shape = RoundedCornerShape(8.dp)

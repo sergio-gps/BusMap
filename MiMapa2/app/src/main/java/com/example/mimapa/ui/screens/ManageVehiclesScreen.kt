@@ -28,6 +28,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -44,9 +45,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -142,7 +146,13 @@ fun ManageVehiclesScreen(navController: NavController) {
         ) {
             Text(
                 text = if (editingVehiculoId == -1) "Añadir vehículo" else "Modificar vehículo #$editingVehiculoId",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    shadow = Shadow(
+                        color = Color.White,
+                        offset = Offset(0f, 1f),
+                        blurRadius = 4f
+                    )
+                ),
                 fontWeight = FontWeight.Bold
             )
 
@@ -156,7 +166,7 @@ fun ManageVehiclesScreen(navController: NavController) {
                     onExpandedChange = { tipoDropdownExpanded = it },
                     modifier = Modifier.weight(1f)
                 ) {
-                    OutlinedTextField(
+                    ManageVehiclesTextField(
                         value = selectedTipo?.nombre.orEmpty(),
                         onValueChange = {},
                         readOnly = true,
@@ -183,7 +193,7 @@ fun ManageVehiclesScreen(navController: NavController) {
                     }
                 }
 
-                OutlinedTextField(
+                ManageVehiclesTextField(
                     value = nuevoTipoNombre,
                     onValueChange = { nuevoTipoNombre = it },
                     label = { Text("Nuevo tipo") },
@@ -192,7 +202,7 @@ fun ManageVehiclesScreen(navController: NavController) {
                 )
             }
 
-            OutlinedTextField(
+            ManageVehiclesTextField(
                 value = matriculaInput,
                 onValueChange = { matriculaInput = it },
                 label = { Text("Matrícula") },
@@ -204,14 +214,14 @@ fun ManageVehiclesScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                OutlinedTextField(
+                ManageVehiclesTextField(
                     value = marcaModeloInput,
                     onValueChange = { marcaModeloInput = it },
                     label = { Text("Marca / Modelo") },
                     singleLine = true,
                     modifier = Modifier.weight(1.7f)
                 )
-                OutlinedTextField(
+                ManageVehiclesTextField(
                     value = capacidadInput,
                     onValueChange = { capacidadInput = it },
                     label = { Text("Capacidad") },
@@ -314,7 +324,7 @@ fun ManageVehiclesScreen(navController: NavController) {
                 ) { Text("Limpiar") }
             }
 
-            OutlinedTextField(
+            ManageVehiclesTextField(
                 value = viewModel.searchQuery,
                 onValueChange = { viewModel.updateSearchQuery(it, context) },
                 modifier = Modifier.fillMaxWidth(),
@@ -331,7 +341,13 @@ fun ManageVehiclesScreen(navController: NavController) {
 
             Text(
                 text = "Vehículos registrados",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    shadow = Shadow(
+                        color = Color.White,
+                        offset = Offset(0f, 1f),
+                        blurRadius = 4f
+                    )
+                ),
                 fontWeight = FontWeight.Bold
             )
 
@@ -413,7 +429,7 @@ fun ManageVehiclesScreen(navController: NavController) {
             text = {
                 Text(
                     "¿Eliminar vehículo ${vehiculo.vehiculoId} (${vehiculo.matricula.orEmpty()})?\n" +
-                        "Se eliminará su info asociada y, si aplica, el tipo huérfano."
+                        "Se eliminará su info asociada y, si hubiera, el tipo de vehículo huérfano."
                 )
             },
             confirmButton = {
@@ -447,5 +463,32 @@ fun ManageVehiclesScreen(navController: NavController) {
             }
         )
     }
+}
+
+@Composable
+fun ManageVehiclesTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: @Composable (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    singleLine: Boolean = true,
+    readOnly: Boolean = false,
+    placeholder: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = label,
+        singleLine = singleLine,
+        readOnly = readOnly,
+        placeholder = placeholder,
+        trailingIcon = trailingIcon,
+        modifier = modifier,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface
+        )
+    )
 }
 

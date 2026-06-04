@@ -56,6 +56,7 @@ import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mimapa.LlamadasAPI
+import com.example.mimapa.Routes.AdminRoute.AdminDrawRoute.toAdminDrawRoute
 import com.example.mimapa.Routes.MainRoute.DrawRoute.toDrawRoute
 import com.example.mimapa.Routes.MainRoute.FindLocation.toFindLocation
 import com.example.mimapa.ui.composables.BottomNavigationBarAdmin
@@ -397,7 +398,7 @@ fun GenerateAlternativeRouteScreen(
                                     set("distanceMeters", processedRoute.distanceMeters)
                                     set("duration", processedRoute.duration)
                                 }
-                                navController.toDrawRoute()
+                                navController.toAdminDrawRoute()
                             } else {
                                 Log.e("GenerateAlternativeRouteScreen", "No se pudo obtener la polilínea codificada")
                             }

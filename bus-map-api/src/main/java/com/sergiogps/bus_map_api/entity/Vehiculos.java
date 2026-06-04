@@ -30,6 +30,7 @@ public class Vehiculos {
     private TiposVehiculo tipo;
 
     @ManyToMany(mappedBy = "vehiculos")
+    @JsonIgnore
     private List<Lineas> lineas = new ArrayList<>();
 
     // Getters y Setters

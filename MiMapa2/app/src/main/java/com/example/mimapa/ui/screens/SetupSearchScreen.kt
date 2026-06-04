@@ -10,8 +10,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -24,6 +28,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,12 +54,12 @@ import kotlinx.coroutines.launch
 fun SetupSearchScreen(navController: NavController) {
     // --- 1. GESTIÓN DE ESTADOS ---
     // Almacena la información de origen y destino
-    var destination by remember { mutableStateOf<Pair<String, LatLng>?>(null) }
-    var origin by remember { mutableStateOf<Pair<String, LatLng>?>(null) }
+    var destination by rememberSaveable { mutableStateOf<Pair<String, LatLng>?>(null) }
+    var origin by rememberSaveable { mutableStateOf<Pair<String, LatLng>?>(null) }
 
     // Controla la UI: ¿usar ubicación actual? ¿estamos buscando origen o destino?
-    var useCurrentLocation by remember { mutableStateOf<Boolean?>(null) }
-    var isSelectingOrigin by remember { mutableStateOf(false) }
+    var useCurrentLocation by rememberSaveable { mutableStateOf<Boolean?>(null) }
+    var isSelectingOrigin by rememberSaveable { mutableStateOf(false) }
 
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -123,7 +128,15 @@ fun SetupSearchScreen(navController: NavController) {
     // --- 3. CONSTRUCCIÓN DE LA UI ---
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Configurar Ruta") })
+            TopAppBar(title = { Text("Configurar Ruta") },
+            navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Volver"
+                        )
+                    }
+                })
         }
     ) { padding ->
         Column(

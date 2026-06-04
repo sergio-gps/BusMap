@@ -1,7 +1,6 @@
 package com.example.mimapa
 
 import androidx.navigation.NavController
-import com.google.android.gms.maps.model.LatLng
 
 /**
  * Objeto que contiene las rutas de la aplicación.
@@ -87,12 +86,16 @@ sealed class Routes(val route: String) {
             fun NavController.toManageBusStops() = navigate("${AdminRoute.route}/manageBusStops")
         }
 
-        data object Statistics : Routes("${AdminRoute.route}/statistics") {
-            fun NavController.toStatistics() = navigate("${AdminRoute.route}/statistics")
+        data object ManageStatistics : Routes("${AdminRoute.route}/manageStatistics") {
+            fun NavController.toManageStatistics() = navigate("${AdminRoute.route}/manageStatistics")
         }
 
         data object GenerateAlternativeRoute : Routes("${AdminRoute.route}/generateAlternativeRoute") {
             fun NavController.toGenerateAlternativeRoute() = navigate("${AdminRoute.route}/generateAlternativeRoute")
+        }
+
+        data object AdminDrawRoute : Routes("${AdminRoute.route}/adminDrawRoute") {
+            fun NavController.toAdminDrawRoute() = navigate("${AdminRoute.route}/adminDrawRoute")
         }
 
         data object ManageVehicles : Routes("${AdminRoute.route}/manageVehicles") {

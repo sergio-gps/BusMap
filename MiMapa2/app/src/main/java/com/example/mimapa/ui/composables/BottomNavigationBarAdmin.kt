@@ -22,7 +22,7 @@ import com.example.mimapa.Routes.AdminRoute.ManageBusStops.toManageBusStops
 import com.example.mimapa.Routes.AdminRoute.ManageRoutes.toManageRoutes
 import com.example.mimapa.Routes.AdminRoute.ManageUsers.toManageUsers
 import com.example.mimapa.Routes.AdminRoute.ManageVehicles.toManageVehicles
-import com.example.mimapa.Routes.AdminRoute.Statistics.toStatistics
+import com.example.mimapa.Routes.AdminRoute.ManageStatistics.toManageStatistics
 
 @Composable
 fun BottomNavigationBarAdmin(navController: NavController) {
@@ -74,7 +74,7 @@ fun BottomNavigationBarAdmin(navController: NavController) {
             )
         }
         IconButton(onClick = {
-            navController.toStatistics()
+            navController.toManageStatistics()
         }) {
             Icon(
                 painter = painterResource(id = R.drawable.round_insert_chart_outlined_24),

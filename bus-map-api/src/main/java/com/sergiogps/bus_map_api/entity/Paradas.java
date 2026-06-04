@@ -3,6 +3,8 @@ package com.sergiogps.bus_map_api.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,6 +26,7 @@ public class Paradas {
     private Double longitud;
 
     @ManyToMany(mappedBy = "paradas")
+    @JsonIgnore
     private List<Lineas> lineas = new ArrayList<>();
 
     // Getters y Setters

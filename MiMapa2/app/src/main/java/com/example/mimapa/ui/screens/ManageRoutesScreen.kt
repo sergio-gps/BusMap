@@ -42,9 +42,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -146,7 +149,13 @@ fun ManageRoutesScreen(navController: NavController) {
 		) {
 			Text(
 				text = "Añadir o modificar línea",
-				style = MaterialTheme.typography.titleMedium,
+				style = MaterialTheme.typography.titleMedium.copy(
+					shadow = Shadow(
+						color = Color.White,
+						offset = Offset(0f, 1f),
+						blurRadius = 4f
+					)
+				),
 				fontWeight = FontWeight.Bold
 			)
 
@@ -282,7 +291,13 @@ fun ManageRoutesScreen(navController: NavController) {
 
 			Text(
 				text = "Líneas registradas",
-				style = MaterialTheme.typography.titleMedium,
+				style = MaterialTheme.typography.titleMedium.copy(
+					shadow = Shadow(
+						color = Color.White,
+						offset = Offset(0f, 1f),
+						blurRadius = 4f
+					)
+				),
 				fontWeight = FontWeight.Bold
 			)
 

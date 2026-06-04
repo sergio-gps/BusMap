@@ -30,6 +30,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -43,7 +44,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -115,7 +119,7 @@ fun ManageUsersScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Campo de búsqueda
-            OutlinedTextField(
+            ManageUsersTextField(
                 value = viewModel.searchQuery,
                 onValueChange = { viewModel.updateSearchQuery(it) },
                 modifier = Modifier.fillMaxWidth(),
@@ -291,14 +295,14 @@ fun ManageUsersScreen(navController: NavController) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    OutlinedTextField(
+                    ManageUsersTextField(
                         value = editingUsername.value,
                         onValueChange = { editingUsername.value = it },
                         label = { Text("Nombre de usuario") },
                         modifier = Modifier.fillMaxWidth(),
                         maxLines = 1
                     )
-                    OutlinedTextField(
+                    ManageUsersTextField(
                         value = editingEmail.value,
                         onValueChange = { editingEmail.value = it },
                         label = { Text("Email") },
@@ -366,6 +370,37 @@ fun ManageUsersScreen(navController: NavController) {
             }
         )
     }
+}
+
+@Composable
+fun ManageUsersTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: @Composable (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    singleLine: Boolean = true,
+    maxLines: Int = 1,
+    placeholder: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    readOnly: Boolean = false
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = label,
+        placeholder = placeholder,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        singleLine = singleLine,
+        maxLines = maxLines,
+        readOnly = readOnly,
+        modifier = modifier,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface
+        )
+    )
 }
 
 @Composable

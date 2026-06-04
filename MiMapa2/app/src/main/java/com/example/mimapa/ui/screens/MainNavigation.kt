@@ -73,11 +73,14 @@ fun MainNavigation() {
         composable(Routes.AdminRoute.ManageVehicles.route) {
             ManageVehiclesScreen(navController)
         }
-        composable(Routes.AdminRoute.Statistics.route) {
-            StatisticsScreen(navController)
+        composable(Routes.AdminRoute.ManageStatistics.route) {
+            ManageStatisticsScreen(navController)
         }
         composable(route = Routes.AdminRoute.GenerateAlternativeRoute.route) {
             GenerateAlternativeRouteScreen(navController)
+        }
+        composable(route = Routes.AdminRoute.AdminDrawRoute.route) {
+            AdminDrawRouteScreen(navController)
         }
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -39,9 +40,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -144,11 +148,17 @@ fun ManageBusStopsScreen(navController: NavController) {
         ) {
             Text(
                 text = "Añadir o modificar parada",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    shadow = Shadow(
+                        color = Color.White,
+                        offset = Offset(0f, 1f),
+                        blurRadius = 4f
+                    )
+                ),
                 fontWeight = FontWeight.Bold
             )
 
-            OutlinedTextField(
+            ManageBusStopsTextField(
                 value = numeroInput,
                 onValueChange = { numeroInput = it },
                 label = { Text("Número de parada") },
@@ -156,7 +166,7 @@ fun ManageBusStopsScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth()
             )
 
-            OutlinedTextField(
+            ManageBusStopsTextField(
                 value = nombreInput,
                 onValueChange = { nombreInput = it },
                 label = { Text("Nombre") },
@@ -168,14 +178,14 @@ fun ManageBusStopsScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                OutlinedTextField(
+                ManageBusStopsTextField(
                     value = latitudInput,
                     onValueChange = { latitudInput = it },
                     label = { Text("Latitud") },
                     singleLine = true,
                     modifier = Modifier.weight(1f)
                 )
-                OutlinedTextField(
+                ManageBusStopsTextField(
                     value = longitudInput,
                     onValueChange = { longitudInput = it },
                     label = { Text("Longitud") },
@@ -184,7 +194,7 @@ fun ManageBusStopsScreen(navController: NavController) {
                 )
             }
 
-            OutlinedTextField(
+            ManageBusStopsTextField(
                 value = lineasInput,
                 onValueChange = { lineasInput = it },
                 label = { Text("Líneas (ej: 1,2,18)") },
@@ -331,7 +341,13 @@ fun ManageBusStopsScreen(navController: NavController) {
 
             Text(
                 text = "Paradas registradas",
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    shadow = Shadow(
+                        color = Color.White,
+                        offset = Offset(0f, 1f),
+                        blurRadius = 4f
+                    )
+                ),
                 fontWeight = FontWeight.Bold
             )
 
@@ -410,6 +426,27 @@ fun ManageBusStopsScreen(navController: NavController) {
             }
         }
     }
+}
+
+@Composable
+fun ManageBusStopsTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: @Composable (() -> Unit),
+    modifier: Modifier = Modifier,
+    singleLine: Boolean = true
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = label,
+        singleLine = singleLine,
+        modifier = modifier,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface
+        )
+    )
 }
 
 private fun parseLineas(lineasInput: String): List<Int> {

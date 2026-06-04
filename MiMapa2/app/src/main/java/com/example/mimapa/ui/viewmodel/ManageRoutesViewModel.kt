@@ -45,11 +45,18 @@ class ManageRoutesViewModel : ViewModel() {
             errorMessage = null
             try {
                 refreshLineas(context)
-                paradasList = LlamadasAPI.getParadas(context).sortedBy { it.numero }
             } catch (e: Exception) {
-                errorMessage = "Error cargando datos: ${e.message}"
+                errorMessage = "Error cargando líneas: ${e.message}"
                 lineasList = emptyList()
                 filteredLineas = emptyList()
+            }
+
+            try {
+                paradasList = LlamadasAPI.getParadas(context).sortedBy { it.numero }
+            } catch (e: Exception) {
+                if (errorMessage == null) {
+                    errorMessage = "Error cargando paradas: ${e.message}"
+                }
                 paradasList = emptyList()
             } finally {
                 isLoading = false
