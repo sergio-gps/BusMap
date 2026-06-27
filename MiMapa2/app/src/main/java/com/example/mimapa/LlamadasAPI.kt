@@ -94,7 +94,7 @@ object LlamadasAPI {
                                 val responseBody = response.body?.string()
                                 if (responseBody != null) {
                                     try {
-                                        val tokenResponse = Json.decodeFromString<Token>(responseBody)
+                                        val tokenResponse = Json.decodeFromString<LoginResult>(responseBody)
                                         Log.i("LlamadasAPI", "Registro exitoso, token recibido: ${tokenResponse.token}")
                                         continuation.resume(tokenResponse.token)
                                     } catch (e: SerializationException) {
